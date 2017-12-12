@@ -1,5 +1,0 @@
-
-scala> def madMethod() = { throw new IllegalArgumentException() }
-madMethod: ()Nothing
-
-scala> :quit

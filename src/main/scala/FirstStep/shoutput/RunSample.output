@@ -1,5 +1,0 @@
-> scalac Sample.scala
-> scala Sample
-Hello Scala
-> java -classpath /opt/scala/current/lib/scala-library.jar:. Sample
-Hello Scala

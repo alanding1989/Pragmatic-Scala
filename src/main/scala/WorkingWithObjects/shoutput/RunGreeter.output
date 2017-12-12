@@ -1,4 +1,0 @@
-Compiled from "Greeter.scala"
-public final class Greeter {
-  public static void greet();
-}
