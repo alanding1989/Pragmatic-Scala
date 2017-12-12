@@ -92,8 +92,23 @@ Version 1.0
   <li><a href="../chapter-01/index.html" class="page">第一章</a></li>
   <li><a href="../chapter-07/index.html#第7章-特质" class="active page">第7章——特质</a>
   <ul>
-    <li><a href="../chapter-07/index.html#1-human-类" class="header">1 Human 类</a></li>
-    <li><a href="../chapter-07/index.html#2-friend-scala" class="header">2 Friend.scala</a></li>
+    <li><a href="../chapter-07/index.html#humanwithlisten-scala" class="header">HumanWithListen.scala</a></li>
+    <li><a href="../chapter-07/index.html#friend-scala" class="header">Friend.scala</a></li>
+    <li><a href="../chapter-07/index.html#human-scala" class="header">Human.scala</a></li>
+    <li><a href="../chapter-07/index.html#dog-scala" class="header">Dog.scala</a></li>
+    <li><a href="../chapter-07/index.html#animal-scala" class="header">Animal.scala</a></li>
+    <li><a href="../chapter-07/index.html#usefriend-scala" class="header">UseFriend.scala</a></li>
+    <li><a href="../chapter-07/index.html#cat-scala" class="header">Cat.scala</a></li>
+    <li><a href="../chapter-07/index.html#usecat-scala" class="header">UseCat.scala</a></li>
+    <li><a href="../chapter-07/index.html#treatcatasfriend-scala" class="header">TreatCatAsFriend.scala</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-1" class="header">Decorator.scala 1</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-2" class="header">Decorator.scala 2</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-3" class="header">Decorator.scala 3</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-4" class="header">Decorator.scala 4</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-1" class="header">MethodBinding.scala 1</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-2" class="header">MethodBinding.scala 2</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-3" class="header">MethodBinding.scala 3</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-4" class="header">MethodBinding.scala 4</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -117,8 +132,23 @@ Version 1.0
   <li><a href="../chapter-01/index.html" class="page">第一章</a></li>
   <li><a href="../chapter-07/index.html#第7章-特质" class="active page">第7章——特质</a>
   <ul>
-    <li><a href="../chapter-07/index.html#1-human-类" class="header">1 Human 类</a></li>
-    <li><a href="../chapter-07/index.html#2-friend-scala" class="header">2 Friend.scala</a></li>
+    <li><a href="../chapter-07/index.html#humanwithlisten-scala" class="header">HumanWithListen.scala</a></li>
+    <li><a href="../chapter-07/index.html#friend-scala" class="header">Friend.scala</a></li>
+    <li><a href="../chapter-07/index.html#human-scala" class="header">Human.scala</a></li>
+    <li><a href="../chapter-07/index.html#dog-scala" class="header">Dog.scala</a></li>
+    <li><a href="../chapter-07/index.html#animal-scala" class="header">Animal.scala</a></li>
+    <li><a href="../chapter-07/index.html#usefriend-scala" class="header">UseFriend.scala</a></li>
+    <li><a href="../chapter-07/index.html#cat-scala" class="header">Cat.scala</a></li>
+    <li><a href="../chapter-07/index.html#usecat-scala" class="header">UseCat.scala</a></li>
+    <li><a href="../chapter-07/index.html#treatcatasfriend-scala" class="header">TreatCatAsFriend.scala</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-1" class="header">Decorator.scala 1</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-2" class="header">Decorator.scala 2</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-3" class="header">Decorator.scala 3</a></li>
+    <li><a href="../chapter-07/index.html#decorator-scala-4" class="header">Decorator.scala 4</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-1" class="header">MethodBinding.scala 1</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-2" class="header">MethodBinding.scala 2</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-3" class="header">MethodBinding.scala 3</a></li>
+    <li><a href="../chapter-07/index.html#methodbinding-scala-4" class="header">MethodBinding.scala 4</a></li>
   </ul></li>
 </ul>
 </div>
@@ -135,16 +165,126 @@ Version 1.0
 <article class="page-content row">
 <div class="small-12 large-9 column" id="docs">
 <h1><a href="#第7章-特质" name="第7章-特质" class="anchor"><span class="anchor-link"></span></a>第7章——特质</h1>
-<h2><a href="#1-human-类" name="1-human-类" class="anchor"><span class="anchor-link"></span></a>1 Human 类</h2>
-<pre class="prettyprint"><code class="language-scala">class Human(val name: String) extends Friend
+<h2><a href="#humanwithlisten-scala" name="humanwithlisten-scala" class="anchor"><span class="anchor-link"></span></a>HumanWithListen.scala</h2>
+<pre class="prettyprint"><code class="language-scala">class Human(val name: String) {
+  def listen(): Unit = println(s&quot;Your friend $name is listening&quot;)
+}
 
-class Woman(override val name: String) extends Human(name)
-class Man(override val name: String) extends Human(name)</code></pre>
-<h2><a href="#2-friend-scala" name="2-friend-scala" class="anchor"><span class="anchor-link"></span></a>2 Friend.scala</h2>
+class Man(override val name: String) extends Human(name)
+class Woman(override val name: String) extends Human(name)</code></pre>
+<h2><a href="#friend-scala" name="friend-scala" class="anchor"><span class="anchor-link"></span></a>Friend.scala</h2>
 <pre class="prettyprint"><code class="language-scala">trait Friend {    
   val name: String
   def listen() = println(s&quot;Your friend $name is listening&quot;)
 }             </code></pre>
+<h2><a href="#human-scala" name="human-scala" class="anchor"><span class="anchor-link"></span></a>Human.scala</h2>
+<pre class="prettyprint"><code class="language-scala">class Human(val name: String) extends Friend
+
+class Woman(override val name: String) extends Human(name)
+class Man(override val name: String) extends Human(name)</code></pre>
+<h2><a href="#dog-scala" name="dog-scala" class="anchor"><span class="anchor-link"></span></a>Dog.scala</h2>
+<pre class="prettyprint"><code class="language-scala">class Dog(val name: String) extends Animal with Friend {          
+  //optionally override method here.
+  override def listen(): Unit = println(s&quot;$name&#39;s listening quietly&quot;)
+}</code></pre>
+<h2><a href="#animal-scala" name="animal-scala" class="anchor"><span class="anchor-link"></span></a>Animal.scala</h2>
+<pre class="prettyprint"><code class="language-scala">class Animal</code></pre>
+<h2><a href="#usefriend-scala" name="usefriend-scala" class="anchor"><span class="anchor-link"></span></a>UseFriend.scala</h2>
+<pre class="prettyprint"><code class="language-scala">object UseFriend extends App {
+  val john = new Man(&quot;John&quot;)
+  val sara = new Woman(&quot;Sara&quot;)
+  val comet = new Dog(&quot;Comet&quot;)
+
+  john.listen()
+  sara.listen()
+  comet.listen()
+
+  val mansBestFriend : Friend = comet
+  mansBestFriend.listen()
+
+  def helpAsFriend(friend: Friend): Unit = friend.listen()
+
+  helpAsFriend(sara)
+  helpAsFriend(comet)  
+}</code></pre>
+<h2><a href="#cat-scala" name="cat-scala" class="anchor"><span class="anchor-link"></span></a>Cat.scala</h2>
+<pre class="prettyprint"><code class="language-scala">class Cat(val name: String) extends Animal </code></pre>
+<h2><a href="#usecat-scala" name="usecat-scala" class="anchor"><span class="anchor-link"></span></a>UseCat.scala</h2>
+<pre class="prettyprint"><code class="language-scala">object UseCat extends App {
+  def useFriend(friend: Friend): Unit = friend.listen()
+
+  val alf = new Cat(&quot;Alf&quot;)
+  val friend : Friend = alf // ERROR
+
+  useFriend(alf) // ERROR  
+}</code></pre>
+<h2><a href="#treatcatasfriend-scala" name="treatcatasfriend-scala" class="anchor"><span class="anchor-link"></span></a>TreatCatAsFriend.scala</h2>
+<pre class="prettyprint"><code class="language-scala">def useFriend(friend: Friend): Unit = friend.listen()
+
+val angel = new Cat(&quot;Angel&quot;) with Friend
+val friend : Friend = angel
+angel.listen()
+
+useFriend(angel)</code></pre>
+<h2><a href="#decorator-scala-1" name="decorator-scala-1" class="anchor"><span class="anchor-link"></span></a>Decorator.scala 1</h2>
+<pre class="prettyprint"><code class="language-scala">abstract class Check {
+  def check : String = &quot;Checked Application Details...&quot;
+}</code></pre>
+<h2><a href="#decorator-scala-2" name="decorator-scala-2" class="anchor"><span class="anchor-link"></span></a>Decorator.scala 2</h2>
+<pre class="prettyprint"><code class="language-scala">trait CreditCheck extends Check {
+  override def check : String = s&quot;Checked Credit... ${super.check}&quot;
+}
+
+trait EmploymentCheck extends Check {
+  override def check : String = s&quot;Checked Employment...${super.check}&quot;
+}
+
+trait CriminalRecordCheck extends Check {
+  override def check : String = s&quot;Check Criminal Records...${super.check}&quot;
+}</code></pre>
+<h2><a href="#decorator-scala-3" name="decorator-scala-3" class="anchor"><span class="anchor-link"></span></a>Decorator.scala 3</h2>
+<pre class="prettyprint"><code class="language-scala">val apartmentApplication = 
+  new Check with CreditCheck with CriminalRecordCheck
+
+println(apartmentApplication.check)</code></pre>
+<h2><a href="#decorator-scala-4" name="decorator-scala-4" class="anchor"><span class="anchor-link"></span></a>Decorator.scala 4</h2>
+<pre class="prettyprint"><code class="language-scala">val employmentApplication = 
+  new Check with CriminalRecordCheck with EmploymentCheck
+
+println(employmentApplication.check)</code></pre>
+<h2><a href="#methodbinding-scala-1" name="methodbinding-scala-1" class="anchor"><span class="anchor-link"></span></a>MethodBinding.scala 1</h2>
+<pre class="prettyprint"><code class="language-scala">abstract class Writer  {
+  def writeMessage(message: String):Unit
+}</code></pre>
+<h2><a href="#methodbinding-scala-2" name="methodbinding-scala-2" class="anchor"><span class="anchor-link"></span></a>MethodBinding.scala 2</h2>
+<pre class="prettyprint"><code class="language-scala">trait UpperCaseWriter extends Writer {
+  abstract override def writeMessage(message: String): Unit =
+    super.writeMessage(message.toUpperCase)
+}
+
+trait ProfanityFilteredWriter extends Writer {
+  abstract override def writeMessage(message: String): Unit =
+    super.writeMessage(message.replace(&quot;stupid&quot;, &quot;s-----&quot;))
+}</code></pre>
+<h2><a href="#methodbinding-scala-3" name="methodbinding-scala-3" class="anchor"><span class="anchor-link"></span></a>MethodBinding.scala 3</h2>
+<pre class="prettyprint"><code class="language-scala">class StringWriterDelegate extends Writer {
+  val writer = new java.io.StringWriter
+  
+  def writeMessage(message: String): Unit = writer.write(message)
+  override def toString : String = writer.toString
+}</code></pre>
+<h2><a href="#methodbinding-scala-4" name="methodbinding-scala-4" class="anchor"><span class="anchor-link"></span></a>MethodBinding.scala 4</h2>
+<pre class="prettyprint"><code class="language-scala">val myWriterProfanityFirst = 
+  new StringWriterDelegate with UpperCaseWriter with ProfanityFilteredWriter
+
+val myWriterProfanityLast = 
+  new StringWriterDelegate with ProfanityFilteredWriter with UpperCaseWriter
+
+myWriterProfanityFirst writeMessage &quot;There is no sin except stupidity&quot;
+myWriterProfanityLast writeMessage &quot;There is no sin except stupidity&quot;
+
+println(myWriterProfanityFirst)
+println(myWriterProfanityLast)</code></pre>
 </div>
 </article>
 
