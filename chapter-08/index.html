@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-<title>第1章——Exploring Scala &bull; </title>
+<title>第8章——集合 &bull; </title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="PragmaticScala"/>
@@ -89,12 +89,12 @@ Version 1.0
 </header>
 <nav class="nav-toc">
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="active page">第1章——Exploring Scala</a>
-  <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
-  </ul></li>
+  <li><a href="../chapter-01/index.html" class="page">第1章——Exploring Scala</a></li>
   <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
-  <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
+  <li><a href="../chapter-08/index.html#第8章-集合" class="active page">第8章——集合</a>
+  <ul>
+    <li><a href="../chapter-08/index.html#代码清单8-1-usingcollections-usingset-scala-" class="header">代码清单8-1（UsingCollections/UsingSet.scala）</a></li>
+  </ul></li>
   <li><a href="../chapter-09/index.html" class="page">第9章——模式匹配和正则表达式</a></li>
   <li><a href="../chapter-10/index.html" class="page">第10章——处理异常</a></li>
   <li><a href="../chapter-11/index.html" class="page">第11章——递归编程</a></li>
@@ -122,12 +122,12 @@ Version 1.0
 <nav class="site-nav fixed-sidebar-contents">
 <div class="nav-toc">
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="active page">第1章——Exploring Scala</a>
-  <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
-  </ul></li>
+  <li><a href="../chapter-01/index.html" class="page">第1章——Exploring Scala</a></li>
   <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
-  <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
+  <li><a href="../chapter-08/index.html#第8章-集合" class="active page">第8章——集合</a>
+  <ul>
+    <li><a href="../chapter-08/index.html#代码清单8-1-usingcollections-usingset-scala-" class="header">代码清单8-1（UsingCollections/UsingSet.scala）</a></li>
+  </ul></li>
   <li><a href="../chapter-09/index.html" class="page">第9章——模式匹配和正则表达式</a></li>
   <li><a href="../chapter-10/index.html" class="page">第10章——处理异常</a></li>
   <li><a href="../chapter-11/index.html" class="page">第11章——递归编程</a></li>
@@ -150,16 +150,14 @@ Version 1.0
 
 <article class="page-content row">
 <div class="small-12 large-9 column" id="docs">
-<h1><a href="#第1章-exploring-scala" name="第1章-exploring-scala" class="anchor"><span class="anchor-link"></span></a>第1章——Exploring Scala</h1>
-<h2><a href="#代码清单1-1-introduction-topstock-scala-" name="代码清单1-1-introduction-topstock-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单1-1（Introduction/TopStock.scala）</h2>
-<pre class="prettyprint"><code class="language-scala">val symbols = List(&quot;AMD&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;IBM&quot;, &quot;ORCL&quot;, &quot;MSFT&quot;) 
-val year = 2014 
+<h1><a href="#第8章-集合" name="第8章-集合" class="anchor"><span class="anchor-link"></span></a>第8章——集合</h1>
+<h2><a href="#代码清单8-1-usingcollections-usingset-scala-" name="代码清单8-1-usingcollections-usingset-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单8-1（UsingCollections/UsingSet.scala）</h2>
+<pre class="prettyprint"><code class="language-scala">val colors1 = Set(&quot;Blue&quot;, &quot;Green&quot;, &quot;Red&quot;)
+println(s&quot;colors1: $colors1&quot;)
 
-val (topStock, topPrice) = 
-  symbols.map { ticker =&gt; (ticker, getYearEndClosingPrice(ticker, year)) } 
-         .maxBy { stockPrice =&gt; stockPrice._2 } 
-
-printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;)</code></pre>
+val colors2 = colors1 + &quot;Black&quot;
+println(s&quot;colors2: $colors2&quot;)
+println(s&quot;colors1: $colors1&quot;)</code></pre>
 </div>
 </article>
 
@@ -167,17 +165,17 @@ printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;
 <div class="small-12 large-9 column">
 <section class="nav-prev-next row">
 <div class="nav-prev small-6 column">
-<a href="../index.html"><i class="icon-prev"></i> <span class="link-prev"></span></a>
+<a href="../chapter-07/index.html"><i class="icon-prev"></i> <span class="link-prev">第7章——特质</span></a>
 </div>
 <div class="nav-next small-6 column clearfix">
-<a class="float-right" href="../chapter-07/index.html">第7章——特质 <i class="icon-next"></i></a>
+<a class="float-right" href="../chapter-09/index.html">第9章——模式匹配和正则表达式 <i class="icon-next"></i></a>
 </div>
 </section>
 </div>
 </div>
 
 <div class="source-github row">
-The source code for this page can be found <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-01/index.md">here</a>.
+The source code for this page can be found <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-08/index.md">here</a>.
 </div>
 
 

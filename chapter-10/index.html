@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-<title>第1章——Exploring Scala &bull; </title>
+<title>第10章——处理异常 &bull; </title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="PragmaticScala"/>
@@ -89,14 +89,14 @@ Version 1.0
 </header>
 <nav class="nav-toc">
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="active page">第1章——Exploring Scala</a>
-  <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
-  </ul></li>
+  <li><a href="../chapter-01/index.html" class="page">第1章——Exploring Scala</a></li>
   <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
   <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
   <li><a href="../chapter-09/index.html" class="page">第9章——模式匹配和正则表达式</a></li>
-  <li><a href="../chapter-10/index.html" class="page">第10章——处理异常</a></li>
+  <li><a href="../chapter-10/index.html#第10章-处理异常" class="active page">第10章——处理异常</a>
+  <ul>
+    <li><a href="../chapter-10/index.html#代码清单10-1-exceptionhandling-tax-scala-" class="header">代码清单10-1（ExceptionHandling/Tax.scala）</a></li>
+  </ul></li>
   <li><a href="../chapter-11/index.html" class="page">第11章——递归编程</a></li>
   <li><a href="../chapter-12/index.html" class="page">第12章——惰性求值和并行集合</a></li>
   <li><a href="../chapter-13/index.html" class="page">第13章——使用Actor模型处理并发</a></li>
@@ -122,14 +122,14 @@ Version 1.0
 <nav class="site-nav fixed-sidebar-contents">
 <div class="nav-toc">
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="active page">第1章——Exploring Scala</a>
-  <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
-  </ul></li>
+  <li><a href="../chapter-01/index.html" class="page">第1章——Exploring Scala</a></li>
   <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
   <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
   <li><a href="../chapter-09/index.html" class="page">第9章——模式匹配和正则表达式</a></li>
-  <li><a href="../chapter-10/index.html" class="page">第10章——处理异常</a></li>
+  <li><a href="../chapter-10/index.html#第10章-处理异常" class="active page">第10章——处理异常</a>
+  <ul>
+    <li><a href="../chapter-10/index.html#代码清单10-1-exceptionhandling-tax-scala-" class="header">代码清单10-1（ExceptionHandling/Tax.scala）</a></li>
+  </ul></li>
   <li><a href="../chapter-11/index.html" class="page">第11章——递归编程</a></li>
   <li><a href="../chapter-12/index.html" class="page">第12章——惰性求值和并行集合</a></li>
   <li><a href="../chapter-13/index.html" class="page">第13章——使用Actor模型处理并发</a></li>
@@ -150,16 +150,21 @@ Version 1.0
 
 <article class="page-content row">
 <div class="small-12 large-9 column" id="docs">
-<h1><a href="#第1章-exploring-scala" name="第1章-exploring-scala" class="anchor"><span class="anchor-link"></span></a>第1章——Exploring Scala</h1>
-<h2><a href="#代码清单1-1-introduction-topstock-scala-" name="代码清单1-1-introduction-topstock-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单1-1（Introduction/TopStock.scala）</h2>
-<pre class="prettyprint"><code class="language-scala">val symbols = List(&quot;AMD&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;IBM&quot;, &quot;ORCL&quot;, &quot;MSFT&quot;) 
-val year = 2014 
-
-val (topStock, topPrice) = 
-  symbols.map { ticker =&gt; (ticker, getYearEndClosingPrice(ticker, year)) } 
-         .maxBy { stockPrice =&gt; stockPrice._2 } 
-
-printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;)</code></pre>
+<h1><a href="#第10章-处理异常" name="第10章-处理异常" class="anchor"><span class="anchor-link"></span></a>第10章——处理异常</h1>
+<h2><a href="#代码清单10-1-exceptionhandling-tax-scala-" name="代码清单10-1-exceptionhandling-tax-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单10-1（ExceptionHandling/Tax.scala）</h2>
+<pre class="prettyprint"><code class="language-scala">object Tax {
+  def taxFor(amount: Double): Double = {
+    if (amount &lt; 0) 
+       throw new IllegalArgumentException(&quot;Amount must be greater than zero&quot;)
+       
+    if (amount &lt; 0.01) 
+      throw new RuntimeException(&quot;Amount too small to be taxed&quot;)
+    
+    if (amount &gt; 1000000) throw new Exception(&quot;Amount too large...&quot;)
+    
+    amount * 0.08
+  }
+}</code></pre>
 </div>
 </article>
 
@@ -167,17 +172,17 @@ printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;
 <div class="small-12 large-9 column">
 <section class="nav-prev-next row">
 <div class="nav-prev small-6 column">
-<a href="../index.html"><i class="icon-prev"></i> <span class="link-prev"></span></a>
+<a href="../chapter-09/index.html"><i class="icon-prev"></i> <span class="link-prev">第9章——模式匹配和正则表达式</span></a>
 </div>
 <div class="nav-next small-6 column clearfix">
-<a class="float-right" href="../chapter-07/index.html">第7章——特质 <i class="icon-next"></i></a>
+<a class="float-right" href="../chapter-11/index.html">第11章——递归编程 <i class="icon-next"></i></a>
 </div>
 </section>
 </div>
 </div>
 
 <div class="source-github row">
-The source code for this page can be found <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-01/index.md">here</a>.
+The source code for this page can be found <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-10/index.md">here</a>.
 </div>
 
 
