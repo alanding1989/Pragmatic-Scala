@@ -114,7 +114,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
+    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
+    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -135,7 +136,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1-introduction-topstock-scala-" class="header">代码清单1-1（Introduction/TopStock.scala）</a></li>
+    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
+    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -147,7 +149,7 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第1章-exploring-scala" name="第1章-exploring-scala" class="anchor"><span class="anchor-link"></span></a>第1章——Exploring Scala</h1>
-<h2><a href="#代码清单1-1-introduction-topstock-scala-" name="代码清单1-1-introduction-topstock-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单1-1（Introduction/TopStock.scala）</h2>
+<h2><a href="#代码清单1-1" name="代码清单1-1" class="anchor"><span class="anchor-link"></span></a>代码清单1-1</h2>
 <pre class="prettyprint"><code class="language-scala">val symbols = List(&quot;AMD&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;IBM&quot;, &quot;ORCL&quot;, &quot;MSFT&quot;) 
 val year = 2014 
 
@@ -156,6 +158,15 @@ val (topStock, topPrice) =
          .maxBy { stockPrice =&gt; stockPrice._2 } 
 
 printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;)</code></pre>
+<h2><a href="#代码清单1-2" name="代码清单1-2" class="anchor"><span class="anchor-link"></span></a>代码清单1-2</h2>
+<pre class="prettyprint"><code class="language-scala">def getYearEndClosingPrice(symbol : String, year : Int) = {
+  val url = s&quot;http://ichart.finance.yahoo.com/table.csv?s=&quot; +
+    s&quot;$symbol&amp;a=11&amp;b=01&amp;c=$year&amp;d=11&amp;e=31&amp;f=$year&amp;g=m&quot;
+    
+  val data = io.Source.fromURL(url).mkString
+  val price = data.split(&quot;\n&quot;)(1).split(&quot;,&quot;)(4).toDouble  
+  price
+}</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-01/index.md" title="Edit this page" class="md-source-file md-edit">
