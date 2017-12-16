@@ -270,11 +270,11 @@ apples, oranges, and List(grapes, dates)</code></pre>
 <h2><a href="#代码清单9-5" name="代码清单9-5" class="anchor"><span class="anchor-link"></span></a>代码清单9-5</h2>
 <pre class="prettyprint"><code class="language-scala">def process(input: Any) {
   input match {
-    case (a: Int, b: Int) =&gt; print(&quot;Processing (int, int)... &quot;)
-    case (a: Double, b: Double) =&gt; print(&quot;Processing (double, double)... &quot;)
+    case (_: Int, _: Int) =&gt; print(&quot;Processing (int, int)... &quot;)
+    case (_: Double, _: Double) =&gt; print(&quot;Processing (double, double)... &quot;)
     case msg : Int if msg &gt; 1000000 =&gt; println(&quot;Processing int &gt; 1000000&quot;)
-    case msg : Int =&gt; print(&quot;Processing int... &quot;) 
-    case msg: String =&gt; println(&quot;Processing string... &quot;)
+    case _: Int =&gt; print(&quot;Processing int... &quot;)
+    case _: String =&gt; println(&quot;Processing string... &quot;)
     case _ =&gt; printf(s&quot;Can&#39;t handle $input... &quot;)
   }
 }
@@ -340,7 +340,7 @@ case class Hedge(stockSymbol: String, quantity: Int) extends Trade</code></pre>
       case Sell(stock, 1000) =&gt; println(s&quot;Selling 1000-units of $stock&quot;)
       case Sell(stock, quantity) =&gt; 
             println(s&quot;Selling $quantity units of $stock&quot;)
-      case Buy(stock, quantity) if (quantity &gt; 2000) =&gt; 
+      case Buy(stock, quantity) if quantity &gt; 2000 =&gt;
         println(s&quot;Buying $quantity (large) units of $stock&quot;)
       case Buy(stock, quantity) =&gt; 
             println(s&quot;Buying $quantity units of $stock&quot;)

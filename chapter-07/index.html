@@ -192,7 +192,7 @@ class Woman(override val name: String) extends Human(name)</code></pre>
 <h2><a href="#代码清单7-2" name="代码清单7-2" class="anchor"><span class="anchor-link"></span></a>代码清单7-2</h2>
 <pre class="prettyprint"><code class="language-scala">trait Friend {    
   val name: String
-  def listen() = println(s&quot;Your friend $name is listening&quot;)
+  def listen(): Unit = println(s&quot;Your friend $name is listening&quot;)
 }             </code></pre>
 <h2><a href="#代码清单7-3" name="代码清单7-3" class="anchor"><span class="anchor-link"></span></a>代码清单7-3</h2>
 <pre class="prettyprint"><code class="language-scala">class Human(val name: String) extends Friend

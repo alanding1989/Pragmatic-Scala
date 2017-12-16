@@ -379,10 +379,10 @@ println(s&quot;Total length of feed urls: $total3&quot;)</code></pre>
 <pre class="prettyprint"><code class="language-output">Total length of feed urls: 61</code></pre>
 <h2><a href="#代码清单8-25" name="代码清单8-25" class="anchor"><span class="anchor-link"></span></a>代码清单8-25</h2>
 <pre class="prettyprint"><code class="language-scala">class Cow {
-  def ^(moon: Moon) = println(&quot;Cow jumped over the moon&quot;)
+  def ^(moon: Moon): Unit = println(&quot;Cow jumped over the moon&quot;)
 }        
 class Moon {
-  def ^:(cow: Cow) = println(&quot;This cow jumped over the moon too&quot;)
+  def ^:(cow: Cow): Unit = println(&quot;This cow jumped over the moon too&quot;)
 }</code></pre>
 <h2><a href="#代码清单8-26" name="代码清单8-26" class="anchor"><span class="anchor-link"></span></a>代码清单8-26</h2>
 <pre class="prettyprint"><code class="language-scala">val cow = new Cow
