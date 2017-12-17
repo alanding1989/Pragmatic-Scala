@@ -117,7 +117,16 @@ Type to start searching
 <ul>
   <li><a href="../chapter-13/index.html#第13章-使用actor模型处理并发" class="header">第13章——使用Actor模型处理并发</a>
   <ul>
-    <li><a href="../chapter-13/index.html#代码清单13-1-programmingactors-countfilessequential-scala-" class="header">代码清单13-1（ProgrammingActors/countFilesSequential.scala）</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-1" class="header">代码清单13-1</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-2" class="header">代码清单13-2</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-3" class="header">代码清单13-3</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-4" class="header">代码清单13-4</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -138,7 +147,16 @@ Type to start searching
 <ul>
   <li><a href="../chapter-13/index.html#第13章-使用actor模型处理并发" class="header">第13章——使用Actor模型处理并发</a>
   <ul>
-    <li><a href="../chapter-13/index.html#代码清单13-1-programmingactors-countfilessequential-scala-" class="header">代码清单13-1（ProgrammingActors/countFilesSequential.scala）</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-1" class="header">代码清单13-1</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-2" class="header">代码清单13-2</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-3" class="header">代码清单13-3</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-4" class="header">代码清单13-4</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -150,7 +168,7 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第13章-使用actor模型处理并发" name="第13章-使用actor模型处理并发" class="anchor"><span class="anchor-link"></span></a>第13章——使用Actor模型处理并发</h1>
-<h2><a href="#代码清单13-1-programmingactors-countfilessequential-scala-" name="代码清单13-1-programmingactors-countfilessequential-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单13-1（ProgrammingActors/countFilesSequential.scala）</h2>
+<h2><a href="#代码清单13-1" name="代码清单13-1" class="anchor"><span class="anchor-link"></span></a>代码清单13-1</h2>
 <pre class="prettyprint"><code class="language-scala">import java.io.File
 
 def getChildren(file: File) = {
@@ -164,7 +182,7 @@ val exploreFrom = new File(args(0))
 var count = 0L
 var filesToVisit = List(exploreFrom)
 
-while (filesToVisit.size &gt; 0) {
+while (filesToVisit.nonEmpty) {
   val head = filesToVisit.head
   filesToVisit = filesToVisit.tail
 
@@ -176,6 +194,199 @@ while (filesToVisit.size &gt; 0) {
 val end = System.nanoTime
 println(s&quot;Number of files found: $count&quot;)
 println(s&quot;Time taken: ${(end - start) / 1.0e9} seconds&quot;)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Number of files found: 479758
+Time taken: 66.524453436 seconds</code></pre>
+<h2><a href="#代码清单13-2" name="代码清单13-2" class="anchor"><span class="anchor-link"></span></a>代码清单13-2</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+
+class HollywoodActor() extends Actor {
+  def receive: PartialFunction[Any, Unit] = {
+    case message ⇒ println(s&quot;playing the role of $message&quot;)
+  }
+}</code></pre>
+<h2><a href="#代码清单13-3" name="代码清单13-3" class="anchor"><span class="anchor-link"></span></a>代码清单13-3</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+
+object CreateActors extends App {
+  val system = ActorSystem(&quot;sample&quot;)
+
+  val depp = system.actorOf(Props[HollywoodActor])
+
+  depp ! &quot;Wonka&quot;
+
+  val terminateFuture = system.terminate()
+  Await.ready(terminateFuture, Duration.Inf)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">playing the role of Wonka</code></pre>
+<h2><a href="#代码清单13-4" name="代码清单13-4" class="anchor"><span class="anchor-link"></span></a>代码清单13-4</h2>
+<pre class="prettyprint"><code class="language-scala">val depp = system.actorOf(Props[HollywoodActor])
+val hanks = system.actorOf(Props[HollywoodActor])
+
+depp ! &quot;Wonka&quot;
+hanks ! &quot;Gump&quot;
+
+depp ! &quot;Sparrow&quot;
+hanks ! &quot;Phillips&quot;
+println(s&quot;Calling from ${Thread.currentThread}&quot;)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Wonka - Thread[sample-akka.actor.default-dispatcher-2,5,main]
+Gump - Thread[sample-akka.actor.default-dispatcher-3,5,main]
+Calling from Thread[main,5,main]
+Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
+Sparrow - Thread[sample-akka.actor.default-dispatcher-2,5,main]</code></pre>
+<h2><a href="#代码清单13-5" name="代码清单13-5" class="anchor"><span class="anchor-link"></span></a>代码清单13-5</h2>
+<pre class="prettyprint"><code class="language-scala">depp ! &quot;Wonka&quot;
+hanks ! &quot;Gump&quot;
+
+Thread.sleep(100)
+
+depp ! &quot;Sparrow&quot;
+hanks ! &quot;Phillips&quot;</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Wonka - Thread[sample-akka.actor.default-dispatcher-3,5,main]
+Gump - Thread[sample-akka.actor.default-dispatcher-4,5,main]
+Sparrow - Thread[sample-akka.actor.default-dispatcher-4,5,main]
+Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
+Calling from Thread[main,5,main]</code></pre>
+<h2><a href="#代码清单13-6" name="代码清单13-6" class="anchor"><span class="anchor-link"></span></a>代码清单13-6</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+import scala.collection._
+
+case class Play(role: String)
+case class ReportCount(role: String)
+
+class HollywoodActor() extends Actor {
+  val messagesCount: mutable.Map[String, Int] = mutable.Map()
+
+  def receive: PartialFunction[Any, Unit] = {
+    case Play(role) ⇒
+      val currentCount = messagesCount.getOrElse(role, 0)
+      messagesCount.update(role, currentCount + 1)
+      println(s&quot;Playing $role&quot;)
+
+    case ReportCount(role) ⇒
+      sender ! messagesCount.getOrElse(role, 0)
+  }
+}</code></pre>
+<h2><a href="#代码清单13-7" name="代码清单13-7" class="anchor"><span class="anchor-link"></span></a>代码清单13-7</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+import akka.pattern.ask
+import akka.util.Timeout
+import chapter13.HollywoodActor4.{ Play, ReportCount }
+
+import scala.concurrent.Await
+import scala.concurrent.duration._
+
+object UseActor extends App {
+  val system = ActorSystem(&quot;sample&quot;)
+
+  val depp = system.actorOf(Props[HollywoodActor])
+  val hanks = system.actorOf(Props[HollywoodActor])
+
+  depp ! Play(&quot;Wonka&quot;)
+  hanks ! Play(&quot;Gump&quot;)
+
+  depp ! Play(&quot;Wonka&quot;)
+  depp ! Play(&quot;Sparrow&quot;)
+
+  println(&quot;Sent roles to play&quot;)
+
+  implicit val timeout: Timeout = Timeout(2.seconds)
+  val wonkaFuture = depp ? ReportCount(&quot;Wonka&quot;)
+  val sparrowFuture = depp ? ReportCount(&quot;Sparrow&quot;)
+  val gumpFuture = hanks ? ReportCount(&quot;Gump&quot;)
+
+  val wonkaCount = Await.result(wonkaFuture, timeout.duration)
+  val sparrowCount = Await.result(sparrowFuture, timeout.duration)
+  val gumpCount = Await.result(gumpFuture, timeout.duration)
+
+  println(s&quot;Depp played Wonka $wonkaCount time(s)&quot;)
+  println(s&quot;Depp played Sparrow $sparrowCount time(s)&quot;)
+  println(s&quot;Hanks played Gump $gumpCount time(s)&quot;)
+
+  val terminateFuture = system.terminate()
+  Await.ready(terminateFuture, Duration.Inf)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Sent roles to play
+Playing Wonka
+Playing Gump
+Playing Wonka
+Playing Sparrow
+Depp played Wonka 2 time(s)
+Depp played Sparrow 1 time(s)
+Hanks played Gump 1 time(s)</code></pre>
+<h2><a href="#代码清单13-8" name="代码清单13-8" class="anchor"><span class="anchor-link"></span></a>代码清单13-8</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+import java.io._
+
+class FileExplorer extends Actor {
+  def receive: PartialFunction[Any, Unit] = {
+    case dirName: String ⇒
+      val file = new File(dirName)
+      val children = file.listFiles()
+      var filesCount = 0
+
+      if (children != null) {
+        children.filter { _.isDirectory }
+          .foreach { sender ! _.getAbsolutePath }
+        filesCount = children.count { !_.isDirectory }
+      }
+
+      sender ! filesCount
+  }
+}</code></pre>
+<h2><a href="#代码清单13-9" name="代码清单13-9" class="anchor"><span class="anchor-link"></span></a>代码清单13-9</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+import akka.routing._
+
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+
+class FilesCounter extends Actor {
+  val start: Long = System.nanoTime
+  var filesCount = 0L
+  var pending = 0
+
+  val fileExplorers: ActorRef =
+    context.actorOf(RoundRobinPool(100).props(Props[FileExplorer]))
+
+  def receive: PartialFunction[Any, Unit] = {
+    case dirName: String ⇒
+      pending = pending + 1
+      fileExplorers ! dirName
+
+    case count: Int ⇒
+      filesCount = filesCount + count
+      pending = pending - 1
+
+      if (pending == 0) {
+        val end = System.nanoTime
+        println(s&quot;Files count: $filesCount&quot;)
+        println(s&quot;Time taken: ${(end - start) / 1.0e9} seconds&quot;)
+        val terminateFuture = context.system.terminate()
+        Await.ready(terminateFuture, Duration.Inf)
+      }
+  }
+}</code></pre>
+<h2><a href="#代码清单13-10" name="代码清单13-10" class="anchor"><span class="anchor-link"></span></a>代码清单13-10</h2>
+<pre class="prettyprint"><code class="language-scala">import akka.actor._
+
+object CountFiles extends App {
+  val system = ActorSystem(&quot;sample&quot;)
+
+  val filesCounter = system.actorOf(Props[FilesCounter])
+
+  filesCounter ! args(0)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Files count: 479758
+Time taken: 5.609851764 seconds</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-13/index.md" title="Edit this page" class="md-source-file md-edit">
