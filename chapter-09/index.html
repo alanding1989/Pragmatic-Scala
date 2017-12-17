@@ -201,17 +201,17 @@ Type to start searching
 <h2><a href="#代码清单9-1" name="代码清单9-1" class="anchor"><span class="anchor-link"></span></a>代码清单9-1</h2>
 <pre class="prettyprint"><code class="language-scala">def activity(day: String) {
   day match {
-    case &quot;Sunday&quot; =&gt; print(&quot;Eat, sleep, repeat... &quot;)
-    case &quot;Saturday&quot; =&gt; print(&quot;Hang out with friends... &quot;)
-    case &quot;Monday&quot; =&gt; print(&quot;...code for fun...&quot;)
-    case &quot;Friday&quot; =&gt; print(&quot;...read a good book...&quot;)
+    case &quot;Sunday&quot;   ⇒ print(&quot;Eat, sleep, repeat... &quot;)
+    case &quot;Saturday&quot; ⇒ print(&quot;Hang out with friends... &quot;)
+    case &quot;Monday&quot;   ⇒ print(&quot;...code for fun...&quot;)
+    case &quot;Friday&quot;   ⇒ print(&quot;...read a good book...&quot;)
   }
 }
 List(&quot;Monday&quot;, &quot;Sunday&quot;, &quot;Saturday&quot;).foreach { activity }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">...code for fun...Eat, sleep, repeat... Hang out with friends...</code></pre>
 <h2><a href="#代码清单9-2" name="代码清单9-2" class="anchor"><span class="anchor-link"></span></a>代码清单9-2</h2>
-<pre class="prettyprint"><code class="language-scala">object DayOfWeek extends Enumeration { 
+<pre class="prettyprint"><code class="language-scala">object DayOfWeek extends Enumeration {
   val SUNDAY = Value(&quot;Sunday&quot;)
   val MONDAY = Value(&quot;Monday&quot;)
   val TUESDAY = Value(&quot;Tuesday&quot;)
@@ -221,11 +221,11 @@ List(&quot;Monday&quot;, &quot;Sunday&quot;, &quot;Saturday&quot;).foreach { act
   val SATURDAY = Value(&quot;Saturday&quot;)
 }
 
-def activity(day: DayOfWeek.Value) {                 
+def activity(day: DayOfWeek.Value) {
   day match {
-    case DayOfWeek.SUNDAY =&gt; println(&quot;Eat, sleep, repeat...&quot;)
-    case DayOfWeek.SATURDAY =&gt; println(&quot;Hang out with friends&quot;)
-    case _ =&gt; println(&quot;...code for fun...&quot;)
+    case DayOfWeek.SUNDAY   ⇒ println(&quot;Eat, sleep, repeat...&quot;)
+    case DayOfWeek.SATURDAY ⇒ println(&quot;Hang out with friends&quot;)
+    case _                  ⇒ println(&quot;...code for fun...&quot;)
   }
 }
 
@@ -237,9 +237,9 @@ activity(DayOfWeek.MONDAY)</code></pre>
 <h2><a href="#代码清单9-3" name="代码清单9-3" class="anchor"><span class="anchor-link"></span></a>代码清单9-3</h2>
 <pre class="prettyprint"><code class="language-scala">def processCoordinates(input: Any) {
   input match {
-    case (lat, long) =&gt; printf(&quot;Processing (%d, %d)...&quot;, lat, long)
-    case &quot;done&quot; =&gt; println(&quot;done&quot;)
-    case _ =&gt; println(&quot;invalid input&quot;)
+    case (lat, long) ⇒ printf(&quot;Processing (%d, %d)...&quot;, lat, long)
+    case &quot;done&quot;      ⇒ println(&quot;done&quot;)
+    case _           ⇒ println(&quot;invalid input&quot;)
   }
 }
 
@@ -250,10 +250,10 @@ processCoordinates(&quot;done&quot;)</code></pre>
 <h2><a href="#代码清单9-4" name="代码清单9-4" class="anchor"><span class="anchor-link"></span></a>代码清单9-4</h2>
 <pre class="prettyprint"><code class="language-scala">def processItems(items: List[String]) {
   items match {
-    case List(&quot;apple&quot;, &quot;ibm&quot;) =&gt; println(&quot;Apples and IBMs&quot;)
-    case List(&quot;red&quot;, &quot;blue&quot;, &quot;white&quot;) =&gt; println(&quot;Stars and Stripes...&quot;)
-    case List(&quot;red&quot;, &quot;blue&quot;, _*) =&gt; println(&quot;colors red, blue,... &quot;)
-    case List(&quot;apple&quot;, &quot;orange&quot;, otherFruits @ _*) =&gt; 
+    case List(&quot;apple&quot;, &quot;ibm&quot;)         ⇒ println(&quot;Apples and IBMs&quot;)
+    case List(&quot;red&quot;, &quot;blue&quot;, &quot;white&quot;) ⇒ println(&quot;Stars and Stripes...&quot;)
+    case List(&quot;red&quot;, &quot;blue&quot;, _*)      ⇒ println(&quot;colors red, blue,... &quot;)
+    case List(&quot;apple&quot;, &quot;orange&quot;, otherFruits @ _*) ⇒
       println(&quot;apples, oranges, and &quot; + otherFruits)
   }
 }
@@ -270,17 +270,17 @@ apples, oranges, and List(grapes, dates)</code></pre>
 <h2><a href="#代码清单9-5" name="代码清单9-5" class="anchor"><span class="anchor-link"></span></a>代码清单9-5</h2>
 <pre class="prettyprint"><code class="language-scala">def process(input: Any) {
   input match {
-    case (_: Int, _: Int) =&gt; print(&quot;Processing (int, int)... &quot;)
-    case (_: Double, _: Double) =&gt; print(&quot;Processing (double, double)... &quot;)
-    case msg : Int if msg &gt; 1000000 =&gt; println(&quot;Processing int &gt; 1000000&quot;)
-    case _: Int =&gt; print(&quot;Processing int... &quot;)
-    case _: String =&gt; println(&quot;Processing string... &quot;)
-    case _ =&gt; printf(s&quot;Can&#39;t handle $input... &quot;)
+    case (_: Int, _: Int)          ⇒ print(&quot;Processing (int, int)... &quot;)
+    case (_: Double, _: Double)    ⇒ print(&quot;Processing (double, double)... &quot;)
+    case msg: Int if msg &gt; 1000000 ⇒ println(&quot;Processing int &gt; 1000000&quot;)
+    case _: Int                    ⇒ print(&quot;Processing int... &quot;)
+    case _: String                 ⇒ println(&quot;Processing string... &quot;)
+    case _                         ⇒ printf(s&quot;Can&#39;t handle $input... &quot;)
   }
 }
 
 process((34.2, -159.3))
-process(0)  
+process(0)
 process(1000001)
 process(2.2)</code></pre>
 <p><em>运行结果</em></p>
@@ -292,16 +292,16 @@ Can&#39;t handle 2.2...</code></pre>
 
   def process(input: Int) {
     input match {
-      case max =&gt; println(s&quot;You matched max $max&quot;)
+      case max ⇒ println(s&quot;You matched max $max&quot;)
     }
   }
 }
 
 val sample = new Sample
 try {
-  sample.process(0)  
+  sample.process(0)
 } catch {
-  case ex: Throwable =&gt; println(ex)
+  case ex: Throwable ⇒ println(ex)
 }
 sample.process(100)</code></pre>
 <p><em>运行结果</em></p>
@@ -313,16 +313,16 @@ You matched max 100</code></pre>
 
   def process(input: Int) {
     input match {
-      case MAX =&gt; println(&quot;You matched max&quot;)
+      case MAX ⇒ println(&quot;You matched max&quot;)
     }
   }
 }
 
 val sample = new Sample
 try {
-  sample.process(0)  
+  sample.process(0)
 } catch {
-  case ex: Throwable =&gt; println(ex)
+  case ex: Throwable ⇒ println(ex)
 }
 sample.process(100)</code></pre>
 <p><em>运行结果</em></p>
@@ -335,15 +335,15 @@ case class Buy(stockSymbol: String, quantity: Int) extends Trade
 case class Hedge(stockSymbol: String, quantity: Int) extends Trade</code></pre>
 <h2><a href="#代码清单9-9" name="代码清单9-9" class="anchor"><span class="anchor-link"></span></a>代码清单9-9</h2>
 <pre class="prettyprint"><code class="language-scala">object TradeProcessor {
-  def processTransaction(request : Trade) {
+  def processTransaction(request: Trade) {
     request match {
-      case Sell(stock, 1000) =&gt; println(s&quot;Selling 1000-units of $stock&quot;)
-      case Sell(stock, quantity) =&gt; 
-            println(s&quot;Selling $quantity units of $stock&quot;)
-      case Buy(stock, quantity) if quantity &gt; 2000 =&gt;
+      case Sell(stock, 1000) ⇒ println(s&quot;Selling 1000-units of $stock&quot;)
+      case Sell(stock, quantity) ⇒
+        println(s&quot;Selling $quantity units of $stock&quot;)
+      case Buy(stock, quantity) if quantity &gt; 2000 ⇒
         println(s&quot;Buying $quantity (large) units of $stock&quot;)
-      case Buy(stock, quantity) =&gt; 
-            println(s&quot;Buying $quantity units of $stock&quot;)
+      case Buy(stock, quantity) ⇒
+        println(s&quot;Buying $quantity units of $stock&quot;)
     }
   }
 }</code></pre>
@@ -360,15 +360,15 @@ Buying 3000 (large) units of GOOG</code></pre>
 <h2><a href="#代码清单9-11" name="代码清单9-11" class="anchor"><span class="anchor-link"></span></a>代码清单9-11</h2>
 <pre class="prettyprint"><code class="language-scala">case class Apple()
 case class Orange()
-case class Book ()
+case class Book()
 
 object ThingsAcceptor {
   def acceptStuff(thing: Any) {
     thing match {
-      case Apple() =&gt; println(&quot;Thanks for the Apple&quot;)
-      case Orange() =&gt; println(&quot;Thanks for the Orange&quot;)
-      case Book() =&gt; println(&quot;Thanks for the Book&quot;)
-      case _ =&gt; println(s&quot;Excuse me, why did you send me $thing&quot;)
+      case Apple()  ⇒ println(&quot;Thanks for the Apple&quot;)
+      case Orange() ⇒ println(&quot;Thanks for the Orange&quot;)
+      case Book()   ⇒ println(&quot;Thanks for the Book&quot;)
+      case _        ⇒ println(s&quot;Excuse me, why did you send me $thing&quot;)
     }
   }
 }</code></pre>
@@ -388,7 +388,7 @@ object ThingsAcceptor {
   def acceptStuff(thing: Thing) {
     thing match {
       //...
-      case _ =&gt;
+      case _ ⇒
     }
   }
 }
@@ -400,18 +400,18 @@ StockService process &quot;IBM&quot;
 StockService process &quot;ERR&quot;</code></pre>
 <h2><a href="#代码清单9-15" name="代码清单9-15" class="anchor"><span class="anchor-link"></span></a>代码清单9-15</h2>
 <pre class="prettyprint"><code class="language-scala">object StockService {
-  def process(input : String) {
+  def process(input: String) {
     input match {
-      case Symbol() =&gt; println(s&quot;Look up price for valid symbol $input&quot;)
-      case _ =&gt; println(s&quot;Invalid input $input&quot;)
+      case Symbol() ⇒ println(s&quot;Look up price for valid symbol $input&quot;)
+      case _        ⇒ println(s&quot;Invalid input $input&quot;)
     }
   }
 }</code></pre>
 <h2><a href="#代码清单9-16" name="代码清单9-16" class="anchor"><span class="anchor-link"></span></a>代码清单9-16</h2>
 <pre class="prettyprint"><code class="language-scala">object Symbol {
-  def unapply(symbol : String) : Boolean = {
+  def unapply(symbol: String): Boolean = {
     // you&#39;d look up a database... here only GOOG and IBM are recognized
-    symbol == &quot;GOOG&quot; || symbol == &quot;IBM&quot; 
+    symbol == &quot;GOOG&quot; || symbol == &quot;IBM&quot;
   }
 }</code></pre>
 <p><em>运行结果</em></p>
@@ -420,29 +420,27 @@ Look up price for valid symbol IBM
 Invalid input ERR</code></pre>
 <h2><a href="#代码清单9-17" name="代码清单9-17" class="anchor"><span class="anchor-link"></span></a>代码清单9-17</h2>
 <pre class="prettyprint"><code class="language-scala">object StockService {
-  def process(input : String) {
+  def process(input: String) {
     input match {
-      case Symbol() =&gt; println(s&quot;Look up price for valid symbol $input&quot;)
-      case ReceiveStockPrice(symbol, price) =&gt; 
+      case Symbol() ⇒ println(s&quot;Look up price for valid symbol $input&quot;)
+      case ReceiveStockPrice(symbol, price) ⇒
         println(s&quot;Received price $$$price for symbol $symbol&quot;)
-      case _ =&gt; println(s&quot;Invalid input $input&quot;)
+      case _ ⇒ println(s&quot;Invalid input $input&quot;)
     }
   }
 }</code></pre>
 <h2><a href="#代码清单9-18" name="代码清单9-18" class="anchor"><span class="anchor-link"></span></a>代码清单9-18</h2>
-<pre class="prettyprint"><code class="language-scala">object ReceiveStockPrice { 
-  def unapply(input: String) : Option[(String, Double)] = {
+<pre class="prettyprint"><code class="language-scala">object ReceiveStockPrice {
+  def unapply(input: String): Option[(String, Double)] = {
     try {
       if (input contains &quot;:&quot;) {
         val splitQuote = input split &quot;:&quot;
-        Some(splitQuote(0), splitQuote(1).toDouble)
-      }
-      else {
+        Some((splitQuote(0), splitQuote(1).toDouble))
+      } else {
         None
       }
-    }
-    catch {
-      case _ : NumberFormatException =&gt; None
+    } catch {
+      case _: NumberFormatException ⇒ None
     }
   }
 }</code></pre>
@@ -457,7 +455,7 @@ Received price $310.84 for symbol GOOG
 Invalid input GOOG:BUY
 Received price $12.21 for symbol ERR</code></pre>
 <h2><a href="#代码清单9-20" name="代码清单9-20" class="anchor"><span class="anchor-link"></span></a>代码清单9-20</h2>
-<pre class="prettyprint"><code class="language-scala">case ReceiveStockPrice(symbol @ Symbol(), price) =&gt; 
+<pre class="prettyprint"><code class="language-scala">case ReceiveStockPrice(symbol @ Symbol(), price) ⇒
   println(s&quot;Received price $$$price for symbol $symbol&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Look up price for valid symbol GOOG
@@ -465,23 +463,23 @@ Received price $310.84 for symbol GOOG
 Invalid input GOOG:BUY
 Invalid input ERR:12.21</code></pre>
 <h2><a href="#代码清单9-21" name="代码清单9-21" class="anchor"><span class="anchor-link"></span></a>代码清单9-21</h2>
-<pre class="prettyprint"><code class="language-scala">val pattern = &quot;(S|s)cala&quot;.r        
+<pre class="prettyprint"><code class="language-scala">val pattern = &quot;(S|s)cala&quot;.r
 val str = &quot;Scala is scalable and cool&quot;
 println(pattern findFirstIn str)</code></pre>
 <h2><a href="#代码清单9-22" name="代码清单9-22" class="anchor"><span class="anchor-link"></span></a>代码清单9-22</h2>
 <pre class="prettyprint"><code class="language-scala">println((pattern findAllIn str).mkString(&quot;, &quot;))</code></pre>
 <h2><a href="#代码清单9-23" name="代码清单9-23" class="anchor"><span class="anchor-link"></span></a>代码清单9-23</h2>
-<pre class="prettyprint"><code class="language-scala">println(&quot;cool&quot;.r replaceFirstIn(str, &quot;awesome&quot;))</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(&quot;cool&quot;.r replaceFirstIn (str, &quot;awesome&quot;))</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Some(Scala)
 Scala, scala
 Scala is scalable and awesome</code></pre>
 <h2><a href="#代码清单9-24" name="代码清单9-24" class="anchor"><span class="anchor-link"></span></a>代码清单9-24</h2>
-<pre class="prettyprint"><code class="language-scala">def process(input : String) {        
+<pre class="prettyprint"><code class="language-scala">def process(input: String) {
   val GoogStock = &quot;&quot;&quot;^GOOG:(\d*\.\d+)&quot;&quot;&quot;.r
   input match {
-    case GoogStock(price) =&gt; println(s&quot;Price of GOOG is $$$price&quot;)
-    case _ =&gt; println(s&quot;not processing $input&quot;)
+    case GoogStock(price) ⇒ println(s&quot;Price of GOOG is $$$price&quot;)
+    case _                ⇒ println(s&quot;not processing $input&quot;)
   }
 }
 process(&quot;GOOG:310.84&quot;)
@@ -492,13 +490,13 @@ process(&quot;IBM:84.01&quot;)</code></pre>
 not processing GOOG:310
 not processing IBM:84.01</code></pre>
 <h2><a href="#代码清单9-25" name="代码清单9-25" class="anchor"><span class="anchor-link"></span></a>代码清单9-25</h2>
-<pre class="prettyprint"><code class="language-scala">def process(input : String) {        
+<pre class="prettyprint"><code class="language-scala">def process(input: String) {
   val MatchStock = &quot;&quot;&quot;^(.+):(\d*\.\d+)&quot;&quot;&quot;.r
   input match {
-    case MatchStock(&quot;GOOG&quot;, price) =&gt; println(s&quot;We got GOOG at $$$price&quot;)
-    case MatchStock(&quot;IBM&quot;, price) =&gt; println(s&quot;IBM&#39;s trading at $$$price&quot;)
-    case MatchStock(symbol, price) =&gt; println(s&quot;Price of $symbol is $$$price&quot;)
-    case _ =&gt; println(s&quot;not processing $input&quot;)
+    case MatchStock(&quot;GOOG&quot;, price) ⇒ println(s&quot;We got GOOG at $$$price&quot;)
+    case MatchStock(&quot;IBM&quot;, price)  ⇒ println(s&quot;IBM&#39;s trading at $$$price&quot;)
+    case MatchStock(symbol, price) ⇒ println(s&quot;Price of $symbol is $$$price&quot;)
+    case _                         ⇒ println(s&quot;not processing $input&quot;)
   }
 }
 process(&quot;GOOG:310.84&quot;)

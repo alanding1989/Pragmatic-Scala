@@ -242,7 +242,7 @@ scala&gt; :quit</code></pre>
 <pre class="prettyprint"><code class="language-scala">val feeds1 = Set(&quot;blog.toolshed.com&quot;, &quot;pragdave.me&quot;, &quot;blog.agiledeveloper.com&quot;)
 val feeds2 = Set(&quot;blog.toolshed.com&quot;, &quot;martinfowler.com/bliki&quot;)</code></pre>
 <h2><a href="#代码清单8-3" name="代码清单8-3" class="anchor"><span class="anchor-link"></span></a>代码清单8-3</h2>
-<pre class="prettyprint"><code class="language-scala">val blogFeeds = feeds1 filter ( _ contains &quot;blog&quot; )
+<pre class="prettyprint"><code class="language-scala">val blogFeeds = feeds1 filter (_ contains &quot;blog&quot;)
 println(s&quot;blog feeds: ${blogFeeds.mkString(&quot;, &quot;)}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">blog feeds: blog.toolshed.com, blog.agiledeveloper.com</code></pre>
@@ -257,29 +257,30 @@ println(s&quot;common feeds: ${commonFeeds.mkString(&quot;, &quot;)}&quot;)</cod
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">common feeds: blog.toolshed.com</code></pre>
 <h2><a href="#代码清单8-6" name="代码清单8-6" class="anchor"><span class="anchor-link"></span></a>代码清单8-6</h2>
-<pre class="prettyprint"><code class="language-scala">val urls = feeds1 map ( &quot;http://&quot; + _ )
+<pre class="prettyprint"><code class="language-scala">val urls = feeds1 map (&quot;http://&quot; + _)
 println(s&quot;One url: ${urls.head}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">One url: http://blog.toolshed.com</code></pre>
 <h2><a href="#代码清单8-7" name="代码清单8-7" class="anchor"><span class="anchor-link"></span></a>代码清单8-7</h2>
 <pre class="prettyprint"><code class="language-scala">println(&quot;Refresh Feeds:&quot;)
-feeds1 foreach { feed =&gt; println(s&quot;  Refreshing $feed...&quot;) }</code></pre>
+feeds1 foreach { feed ⇒ println(s&quot;  Refreshing $feed...&quot;) }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Refresh Feeds:
   Refreshing blog.toolshed.com...
   Refreshing pragdave.me...
   Refreshing blog.agiledeveloper.com...</code></pre>
 <h2><a href="#代码清单8-8" name="代码清单8-8" class="anchor"><span class="anchor-link"></span></a>代码清单8-8</h2>
-<pre class="prettyprint"><code class="language-scala">val feeds = Map(&quot;Andy Hunt&quot;   -&gt; &quot;blog.toolshed.com&quot;,
-                &quot;Dave Thomas&quot; -&gt; &quot;pragdave.me&quot;,
-                &quot;NFJS&quot;        -&gt; &quot;nofluffjuststuff.com/blog&quot;)</code></pre>
+<pre class="prettyprint"><code class="language-scala">val feeds = Map(
+  &quot;Andy Hunt&quot; -&gt; &quot;blog.toolshed.com&quot;,
+  &quot;Dave Thomas&quot; -&gt; &quot;pragdave.me&quot;,
+  &quot;NFJS&quot; -&gt; &quot;nofluffjuststuff.com/blog&quot;)</code></pre>
 <h2><a href="#代码清单8-9" name="代码清单8-9" class="anchor"><span class="anchor-link"></span></a>代码清单8-9</h2>
-<pre class="prettyprint"><code class="language-scala">val filterNameStartWithD = feeds filterKeys( _ startsWith &quot;D&quot; )
+<pre class="prettyprint"><code class="language-scala">val filterNameStartWithD = feeds filterKeys (_ startsWith &quot;D&quot;)
 println(s&quot;# of Filtered: ${filterNameStartWithD.size}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output"># of Filtered: 1</code></pre>
 <h2><a href="#代码清单8-10" name="代码清单8-10" class="anchor"><span class="anchor-link"></span></a>代码清单8-10</h2>
-<pre class="prettyprint"><code class="language-scala">val filterNameStartWithDAndPragprogInFeed = feeds filter { element =&gt; 
+<pre class="prettyprint"><code class="language-scala">val filterNameStartWithDAndPragprogInFeed = feeds filter { element ⇒
   val (key, value) = element
   (key startsWith &quot;D&quot;) &amp;&amp; (value contains &quot;pragprog&quot;)
 }
@@ -298,9 +299,8 @@ Get Bill&#39;s Feed: None</code></pre>
   println(s&quot;Get Andy&#39;s Feed Using apply(): ${feeds(&quot;Andy Hunt&quot;)}&quot;)
   print(&quot;Get Bill&#39;s Feed: &quot;)
   println(feeds(&quot;Bill Who&quot;))
-}
-catch {
-  case _ : java.util.NoSuchElementException =&gt; println(&quot;Not found&quot;)
+} catch {
+  case _: java.util.NoSuchElementException ⇒ println(&quot;Not found&quot;)
 }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Get Andy&#39;s Feed Using apply(): blog.toolshed.com
@@ -314,7 +314,7 @@ println(&quot;Venkat&#39;s blog in new feed: &quot; + newFeeds1(&quot;Venkat Sub
 Venkat&#39;s blog in new feed: blog.agiledeveloper.com</code></pre>
 <h2><a href="#代码清单8-14" name="代码清单8-14" class="anchor"><span class="anchor-link"></span></a>代码清单8-14</h2>
 <pre class="prettyprint"><code class="language-scala">val mutableFeeds = scala.collection.mutable.Map(
-    &quot;Scala Book Forum&quot; -&gt; &quot;forums.pragprog.com/forums/87&quot;)
+  &quot;Scala Book Forum&quot; -&gt; &quot;forums.pragprog.com/forums/87&quot;)
 mutableFeeds(&quot;Groovy Book Forum&quot;) = &quot;forums.pragprog.com/forums/246&quot;
 println(s&quot;Number of forums: ${mutableFeeds.size}&quot;)</code></pre>
 <p><em>运行结果</em></p>
@@ -333,8 +333,9 @@ println(s&quot;First Feed In Prefixed: ${prefixedList.head}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">First Feed In Prefixed: forums.pragprog.com/forums/87</code></pre>
 <h2><a href="#代码清单8-18" name="代码清单8-18" class="anchor"><span class="anchor-link"></span></a>代码清单8-18</h2>
-<pre class="prettyprint"><code class="language-scala">val feedsWithForums = 
-  feeds ::: List(&quot;forums.pragprog.com/forums/87&quot;, 
+<pre class="prettyprint"><code class="language-scala">val feedsWithForums =
+  feeds ::: List(
+    &quot;forums.pragprog.com/forums/87&quot;,
     &quot;forums.pragprog.com/forums/246&quot;)
 println(s&quot;First feed in feeds with forum: ${feedsWithForums.head}&quot;)
 println(s&quot;Last feed in feeds with forum: ${feedsWithForums.last}&quot;)</code></pre>
@@ -347,11 +348,11 @@ println(s&quot;Last Feed In Appended: ${appendedList.last}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Last Feed In Appended: agilelearner.com</code></pre>
 <h2><a href="#代码清单8-20" name="代码清单8-20" class="anchor"><span class="anchor-link"></span></a>代码清单8-20</h2>
-<pre class="prettyprint"><code class="language-scala">println(s&quot;Feeds with blog: ${feeds.filter( _ contains &quot;blog&quot; ).mkString(&quot;, &quot;)}&quot;)
-println(s&quot;All feeds have com: ${feeds.forall( _ contains &quot;com&quot; )}&quot;)
-println(s&quot;All feeds have dave: ${feeds.forall( _ contains &quot;dave&quot; )}&quot;)
-println(s&quot;Any feed has dave: ${feeds.exists( _ contains &quot;dave&quot; )}&quot;)
-println(s&quot;Any feed has bill: ${feeds.exists( _ contains &quot;bill&quot; )}&quot;)</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(s&quot;Feeds with blog: ${feeds.filter(_ contains &quot;blog&quot;).mkString(&quot;, &quot;)}&quot;)
+println(s&quot;All feeds have com: ${feeds.forall(_ contains &quot;com&quot;)}&quot;)
+println(s&quot;All feeds have dave: ${feeds.forall(_ contains &quot;dave&quot;)}&quot;)
+println(s&quot;Any feed has dave: ${feeds.exists(_ contains &quot;dave&quot;)}&quot;)
+println(s&quot;Any feed has bill: ${feeds.exists(_ contains &quot;bill&quot;)}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Feeds with blog: blog.toolshed.com, blog.agiledeveloper.com
 All feeds have com: true
@@ -359,16 +360,16 @@ All feeds have dave: false
 Any feed has dave: true
 Any feed has bill: false</code></pre>
 <h2><a href="#代码清单8-21" name="代码清单8-21" class="anchor"><span class="anchor-link"></span></a>代码清单8-21</h2>
-<pre class="prettyprint"><code class="language-scala">println(s&quot;Feed url lengths: ${feeds.map( _.length ).mkString(&quot;, &quot;)}&quot;)</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(s&quot;Feed url lengths: ${feeds.map(_.length).mkString(&quot;, &quot;)}&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Feed url lengths: 17, 21, 23</code></pre>
 <h2><a href="#代码清单8-22" name="代码清单8-22" class="anchor"><span class="anchor-link"></span></a>代码清单8-22</h2>
-<pre class="prettyprint"><code class="language-scala">val total = feeds.foldLeft(0) { (total, feed) =&gt; total + feed.length }
+<pre class="prettyprint"><code class="language-scala">val total = feeds.foldLeft(0) { (total, feed) ⇒ total + feed.length }
 println(s&quot;Total length of feed urls: $total&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Total length of feed urls: 61</code></pre>
 <h2><a href="#代码清单8-23" name="代码清单8-23" class="anchor"><span class="anchor-link"></span></a>代码清单8-23</h2>
-<pre class="prettyprint"><code class="language-scala">val total2 = (0 /: feeds) { (total, feed) =&gt; total + feed.length }
+<pre class="prettyprint"><code class="language-scala">val total2 = (0 /: feeds) { (total, feed) ⇒ total + feed.length }
 println(s&quot;Total length of feed urls: $total2&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Total length of feed urls: 61</code></pre>
@@ -380,7 +381,7 @@ println(s&quot;Total length of feed urls: $total3&quot;)</code></pre>
 <h2><a href="#代码清单8-25" name="代码清单8-25" class="anchor"><span class="anchor-link"></span></a>代码清单8-25</h2>
 <pre class="prettyprint"><code class="language-scala">class Cow {
   def ^(moon: Moon): Unit = println(&quot;Cow jumped over the moon&quot;)
-}        
+}
 class Moon {
   def ^:(cow: Cow): Unit = println(&quot;This cow jumped over the moon too&quot;)
 }</code></pre>
@@ -412,38 +413,37 @@ called unary -
 called unary !
 called unary ~</code></pre>
 <h2><a href="#代码清单8-28" name="代码清单8-28" class="anchor"><span class="anchor-link"></span></a>代码清单8-28</h2>
-<pre class="prettyprint"><code class="language-scala">for (_ &lt;- 1 to 3) { print(&quot;ho &quot;) }</code></pre>
+<pre class="prettyprint"><code class="language-scala">for (_ ← 1 to 3) { print(&quot;ho &quot;) }</code></pre>
 <h2><a href="#代码清单8-29" name="代码清单8-29" class="anchor"><span class="anchor-link"></span></a>代码清单8-29</h2>
-<pre class="prettyprint"><code class="language-scala">val result = for (i &lt;- 1 to 10) 
+<pre class="prettyprint"><code class="language-scala">val result = for (i ← 1 to 10)
   yield i * 2</code></pre>
 <h2><a href="#代码清单8-30" name="代码清单8-30" class="anchor"><span class="anchor-link"></span></a>代码清单8-30</h2>
 <pre class="prettyprint"><code class="language-scala">val result2 = (1 to 10).map(_ * 2)</code></pre>
 <h2><a href="#代码清单8-31" name="代码清单8-31" class="anchor"><span class="anchor-link"></span></a>代码清单8-31</h2>
-<pre class="prettyprint"><code class="language-scala">val doubleEven = for (i &lt;- 1 to 10; if i % 2 == 0)
-   yield i * 2</code></pre>
+<pre class="prettyprint"><code class="language-scala">val doubleEven = for (i ← 1 to 10; if i % 2 == 0)
+  yield i * 2</code></pre>
 <h2><a href="#代码清单8-32" name="代码清单8-32" class="anchor"><span class="anchor-link"></span></a>代码清单8-32</h2>
 <pre class="prettyprint"><code class="language-scala">for {
-  i &lt;- 1 to 10
+  i ← 1 to 10
   if i % 2 == 0
-}
- yield i * 2</code></pre>
+} yield i * 2</code></pre>
 <h2><a href="#代码清单8-33" name="代码清单8-33" class="anchor"><span class="anchor-link"></span></a>代码清单8-33</h2>
 <pre class="prettyprint"><code class="language-scala">class Person(val firstName: String, val lastName: String)
 object Person {
-  def apply(firstName: String, lastName: String) : Person = 
+  def apply(firstName: String, lastName: String): Person =
     new Person(firstName, lastName)
 }
 val friends = List(Person(&quot;Brian&quot;, &quot;Sletten&quot;), Person(&quot;Neal&quot;, &quot;Ford&quot;),
   Person(&quot;Scott&quot;, &quot;Davis&quot;), Person(&quot;Stuart&quot;, &quot;Halloway&quot;))
-  
-val lastNames = 
-  for (friend &lt;- friends; lastName = friend.lastName) yield lastName
+
+val lastNames =
+  for (friend ← friends; lastName = friend.lastName) yield lastName
 
 println(lastNames.mkString(&quot;, &quot;))</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Sletten, Ford, Davis, Halloway</code></pre>
 <h2><a href="#代码清单8-34" name="代码清单8-34" class="anchor"><span class="anchor-link"></span></a>代码清单8-34</h2>
-<pre class="prettyprint"><code class="language-scala">for (i &lt;- 1 to 3; j &lt;- 4 to 6) {
+<pre class="prettyprint"><code class="language-scala">for (i ← 1 to 3; j ← 4 to 6) {
   print(s&quot;[$i,$j] &quot;)
 }</code></pre>
 <p><em>运行结果</em></p>

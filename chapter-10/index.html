@@ -175,26 +175,25 @@ catch(InterruptedException ex) {
 <h2><a href="#代码清单10-3" name="代码清单10-3" class="anchor"><span class="anchor-link"></span></a>代码清单10-3</h2>
 <pre class="prettyprint"><code class="language-scala">object Tax {
   def taxFor(amount: Double): Double = {
-    if (amount &lt; 0) 
-       throw new IllegalArgumentException(&quot;Amount must be greater than zero&quot;)
-       
-    if (amount &lt; 0.01) 
+    if (amount &lt; 0)
+      throw new IllegalArgumentException(&quot;Amount must be greater than zero&quot;)
+
+    if (amount &lt; 0.01)
       throw new RuntimeException(&quot;Amount too small to be taxed&quot;)
-    
+
     if (amount &gt; 1000000) throw new Exception(&quot;Amount too large...&quot;)
-    
+
     amount * 0.08
   }
 }</code></pre>
 <h2><a href="#代码清单10-4" name="代码清单10-4" class="anchor"><span class="anchor-link"></span></a>代码清单10-4</h2>
-<pre class="prettyprint"><code class="language-scala">for (amount &lt;- List(100.0, 0.009, -2.0, 1000001.0)) {
+<pre class="prettyprint"><code class="language-scala">for (amount ← List(100.0, 0.009, -2.0, 1000001.0)) {
   try {
     print(s&quot;Amount: $$$amount &quot;)
     println(s&quot;Tax: $$${Tax.taxFor(amount)}&quot;)
-  }
-  catch {
-    case ex: IllegalArgumentException =&gt; println(ex.getMessage)
-    case ex: RuntimeException =&gt;
+  } catch {
+    case ex: IllegalArgumentException ⇒ println(ex.getMessage)
+    case ex: RuntimeException ⇒
       // if you need a block of code to handle exception
       println(s&quot;Don&#39;t bother reporting...${ex.getMessage}&quot;)
   }
@@ -207,14 +206,13 @@ Amount: $1000001.0 java.lang.Exception: Amount too large...
 	at Tax$.taxFor(Tax.scala:9)
 ...</code></pre>
 <h2><a href="#代码清单10-5" name="代码清单10-5" class="anchor"><span class="anchor-link"></span></a>代码清单10-5</h2>
-<pre class="prettyprint"><code class="language-scala">for (amount &lt;- List(100.0, 0.009, -2.0, 1000001.0)) {
+<pre class="prettyprint"><code class="language-scala">for (amount ← List(100.0, 0.009, -2.0, 1000001.0)) {
   try {
     print(s&quot;Amount: $$$amount &quot;)
     println(s&quot;Tax: $$${Tax.taxFor(amount)}&quot;)
-  }
-  catch {      
-    case ex : IllegalArgumentException =&gt; println(ex.getMessage)
-    case _ : Throwable =&gt; println(&quot;Something went wrong&quot;)
+  } catch {
+    case ex: IllegalArgumentException ⇒ println(ex.getMessage)
+    case _: Throwable                 ⇒ println(&quot;Something went wrong&quot;)
   }
 }</code></pre>
 <p><em>运行结果</em></p>
@@ -246,10 +244,9 @@ has already been caught
 try {
   print(s&quot;Amount: $$$amount &quot;)
   println(s&quot;Tax: $$${Tax.taxFor(amount)}&quot;)
-}
-catch {      
-  case _: Exception =&gt; println(&quot;Something went wrong&quot;)
-  case ex : IllegalArgumentException =&gt; println(ex.getMessage)
+} catch {
+  case _: Exception                 ⇒ println(&quot;Something went wrong&quot;)
+  case ex: IllegalArgumentException ⇒ println(ex.getMessage)
 }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Amount: $-2 Something went wrong</code></pre>

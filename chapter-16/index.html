@@ -152,17 +152,16 @@ Type to start searching
 <h1><a href="#第16章-单元测试" name="第16章-单元测试" class="anchor"><span class="anchor-link"></span></a>第16章——单元测试</h1>
 <h2><a href="#代码清单16-1-unittesting-usingjunit-scala-" name="代码清单16-1-unittesting-usingjunit-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单16-1（UnitTesting/UsingJUnit.scala）</h2>
 <pre class="prettyprint"><code class="language-scala">import java.util
-import java.util.ArrayList
 
-import org.junit.Test
 import org.junit.Assert._
+import org.junit.Test
 
 class UsingJUnit {
-  @Test 
+  @Test
   def listAdd() {
     val list = new util.ArrayList[String]
     list.add(&quot;Milk&quot;)
-    list add &quot;Sugar&quot; 
+    list add &quot;Sugar&quot;
     assertEquals(2, list.size)
   }
 }</code></pre>

@@ -190,17 +190,17 @@ Type to start searching
 class Man(override val name: String) extends Human(name)
 class Woman(override val name: String) extends Human(name)</code></pre>
 <h2><a href="#代码清单7-2" name="代码清单7-2" class="anchor"><span class="anchor-link"></span></a>代码清单7-2</h2>
-<pre class="prettyprint"><code class="language-scala">trait Friend {    
+<pre class="prettyprint"><code class="language-scala">trait Friend {
   val name: String
   def listen(): Unit = println(s&quot;Your friend $name is listening&quot;)
-}             </code></pre>
+}</code></pre>
 <h2><a href="#代码清单7-3" name="代码清单7-3" class="anchor"><span class="anchor-link"></span></a>代码清单7-3</h2>
 <pre class="prettyprint"><code class="language-scala">class Human(val name: String) extends Friend
 
 class Woman(override val name: String) extends Human(name)
 class Man(override val name: String) extends Human(name)</code></pre>
 <h2><a href="#代码清单7-4" name="代码清单7-4" class="anchor"><span class="anchor-link"></span></a>代码清单7-4</h2>
-<pre class="prettyprint"><code class="language-scala">class Dog(val name: String) extends Animal with Friend {          
+<pre class="prettyprint"><code class="language-scala">class Dog(val name: String) extends Animal with Friend {
   //optionally override method here.
   override def listen(): Unit = println(s&quot;$name&#39;s listening quietly&quot;)
 }</code></pre>
@@ -216,62 +216,62 @@ class Man(override val name: String) extends Human(name)</code></pre>
   sara.listen()
   comet.listen()
 
-  val mansBestFriend : Friend = comet
+  val mansBestFriend: Friend = comet
   mansBestFriend.listen()
 
   def helpAsFriend(friend: Friend): Unit = friend.listen()
 
   helpAsFriend(sara)
-  helpAsFriend(comet)  
+  helpAsFriend(comet)
 }</code></pre>
 <h2><a href="#代码清单7-7" name="代码清单7-7" class="anchor"><span class="anchor-link"></span></a>代码清单7-7</h2>
-<pre class="prettyprint"><code class="language-scala">class Cat(val name: String) extends Animal </code></pre>
+<pre class="prettyprint"><code class="language-scala">class Cat(val name: String) extends Animal</code></pre>
 <h2><a href="#代码清单7-8" name="代码清单7-8" class="anchor"><span class="anchor-link"></span></a>代码清单7-8</h2>
 <pre class="prettyprint"><code class="language-scala">object UseCat extends App {
   def useFriend(friend: Friend): Unit = friend.listen()
 
   val alf = new Cat(&quot;Alf&quot;)
-  val friend : Friend = alf // ERROR
+  val friend: Friend = alf // ERROR
 
-  useFriend(alf) // ERROR  
+  useFriend(alf) // ERROR
 }</code></pre>
 <h2><a href="#代码清单7-9" name="代码清单7-9" class="anchor"><span class="anchor-link"></span></a>代码清单7-9</h2>
 <pre class="prettyprint"><code class="language-scala">def useFriend(friend: Friend): Unit = friend.listen()
 
 val angel = new Cat(&quot;Angel&quot;) with Friend
-val friend : Friend = angel
+val friend: Friend = angel
 angel.listen()
 
 useFriend(angel)</code></pre>
 <h2><a href="#代码清单7-10" name="代码清单7-10" class="anchor"><span class="anchor-link"></span></a>代码清单7-10</h2>
 <pre class="prettyprint"><code class="language-scala">abstract class Check {
-  def check : String = &quot;Checked Application Details...&quot;
+  def check: String = &quot;Checked Application Details...&quot;
 }</code></pre>
 <h2><a href="#代码清单7-11" name="代码清单7-11" class="anchor"><span class="anchor-link"></span></a>代码清单7-11</h2>
 <pre class="prettyprint"><code class="language-scala">trait CreditCheck extends Check {
-  override def check : String = s&quot;Checked Credit... ${super.check}&quot;
+  override def check: String = s&quot;Checked Credit... ${super.check}&quot;
 }
 
 trait EmploymentCheck extends Check {
-  override def check : String = s&quot;Checked Employment...${super.check}&quot;
+  override def check: String = s&quot;Checked Employment...${super.check}&quot;
 }
 
 trait CriminalRecordCheck extends Check {
-  override def check : String = s&quot;Check Criminal Records...${super.check}&quot;
+  override def check: String = s&quot;Check Criminal Records...${super.check}&quot;
 }</code></pre>
 <h2><a href="#代码清单7-12" name="代码清单7-12" class="anchor"><span class="anchor-link"></span></a>代码清单7-12</h2>
-<pre class="prettyprint"><code class="language-scala">val apartmentApplication = 
+<pre class="prettyprint"><code class="language-scala">val apartmentApplication =
   new Check with CreditCheck with CriminalRecordCheck
 
 println(apartmentApplication.check)</code></pre>
 <h2><a href="#代码清单7-13" name="代码清单7-13" class="anchor"><span class="anchor-link"></span></a>代码清单7-13</h2>
-<pre class="prettyprint"><code class="language-scala">val employmentApplication = 
+<pre class="prettyprint"><code class="language-scala">val employmentApplication =
   new Check with CriminalRecordCheck with EmploymentCheck
 
 println(employmentApplication.check)</code></pre>
 <h2><a href="#代码清单7-14" name="代码清单7-14" class="anchor"><span class="anchor-link"></span></a>代码清单7-14</h2>
-<pre class="prettyprint"><code class="language-scala">abstract class Writer  {
-  def writeMessage(message: String):Unit
+<pre class="prettyprint"><code class="language-scala">abstract class Writer {
+  def writeMessage(message: String): Unit
 }</code></pre>
 <h2><a href="#代码清单7-15" name="代码清单7-15" class="anchor"><span class="anchor-link"></span></a>代码清单7-15</h2>
 <pre class="prettyprint"><code class="language-scala">trait UpperCaseWriter extends Writer {
@@ -286,15 +286,15 @@ trait ProfanityFilteredWriter extends Writer {
 <h2><a href="#代码清单7-16" name="代码清单7-16" class="anchor"><span class="anchor-link"></span></a>代码清单7-16</h2>
 <pre class="prettyprint"><code class="language-scala">class StringWriterDelegate extends Writer {
   val writer = new java.io.StringWriter
-  
+
   def writeMessage(message: String): Unit = writer.write(message)
-  override def toString : String = writer.toString
+  override def toString: String = writer.toString
 }</code></pre>
 <h2><a href="#代码清单7-17" name="代码清单7-17" class="anchor"><span class="anchor-link"></span></a>代码清单7-17</h2>
-<pre class="prettyprint"><code class="language-scala">val myWriterProfanityFirst = 
+<pre class="prettyprint"><code class="language-scala">val myWriterProfanityFirst =
   new StringWriterDelegate with UpperCaseWriter with ProfanityFilteredWriter
 
-val myWriterProfanityLast = 
+val myWriterProfanityLast =
   new StringWriterDelegate with ProfanityFilteredWriter with UpperCaseWriter
 
 myWriterProfanityFirst writeMessage &quot;There is no sin except stupidity&quot;

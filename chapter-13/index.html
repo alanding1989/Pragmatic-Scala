@@ -155,7 +155,7 @@ Type to start searching
 
 def getChildren(file: File) = {
   val children = file.listFiles()
-  if(children != null) children.toList else List()
+  if (children != null) children.toList else List()
 }
 
 val start = System.nanoTime
@@ -164,10 +164,10 @@ val exploreFrom = new File(args(0))
 var count = 0L
 var filesToVisit = List(exploreFrom)
 
-while(filesToVisit.size &gt; 0) {
+while (filesToVisit.size &gt; 0) {
   val head = filesToVisit.head
   filesToVisit = filesToVisit.tail
-  
+
   val children = getChildren(head)
   count = count + children.count { !_.isDirectory }
   filesToVisit = filesToVisit ::: children.filter { _.isDirectory }
@@ -175,7 +175,7 @@ while(filesToVisit.size &gt; 0) {
 
 val end = System.nanoTime
 println(s&quot;Number of files found: $count&quot;)
-println(s&quot;Time taken: ${(end - start)/1.0e9} seconds&quot;)</code></pre>
+println(s&quot;Time taken: ${(end - start) / 1.0e9} seconds&quot;)</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-13/index.md" title="Edit this page" class="md-source-file md-edit">
