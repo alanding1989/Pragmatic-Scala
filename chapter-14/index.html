@@ -117,7 +117,10 @@ Type to start searching
 <ul>
   <li><a href="../chapter-14/index.html#第14章-和java进行互操作" class="header">第14章——和Java进行互操作</a>
   <ul>
-    <li><a href="../chapter-14/index.html#代码清单14-1-intermixing-person-scala-" class="header">代码清单14-1（Intermixing/Person.scala）</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-1" class="header">代码清单14-1</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-2" class="header">代码清单14-2</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-3" class="header">代码清单14-3</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-4" class="header">代码清单14-4</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -138,7 +141,10 @@ Type to start searching
 <ul>
   <li><a href="../chapter-14/index.html#第14章-和java进行互操作" class="header">第14章——和Java进行互操作</a>
   <ul>
-    <li><a href="../chapter-14/index.html#代码清单14-1-intermixing-person-scala-" class="header">代码清单14-1（Intermixing/Person.scala）</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-1" class="header">代码清单14-1</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-2" class="header">代码清单14-2</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-3" class="header">代码清单14-3</a></li>
+    <li><a href="../chapter-14/index.html#代码清单14-4" class="header">代码清单14-4</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -150,10 +156,30 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第14章-和java进行互操作" name="第14章-和java进行互操作" class="anchor"><span class="anchor-link"></span></a>第14章——和Java进行互操作</h1>
-<h2><a href="#代码清单14-1-intermixing-person-scala-" name="代码清单14-1-intermixing-person-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单14-1（Intermixing/Person.scala）</h2>
+<h2><a href="#代码清单14-1" name="代码清单14-1" class="anchor"><span class="anchor-link"></span></a>代码清单14-1</h2>
 <pre class="prettyprint"><code class="language-scala">class Person(val firstName: String, val lastName: String) {
   override def toString: String = firstName + &quot; &quot; + lastName
 }</code></pre>
+<h2><a href="#代码清单14-2" name="代码清单14-2" class="anchor"><span class="anchor-link"></span></a>代码清单14-2</h2>
+<pre class="prettyprint"><code class="language-scala">class Dog(val name: String) {
+  override def toString: String = name
+}</code></pre>
+<h2><a href="#代码清单14-3" name="代码清单14-3" class="anchor"><span class="anchor-link"></span></a>代码清单14-3</h2>
+<pre class="prettyprint"><code class="language-scala">val george = new Person(&quot;George&quot;, &quot;Washington&quot;)
+
+val georgesDogs = List(new Dog(&quot;Captain&quot;), new Dog(&quot;Clode&quot;),
+  new Dog(&quot;Forester&quot;), new Dog(&quot;Searcher&quot;))
+
+println(s&quot;$george had several dogs ${georgesDogs.mkString(&quot;, &quot;)}...&quot;)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">George Washington had several dogs Captain, Clode, Forester, Searcher...</code></pre>
+<h2><a href="#代码清单14-4" name="代码清单14-4" class="anchor"><span class="anchor-link"></span></a>代码清单14-4</h2>
+<pre class="prettyprint"><code class="language-scala">object UsePersonClass extends App {
+  val ben = new Person(&quot;Ben&quot;, &quot;Franklin&quot;)
+  println(s&quot;$ben was a great inventor.&quot;)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Ben Franklin was a great inventor.</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-14/index.md" title="Edit this page" class="md-source-file md-edit">
