@@ -117,7 +117,15 @@ Type to start searching
 <ul>
   <li><a href="../chapter-16/index.html#第16章-单元测试" class="header">第16章——单元测试</a>
   <ul>
-    <li><a href="../chapter-16/index.html#代码清单16-1-unittesting-usingjunit-scala-" class="header">代码清单16-1（UnitTesting/UsingJUnit.scala）</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-1" class="header">代码清单16-1</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-2" class="header">代码清单16-2</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-3" class="header">代码清单16-3</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-4" class="header">代码清单16-4</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -138,7 +146,15 @@ Type to start searching
 <ul>
   <li><a href="../chapter-16/index.html#第16章-单元测试" class="header">第16章——单元测试</a>
   <ul>
-    <li><a href="../chapter-16/index.html#代码清单16-1-unittesting-usingjunit-scala-" class="header">代码清单16-1（UnitTesting/UsingJUnit.scala）</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-1" class="header">代码清单16-1</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-2" class="header">代码清单16-2</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-3" class="header">代码清单16-3</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-4" class="header">代码清单16-4</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -150,7 +166,7 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第16章-单元测试" name="第16章-单元测试" class="anchor"><span class="anchor-link"></span></a>第16章——单元测试</h1>
-<h2><a href="#代码清单16-1-unittesting-usingjunit-scala-" name="代码清单16-1-unittesting-usingjunit-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单16-1（UnitTesting/UsingJUnit.scala）</h2>
+<h2><a href="#代码清单16-1" name="代码清单16-1" class="anchor"><span class="anchor-link"></span></a>代码清单16-1</h2>
 <pre class="prettyprint"><code class="language-scala">import java.util
 
 import org.junit.Assert._
@@ -165,6 +181,199 @@ class UsingJUnit {
     assertEquals(2, list.size)
   }
 }</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">JUnit version 4.12
+.
+Time: 0.003
+
+OK (1 test)</code></pre>
+<h2><a href="#代码清单16-2" name="代码清单16-2" class="anchor"><span class="anchor-link"></span></a>代码清单16-2</h2>
+<pre class="prettyprint"><code class="language-scala">import java.util
+import org.scalatest._
+
+class UsingScalaTest extends FlatSpec with Matchers {
+  trait EmptyArrayList {
+    val list = new util.ArrayList[String]
+  }
+
+  &quot;a list&quot; should &quot;be empty on create&quot; in new EmptyArrayList {
+    list.size should be(0)
+  }
+
+  &quot;a list&quot; should &quot;increase in size upon add&quot; in new EmptyArrayList {
+    list.add(&quot;Milk&quot;)
+    list add &quot;Sugar&quot;
+
+    list.size should be(2)
+  }
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 2
+UsingScalaTest:
+a list
+- should be empty on create
+a list
+- should increase in size upon add
+Run completed in 181 milliseconds.
+Total number of tests run: 2
+Suites: completed 1, aborted 0
+Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.</code></pre>
+<h2><a href="#代码清单16-3" name="代码清单16-3" class="anchor"><span class="anchor-link"></span></a>代码清单16-3</h2>
+<pre class="prettyprint"><code class="language-scala">import org.scalatest.{ FlatSpec, Matchers }
+
+class WordScorerTest extends FlatSpec with Matchers {
+
+  def withWordScorer(test: WordScorer ⇒ Unit): Unit = {
+    val wordScorer = new WordScorer()
+
+    test(wordScorer)
+  }
+
+  &quot;score&quot; should &quot;return 0 for an empty word&quot; in {
+    withWordScorer { wordScorer ⇒ wordScorer.score(&quot;&quot;) should be(0) }
+  }
+
+  &quot;score&quot; should &quot;return 2 for word with two vowels&quot; in {
+    withWordScorer { _.score(&quot;ai&quot;) should be(2) }
+  }
+
+  &quot;score&quot; should &quot;return 8 for word with four consonants&quot; in {
+    withWordScorer { _.score(&quot;myth&quot;) should be(8) }
+  }
+
+  &quot;score&quot; should &quot;return 7 for word with a vowel and three consonants&quot; in {
+    withWordScorer { _.score(&quot;that&quot;) should be(7) }
+  }
+}</code></pre>
+<h2><a href="#代码清单16-4" name="代码清单16-4" class="anchor"><span class="anchor-link"></span></a>代码清单16-4</h2>
+<pre class="prettyprint"><code class="language-scala">class WordScorer() {
+  private val VOWELS = List(&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;)
+
+  def score(word: String): Int = {
+    (0 /: word) { (total, letter) ⇒
+      total + (if (VOWELS.contains(letter)) 1 else 2)
+    }
+  }
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 4
+WordScorerTest:
+score
+- should return 0 for an empty word
+score
+- should return 2 for word with two vowels
+score
+- should return 8 for word with four consonants
+score
+- should return 7 for word that with a vowel and three consonants
+Run completed in 181 milliseconds.
+Total number of tests run: 4
+Suites: completed 1, aborted 0
+Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.</code></pre>
+<h2><a href="#代码清单16-5" name="代码清单16-5" class="anchor"><span class="anchor-link"></span></a>代码清单16-5</h2>
+<pre class="prettyprint"><code class="language-scala">trait SpellChecker {
+  def isCorrect(word: String): Boolean
+}</code></pre>
+<h2><a href="#代码清单16-6" name="代码清单16-6" class="anchor"><span class="anchor-link"></span></a>代码清单16-6</h2>
+<pre class="prettyprint"><code class="language-scala">import org.scalatest.{ FlatSpec, Matchers }
+import org.mockito.Mockito._
+import org.mockito.ArgumentMatchers.anyString
+
+class WordScorerTest extends FlatSpec with Matchers {
+
+  def withWordScorer(test: WordScorer ⇒ Unit): Boolean = {
+    val spellChecker = mock(classOf[SpellChecker])
+    when(spellChecker.isCorrect(anyString)).thenReturn(true)
+    val wordScorer = new WordScorer(spellChecker)
+
+    test(wordScorer)
+
+    verify(spellChecker, times(1)).isCorrect(anyString())
+  }
+
+  //No change to the tests, same as in the previous version
+  &quot;score&quot; should &quot;return 0 for an empty word&quot; in {
+    withWordScorer { wordScorer ⇒ wordScorer.score(&quot;&quot;) should be(0) }
+  }
+
+  &quot;score&quot; should &quot;return 2 for word with two vowels&quot; in {
+    withWordScorer { _.score(&quot;ai&quot;) should be(2) }
+  }
+
+  &quot;score&quot; should &quot;return 8 for word with four consonants&quot; in {
+    withWordScorer { _.score(&quot;myth&quot;) should be(8) }
+  }
+
+  &quot;score&quot; should &quot;return 7 for word that with a vowel and three consonants&quot; in {
+    withWordScorer { _.score(&quot;that&quot;) should be(7) }
+  }
+
+}</code></pre>
+<h2><a href="#代码清单16-7" name="代码清单16-7" class="anchor"><span class="anchor-link"></span></a>代码清单16-7</h2>
+<pre class="prettyprint"><code class="language-scala">class WordScorer(val spellChecker: SpellChecker) {
+  private val VOWELS = List(&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;)
+
+  def score(word: String): Int = {
+    spellChecker.isCorrect(word)
+    (0 /: word) { (total, letter) ⇒
+      total + (if (VOWELS.contains(letter)) 1 else 2)
+    }
+  }
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 4
+WordScorerTest:
+score
+- should return 0 for an empty word
+score
+- should return 2 for word with two vowels
+score
+- should return 8 for word with four consonants
+score
+- should return 7 for word that with a vowel and three consonants
+Run completed in 316 milliseconds.
+Total number of tests run: 4
+Suites: completed 1, aborted 0
+Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.</code></pre>
+<h2><a href="#代码清单16-7" name="代码清单16-7" class="anchor"><span class="anchor-link"></span></a>代码清单16-7</h2>
+<pre class="prettyprint"><code class="language-scala">&quot;score&quot; should &quot;return 0 for word with incorrect spelling&quot; in {
+  val spellChecker = mock(classOf[SpellChecker])
+  when(spellChecker.isCorrect(anyString)).thenReturn(false)
+  val wordScorer = new WordScorer(spellChecker)
+
+  wordScorer.score(&quot;aoe&quot;) should be(0)
+  verify(spellChecker, times(1)).isCorrect(anyString())
+}</code></pre>
+<h2><a href="#代码清单16-8" name="代码清单16-8" class="anchor"><span class="anchor-link"></span></a>代码清单16-8</h2>
+<pre class="prettyprint"><code class="language-scala">def score(word: String): Int = {
+  if (spellChecker.isCorrect(word))
+    (0 /: word) { (total, letter) ⇒
+      total + (if (VOWELS.contains(letter)) 1 else 2)
+    }
+  else
+    0
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 5
+WordScorerTest:
+score
+- should return 0 for an empty word
+score
+- should return 2 for word with two vowels
+score
+- should return 8 for word with four consonants
+score
+- should return 7 for word that with a vowel and three consonants
+score
+- should return 0 for word with incorrect spelling
+Run completed in 208 milliseconds.
+Total number of tests run: 5
+Suites: completed 1, aborted 0
+Tests: succeeded 5, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-16/index.md" title="Edit this page" class="md-source-file md-edit">
