@@ -18,7 +18,7 @@
 
 <meta name="description" content="PragmaticScala">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>第1章——Exploring Scala · </title>
+<title>第1章——Exploring Scala</title>
 <script src="../lib/modernizr/modernizr.min.js"></script>
 <link rel="stylesheet" href="../assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
@@ -42,7 +42,7 @@ data-md-color-accent="indigo">
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="" class="md-header-nav__button md-logo">
+<a href="../chapter-06/index.html" title="第1章——Exploring Scala" class="md-header-nav__button md-logo">
 <i class="md-icon md-icon--home"></i>
 </a>
 </div>
@@ -93,37 +93,19 @@ Type to start searching
 <div class="md-nav__button md-logo">
 <i class="md-icon md-icon--home"></i>
 </div>
-<a href="../index.html" title="">
+<a href="../chapter-06/index.html" title="第1章——Exploring Scala">
+第1章——Exploring Scala
 </a>
 </label>
 <ul>
-  <li><a href="../contents.html" class="page">目录</a>
-  <ul>
-    <li><a href="../chapter-01/index.html" class="active page">第1章——Exploring Scala</a></li>
-    <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
-    <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
-    <li><a href="../chapter-09/index.html" class="page">第9章——模式匹配和正则表达式</a></li>
-    <li><a href="../chapter-10/index.html" class="page">第10章——处理异常</a></li>
-    <li><a href="../chapter-11/index.html" class="page">第11章——递归编程</a></li>
-    <li><a href="../chapter-12/index.html" class="page">第12章——惰性求值和并行集合</a></li>
-    <li><a href="../chapter-13/index.html" class="page">第13章——使用Actor模型处理并发</a></li>
-    <li><a href="../chapter-14/index.html" class="page">第14章——和Java进行互操作</a></li>
-    <li><a href="../chapter-15/index.html" class="page">第15章——使用Scala创建应用程序</a></li>
-    <li><a href="../chapter-16/index.html" class="page">第16章——单元测试</a></li>
-  </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
+  <li><a href="../chapter-06/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-3" class="header">代码清单1-3</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-4" class="header">代码清单1-4</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-5" class="header">代码清单1-5</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
+    <li><a href="../chapter-06/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
+    <li><a href="../chapter-06/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -142,15 +124,10 @@ Type to start searching
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="../chapter-01/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
+  <li><a href="../chapter-06/index.html#第1章-exploring-scala" class="header">第1章——Exploring Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-3" class="header">代码清单1-3</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-4" class="header">代码清单1-4</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-5" class="header">代码清单1-5</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
+    <li><a href="../chapter-06/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
+    <li><a href="../chapter-06/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -180,47 +157,9 @@ printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;
   val price = data.split(&quot;\n&quot;)(1).split(&quot;,&quot;)(4).toDouble
   price
 }</code></pre>
-<p><em>运行结果</em></p>
-<pre class="prettyprint"><code class="language-output">Top stock of 2014 is AMZN closing at price $310.35</code></pre>
-<h2><a href="#代码清单1-3" name="代码清单1-3" class="anchor"><span class="anchor-link"></span></a>代码清单1-3</h2>
-<pre class="prettyprint"><code class="language-scala">symbols.par.map { ticker ⇒ (ticker, getYearEndClosingPrice(ticker, year)) }
-  .maxBy { stockPrice ⇒ stockPrice._2 }</code></pre>
-<p><em>编译sample.scala的结果</em></p>
-<pre class="prettyprint"><code class="language-output">sample.scala:2:
-error: type mismatch;
- found   : String(&quot;haha&quot;)
- required: Int
-i = &quot;haha&quot; //Error
-    ^
-one error found</code></pre>
-<h2><a href="#代码清单1-4" name="代码清单1-4" class="anchor"><span class="anchor-link"></span></a>代码清单1-4</h2>
-<pre class="prettyprint"><code class="language-java"> public static int findMax(List&lt;Integer&gt; temperatures) {
-     //Java code
-  int highTemperature = Integer.MIN_VALUE;
-  for(int temperature : temperatures) {
-   highTemperature = Math.max(highTemperature, temperature);
-  }
-  return highTemperature;
-}</code></pre>
-<h2><a href="#代码清单1-5" name="代码清单1-5" class="anchor"><span class="anchor-link"></span></a>代码清单1-5</h2>
-<pre class="prettyprint"><code class="language-scala">def findMax(temperatures: List[Int]) = {
-  var highTemperature = Integer.MIN_VALUE
-  for (temperature ← temperatures) {
-    highTemperature = Math.max(highTemperature, temperature)
-  }
-  highTemperature
-}</code></pre>
-<h2><a href="#代码清单1-6" name="代码清单1-6" class="anchor"><span class="anchor-link"></span></a>代码清单1-6</h2>
-<pre class="prettyprint"><code class="language-scala">def findMax(temperatures: List[Int]) = {
-  temperatures.foldLeft(Integer.MIN_VALUE) { Math.max }
-}</code></pre>
-<h2><a href="#代码清单1-6" name="代码清单1-6" class="anchor"><span class="anchor-link"></span></a>代码清单1-6</h2>
-<pre class="prettyprint"><code class="language-scala">val values = List(1, 2, 3, 4, 5)
-
-val doubleValues = values.map(_ * 2)</code></pre>
 </div>
 <div>
-<a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-01/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-06/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -234,36 +173,6 @@ Edit this page
 </div>
 </main>
 <footer class="md-footer">
-<div class="md-footer-nav">
-<nav class="md-footer-nav__inner md-grid">
-<a href="../contents.html" title="目录" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-</div>
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Previous
-</span>
-目录
-</span>
-</div>
-</a>
-<a href="../chapter-07/index.html" title="第7章——特质" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-第7章——特质
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-</div>
-</a>
-</nav>
-</div>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">
