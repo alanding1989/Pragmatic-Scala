@@ -101,6 +101,7 @@ Type to start searching
   <ul>
     <li><a href="../chapter-01/index.html" class="page">第1章——探索Scala</a></li>
     <li><a href="../chapter-02/index.html" class="page">第2章——体验Scala</a></li>
+    <li><a href="../chapter-03/index.html" class="page">第3章——From Java to Scala</a></li>
     <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
     <li><a href="../chapter-08/index.html" class="page">第8章——集合</a></li>
     <li><a href="../chapter-09/index.html" class="active page">第9章——模式匹配和正则表达式</a></li>
@@ -213,13 +214,13 @@ List(&quot;Monday&quot;, &quot;Sunday&quot;, &quot;Saturday&quot;).foreach { act
 <pre class="prettyprint"><code class="language-output">...code for fun...Eat, sleep, repeat... Hang out with friends...</code></pre>
 <h2><a href="#代码清单9-2" name="代码清单9-2" class="anchor"><span class="anchor-link"></span></a>代码清单9-2</h2>
 <pre class="prettyprint"><code class="language-scala">object DayOfWeek extends Enumeration {
-  val SUNDAY = Value(&quot;Sunday&quot;)
-  val MONDAY = Value(&quot;Monday&quot;)
-  val TUESDAY = Value(&quot;Tuesday&quot;)
-  val WEDNESDAY = Value(&quot;Wednesday&quot;)
-  val THURSDAY = Value(&quot;Thursday&quot;)
-  val FRIDAY = Value(&quot;Friday&quot;)
-  val SATURDAY = Value(&quot;Saturday&quot;)
+  val SUNDAY: DayOfWeek.Value = Value(&quot;Sunday&quot;)
+  val MONDAY: DayOfWeek.Value = Value(&quot;Monday&quot;)
+  val TUESDAY: DayOfWeek.Value = Value(&quot;Tuesday&quot;)
+  val WEDNESDAY: DayOfWeek.Value = Value(&quot;Wednesday&quot;)
+  val THURSDAY: DayOfWeek.Value = Value(&quot;Thursday&quot;)
+  val FRIDAY: DayOfWeek.Value = Value(&quot;Friday&quot;)
+  val SATURDAY: DayOfWeek.Value = Value(&quot;Saturday&quot;)
 }
 
 def activity(day: DayOfWeek.Value): Unit = {
