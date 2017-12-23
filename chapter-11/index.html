@@ -125,7 +125,17 @@ Type to start searching
 <ul>
   <li><a href="../chapter-11/index.html#第11章-递归编程" class="header">第11章——递归编程</a>
   <ul>
-    <li><a href="../chapter-11/index.html#代码清单11-1-programmingrecursions-factorial-scala-" class="header">代码清单11-1（ProgrammingRecursions/factorial.scala）</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-1" class="header">代码清单11-1</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-2" class="header">代码清单11-2</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-3" class="header">代码清单11-3</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-4" class="header">代码清单11-4</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-5" class="header">代码清单11-5</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-6" class="header">代码清单11-6</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-7" class="header">代码清单11-7</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-8" class="header">代码清单11-8</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-9" class="header">代码清单11-9</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-10" class="header">代码清单11-10</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-11" class="header">代码清单11-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -146,7 +156,17 @@ Type to start searching
 <ul>
   <li><a href="../chapter-11/index.html#第11章-递归编程" class="header">第11章——递归编程</a>
   <ul>
-    <li><a href="../chapter-11/index.html#代码清单11-1-programmingrecursions-factorial-scala-" class="header">代码清单11-1（ProgrammingRecursions/factorial.scala）</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-1" class="header">代码清单11-1</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-2" class="header">代码清单11-2</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-3" class="header">代码清单11-3</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-4" class="header">代码清单11-4</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-5" class="header">代码清单11-5</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-6" class="header">代码清单11-6</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-7" class="header">代码清单11-7</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-8" class="header">代码清单11-8</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-9" class="header">代码清单11-9</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-10" class="header">代码清单11-10</a></li>
+    <li><a href="../chapter-11/index.html#代码清单11-11" class="header">代码清单11-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -158,13 +178,189 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第11章-递归编程" name="第11章-递归编程" class="anchor"><span class="anchor-link"></span></a>第11章——递归编程</h1>
-<h2><a href="#代码清单11-1-programmingrecursions-factorial-scala-" name="代码清单11-1-programmingrecursions-factorial-scala-" class="anchor"><span class="anchor-link"></span></a>代码清单11-1（ProgrammingRecursions/factorial.scala）</h2>
+<h2><a href="#代码清单11-1" name="代码清单11-1" class="anchor"><span class="anchor-link"></span></a>代码清单11-1</h2>
 <pre class="prettyprint"><code class="language-scala">def factorial(number: Int): BigInt = {
   if (number == 0)
     1
   else
     number * factorial(number - 1)
 }</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">120</code></pre>
+<h2><a href="#代码清单11-2" name="代码清单11-2" class="anchor"><span class="anchor-link"></span></a>代码清单11-2</h2>
+<pre class="prettyprint"><code class="language-scala">println(factorial(5))</code></pre>
+<h2><a href="#代码清单11-3" name="代码清单11-3" class="anchor"><span class="anchor-link"></span></a>代码清单11-3</h2>
+<pre class="prettyprint"><code class="language-scala">println(factorial(10000))</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">java.lang.StackOverflowError</code></pre>
+<h2><a href="#代码清单11-4" name="代码清单11-4" class="anchor"><span class="anchor-link"></span></a>代码清单11-4</h2>
+<pre class="prettyprint"><code class="language-scala">def mad(parameter: Int): Int = {
+  if (parameter == 0)
+    throw new RuntimeException(&quot;Error&quot;)
+  else
+    1 * mad(parameter - 1)
+}
+
+mad(5)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">java.lang.RuntimeException: Error
+	at Main$$anon$1.mad(mad.scala:3)
+	at Main$$anon$1.mad(mad.scala:5)
+	at Main$$anon$1.mad(mad.scala:5)
+	at Main$$anon$1.mad(mad.scala:5)
+	at Main$$anon$1.mad(mad.scala:5)
+	at Main$$anon$1.mad(mad.scala:5)
+	at Main$$anon$1.&lt;init&gt;(mad.scala:8)</code></pre>
+<h2><a href="#代码清单11-5" name="代码清单11-5" class="anchor"><span class="anchor-link"></span></a>代码清单11-5</h2>
+<pre class="prettyprint"><code class="language-scala">def mad(parameter: Int): Int = {
+  if (parameter == 0)
+    throw new RuntimeException(&quot;Error&quot;)
+  else
+    mad(parameter - 1)
+}
+
+mad(5)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">java.lang.RuntimeException: Error
+	at Main$$anon$1.mad(mad2.scala:3)
+	at Main$$anon$1.&lt;init&gt;(mad2.scala:8)</code></pre>
+<h2><a href="#代码清单11-6" name="代码清单11-6" class="anchor"><span class="anchor-link"></span></a>代码清单11-6</h2>
+<pre class="prettyprint"><code class="language-output">  private int mad(int);
+    Code:
+       0: iload_1
+       1: iconst_0
+       2: if_icmpne     15
+       5: new           #14                 // class 
+java/lang/RuntimeException
+       8: dup
+       9: ldc           #16                 // String Error
+      11: invokespecial #20                 // Method 
+java/lang/RuntimeException.&quot;&lt;init&gt;&quot;:(Ljava/lang/String;)V
+      14: athrow
+      15: iconst_1
+      16: aload_0
+      17: iload_1
+      18: iconst_1
+      19: isub
+      20: invokespecial #22                 // Method mad:(I)I
+      23: imul
+      24: ireturn</code></pre>
+<h2><a href="#代码清单11-7" name="代码清单11-7" class="anchor"><span class="anchor-link"></span></a>代码清单11-7</h2>
+<pre class="prettyprint"><code class="language-output">  private int mad(int);
+    Code:
+       0: iload_1
+       1: iconst_0
+       2: if_icmpne     15
+       5: new           #14                 // class 
+java/lang/RuntimeException
+       8: dup
+       9: ldc           #16                 // String Error
+      11: invokespecial #20                 // Method 
+java/lang/RuntimeException.&quot;&lt;init&gt;&quot;:(Ljava/lang/String;)V
+      14: athrow
+      15: iconst_1
+      16: aload_0
+      17: iload_1
+      18: iconst_1
+      19: isub
+      20: invokespecial #22                 // Method mad:(I)I
+      23: imul
+      24: ireturn</code></pre>
+<h2><a href="#代码清单11-8" name="代码清单11-8" class="anchor"><span class="anchor-link"></span></a>代码清单11-8</h2>
+<pre class="prettyprint"><code class="language-scala">@scala.annotation.tailrec
+def factorial(number: Int): BigInt = {
+  if (number == 0)
+    1
+  else
+    number * factorial(number - 1)
+}
+
+println(factorial(10000))</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">error: could not optimize @tailrec annotated method factorial: it contains
+a recursive call not in tail position
+    number * factorial(number - 1)
+           ^
+error found</code></pre>
+<h2><a href="#代码清单11-9" name="代码清单11-9" class="anchor"><span class="anchor-link"></span></a>代码清单11-9</h2>
+<pre class="prettyprint"><code class="language-scala">@scala.annotation.tailrec
+def factorial(fact: BigInt, number: Int): BigInt = {
+  if (number == 0)
+    fact
+  else
+    factorial(fact * number, number - 1)
+}
+
+println(factorial(1, 10000))</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">284625968091705451890641321211986889014805140170279923079417999427441134000
+...</code></pre>
+<h2><a href="#代码清单11-10" name="代码清单11-10" class="anchor"><span class="anchor-link"></span></a>代码清单11-10</h2>
+<pre class="prettyprint"><code class="language-scala">import scala.io.Source._
+
+def explore(count: Int, words: List[String]): Int =
+  if (words.isEmpty)
+    count
+  else
+    countPalindrome(count, words)
+
+def countPalindrome(count: Int, words: List[String]): Int = {
+  val firstWord = words.head
+
+  if (firstWord.reverse == firstWord)
+    explore(count + 1, words.tail)
+  else
+    explore(count, words.tail)
+}
+
+def callExplore(text: String): Unit = println(explore(0, text.split(&quot; &quot;).toList))
+
+callExplore(&quot;dad mom and racecar&quot;)
+
+try {
+  val text =
+    fromURL(&quot;https://en.wikipedia.org/wiki/Gettysburg_Address&quot;).mkString
+  callExplore(text)
+} catch {
+  case ex: Throwable ⇒ println(ex)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">3
+java.lang.StackOverflowError</code></pre>
+<h2><a href="#代码清单11-11" name="代码清单11-11" class="anchor"><span class="anchor-link"></span></a>代码清单11-11</h2>
+<pre class="prettyprint"><code class="language-scala">import scala.io.Source._
+import scala.util.control.TailCalls._
+
+def explore(count: Int, words: List[String]): TailRec[Int] =
+  if (words.isEmpty)
+    done(count)
+  else
+    tailcall(countPalindrome(count, words))
+
+def countPalindrome(count: Int, words: List[String]): TailRec[Int] = {
+  val firstWord = words.head
+
+  if (firstWord.reverse == firstWord)
+    tailcall(explore(count + 1, words.tail))
+  else
+    tailcall(explore(count, words.tail))
+}
+
+def callExplore(text: String): Unit =
+  println(explore(0, text.split(&quot; &quot;).toList).result)
+
+callExplore(&quot;dad mom and racecar&quot;)
+
+try {
+  val text =
+    fromURL(&quot;https://en.wikipedia.org/wiki/Gettysburg_Address&quot;).mkString
+  callExplore(text)
+} catch {
+  case ex: Throwable ⇒ println(ex)
+}</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">3
+352</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-11/index.md" title="Edit this page" class="md-source-file md-edit">
