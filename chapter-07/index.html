@@ -299,6 +299,10 @@ println(apartmentApplication.check)</code></pre>
   new Check with CriminalRecordCheck with EmploymentCheck
 
 println(employmentApplication.check)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Check Criminal Records...Checked Credit... Checked Application Details...
+Checked Employment...Check Criminal Records...Checked Application 
+Details...</code></pre>
 <h2><a href="#代码清单7-14" name="代码清单7-14" class="anchor"><span class="anchor-link"></span></a>代码清单7-14</h2>
 <pre class="prettyprint"><code class="language-scala">abstract class Writer {
   def writeMessage(message: String): Unit
@@ -332,6 +336,9 @@ myWriterProfanityLast writeMessage &quot;There is no sin except stupidity&quot;
 
 println(myWriterProfanityFirst)
 println(myWriterProfanityLast)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">THERE IS NO SIN EXCEPT S-----ITY
+THERE IS NO SIN EXCEPT STUPIDITY</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-07/index.md" title="Edit this page" class="md-source-file md-edit">
