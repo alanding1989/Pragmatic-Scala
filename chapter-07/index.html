@@ -250,6 +250,18 @@ Comet&#39;s listening quietly</code></pre>
 
   useFriend(alf) // ERROR
 }</code></pre>
+<p><em>编译结果</em></p>
+<pre class="prettyprint"><code class="language-output">UseCat.scala:5: error: type mismatch;
+ found   : Cat
+ required: Friend
+  val friend : Friend = alf // ERROR
+                        ^
+UseCat.scala:7: error: type mismatch;
+ found   : Cat
+ required: Friend
+  useFriend(alf) // ERROR
+            ^
+two errors found</code></pre>
 <h2><a href="#代码清单7-9" name="代码清单7-9" class="anchor"><span class="anchor-link"></span></a>代码清单7-9</h2>
 <pre class="prettyprint"><code class="language-scala">def useFriend(friend: Friend): Unit = friend.listen()
 
