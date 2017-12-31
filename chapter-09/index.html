@@ -150,6 +150,8 @@ Type to start searching
     <li><a href="../chapter-09/index.html#代码清单9-23" class="header">代码清单9-23</a></li>
     <li><a href="../chapter-09/index.html#代码清单9-24" class="header">代码清单9-24</a></li>
     <li><a href="../chapter-09/index.html#代码清单9-25" class="header">代码清单9-25</a></li>
+    <li><a href="../chapter-09/index.html#代码清单9-26" class="header">代码清单9-26</a></li>
+    <li><a href="../chapter-09/index.html#代码清单9-27" class="header">代码清单9-27</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -195,6 +197,8 @@ Type to start searching
     <li><a href="../chapter-09/index.html#代码清单9-23" class="header">代码清单9-23</a></li>
     <li><a href="../chapter-09/index.html#代码清单9-24" class="header">代码清单9-24</a></li>
     <li><a href="../chapter-09/index.html#代码清单9-25" class="header">代码清单9-25</a></li>
+    <li><a href="../chapter-09/index.html#代码清单9-26" class="header">代码清单9-26</a></li>
+    <li><a href="../chapter-09/index.html#代码清单9-27" class="header">代码清单9-27</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -316,6 +320,16 @@ sample.process(100)</code></pre>
 <pre class="prettyprint"><code class="language-output">You matched max 0
 You matched max 100</code></pre>
 <h2><a href="#代码清单9-7" name="代码清单9-7" class="anchor"><span class="anchor-link"></span></a>代码清单9-7</h2>
+<pre class="prettyprint"><code class="language-scala">case this.max ⇒ println(s&quot;You matched max $max&quot;)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">scala.MatchError: 0 (of class java.lang.Integer)
+You matched max 100</code></pre>
+<h2><a href="#代码清单9-8" name="代码清单9-8" class="anchor"><span class="anchor-link"></span></a>代码清单9-8</h2>
+<pre class="prettyprint"><code class="language-scala">case `max` ⇒ println(s&quot;You matched max $max&quot;)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">scala.MatchError: 0 (of class java.lang.Integer)
+You matched max 100</code></pre>
+<h2><a href="#代码清单9-9" name="代码清单9-9" class="anchor"><span class="anchor-link"></span></a>代码清单9-9</h2>
 <pre class="prettyprint"><code class="language-scala">class Sample {
   val MAX = 100
 
@@ -336,12 +350,12 @@ sample.process(100)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">scala.MatchError: 0 (of class java.lang.Integer)
 You matched max</code></pre>
-<h2><a href="#代码清单9-8" name="代码清单9-8" class="anchor"><span class="anchor-link"></span></a>代码清单9-8</h2>
+<h2><a href="#代码清单9-10" name="代码清单9-10" class="anchor"><span class="anchor-link"></span></a>代码清单9-10</h2>
 <pre class="prettyprint"><code class="language-scala">trait Trade
 case class Sell(stockSymbol: String, quantity: Int) extends Trade
 case class Buy(stockSymbol: String, quantity: Int) extends Trade
 case class Hedge(stockSymbol: String, quantity: Int) extends Trade</code></pre>
-<h2><a href="#代码清单9-9" name="代码清单9-9" class="anchor"><span class="anchor-link"></span></a>代码清单9-9</h2>
+<h2><a href="#代码清单9-11" name="代码清单9-11" class="anchor"><span class="anchor-link"></span></a>代码清单9-11</h2>
 <pre class="prettyprint"><code class="language-scala">object TradeProcessor {
   def processTransaction(request: Trade): Unit = {
     request match {
@@ -355,7 +369,7 @@ case class Hedge(stockSymbol: String, quantity: Int) extends Trade</code></pre>
     }
   }
 }</code></pre>
-<h2><a href="#代码清单9-10" name="代码清单9-10" class="anchor"><span class="anchor-link"></span></a>代码清单9-10</h2>
+<h2><a href="#代码清单9-12" name="代码清单9-12" class="anchor"><span class="anchor-link"></span></a>代码清单9-12</h2>
 <pre class="prettyprint"><code class="language-scala">TradeProcessor.processTransaction(Sell(&quot;GOOG&quot;, 500))
 TradeProcessor.processTransaction(Buy(&quot;GOOG&quot;, 700))
 TradeProcessor.processTransaction(Sell(&quot;GOOG&quot;, 1000))
@@ -365,7 +379,7 @@ TradeProcessor.processTransaction(Buy(&quot;GOOG&quot;, 3000))</code></pre>
 Buying 700 units of GOOG
 Selling 1000-units of GOOG
 Buying 3000 (large) units of GOOG</code></pre>
-<h2><a href="#代码清单9-11" name="代码清单9-11" class="anchor"><span class="anchor-link"></span></a>代码清单9-11</h2>
+<h2><a href="#代码清单9-13" name="代码清单9-13" class="anchor"><span class="anchor-link"></span></a>代码清单9-13</h2>
 <pre class="prettyprint"><code class="language-scala">case class Apple()
 case class Orange()
 case class Book()
@@ -380,7 +394,7 @@ object ThingsAcceptor {
     }
   }
 }</code></pre>
-<h2><a href="#代码清单9-12" name="代码清单9-12" class="anchor"><span class="anchor-link"></span></a>代码清单9-12</h2>
+<h2><a href="#代码清单9-14" name="代码清单9-14" class="anchor"><span class="anchor-link"></span></a>代码清单9-14</h2>
 <pre class="prettyprint"><code class="language-scala">ThingsAcceptor.acceptStuff(Apple())
 ThingsAcceptor.acceptStuff(Book())
 ThingsAcceptor.acceptStuff(Apple)</code></pre>
@@ -388,7 +402,7 @@ ThingsAcceptor.acceptStuff(Apple)</code></pre>
 <pre class="prettyprint"><code class="language-output">Thanks for the Apple
 Thanks for the Book
 Excuse me, why did you send me Apple</code></pre>
-<h2><a href="#代码清单9-13" name="代码清单9-13" class="anchor"><span class="anchor-link"></span></a>代码清单9-13</h2>
+<h2><a href="#代码清单9-15" name="代码清单9-15" class="anchor"><span class="anchor-link"></span></a>代码清单9-15</h2>
 <pre class="prettyprint"><code class="language-scala">abstract class Thing
 case class Apple() extends Thing
 
@@ -402,11 +416,11 @@ object ThingsAcceptor {
 }
 
 ThingsAcceptor.acceptStuff(Apple) //error: type mismatch;</code></pre>
-<h2><a href="#代码清单9-14" name="代码清单9-14" class="anchor"><span class="anchor-link"></span></a>代码清单9-14</h2>
+<h2><a href="#代码清单9-16" name="代码清单9-16" class="anchor"><span class="anchor-link"></span></a>代码清单9-16</h2>
 <pre class="prettyprint"><code class="language-scala">StockService process &quot;GOOG&quot;
 StockService process &quot;IBM&quot;
 StockService process &quot;ERR&quot;</code></pre>
-<h2><a href="#代码清单9-15" name="代码清单9-15" class="anchor"><span class="anchor-link"></span></a>代码清单9-15</h2>
+<h2><a href="#代码清单9-17" name="代码清单9-17" class="anchor"><span class="anchor-link"></span></a>代码清单9-17</h2>
 <pre class="prettyprint"><code class="language-scala">object StockService {
   def process(input: String): Unit = {
     input match {
@@ -415,7 +429,7 @@ StockService process &quot;ERR&quot;</code></pre>
     }
   }
 }</code></pre>
-<h2><a href="#代码清单9-16" name="代码清单9-16" class="anchor"><span class="anchor-link"></span></a>代码清单9-16</h2>
+<h2><a href="#代码清单9-18" name="代码清单9-18" class="anchor"><span class="anchor-link"></span></a>代码清单9-18</h2>
 <pre class="prettyprint"><code class="language-scala">object Symbol {
   def unapply(symbol: String): Boolean = {
     // you&#39;d look up a database... here only GOOG and IBM are recognized
@@ -426,7 +440,7 @@ StockService process &quot;ERR&quot;</code></pre>
 <pre class="prettyprint"><code class="language-output">Look up price for valid symbol GOOG
 Look up price for valid symbol IBM
 Invalid input ERR</code></pre>
-<h2><a href="#代码清单9-17" name="代码清单9-17" class="anchor"><span class="anchor-link"></span></a>代码清单9-17</h2>
+<h2><a href="#代码清单9-19" name="代码清单9-19" class="anchor"><span class="anchor-link"></span></a>代码清单9-19</h2>
 <pre class="prettyprint"><code class="language-scala">object StockService {
   def process(input: String): Unit = {
     input match {
@@ -437,7 +451,7 @@ Invalid input ERR</code></pre>
     }
   }
 }</code></pre>
-<h2><a href="#代码清单9-18" name="代码清单9-18" class="anchor"><span class="anchor-link"></span></a>代码清单9-18</h2>
+<h2><a href="#代码清单9-20" name="代码清单9-20" class="anchor"><span class="anchor-link"></span></a>代码清单9-20</h2>
 <pre class="prettyprint"><code class="language-scala">object ReceiveStockPrice {
   def unapply(input: String): Option[(String, Double)] = {
     try {
@@ -452,7 +466,7 @@ Invalid input ERR</code></pre>
     }
   }
 }</code></pre>
-<h2><a href="#代码清单9-19" name="代码清单9-19" class="anchor"><span class="anchor-link"></span></a>代码清单9-19</h2>
+<h2><a href="#代码清单9-21" name="代码清单9-21" class="anchor"><span class="anchor-link"></span></a>代码清单9-21</h2>
 <pre class="prettyprint"><code class="language-scala">StockService process &quot;GOOG&quot;
 StockService process &quot;GOOG:310.84&quot;
 StockService process &quot;GOOG:BUY&quot;
@@ -462,7 +476,7 @@ StockService process &quot;ERR:12.21&quot;</code></pre>
 Received price $310.84 for symbol GOOG
 Invalid input GOOG:BUY
 Received price $12.21 for symbol ERR</code></pre>
-<h2><a href="#代码清单9-20" name="代码清单9-20" class="anchor"><span class="anchor-link"></span></a>代码清单9-20</h2>
+<h2><a href="#代码清单9-22" name="代码清单9-22" class="anchor"><span class="anchor-link"></span></a>代码清单9-22</h2>
 <pre class="prettyprint"><code class="language-scala">case ReceiveStockPrice(symbol @ Symbol(), price) ⇒
   println(s&quot;Received price $$$price for symbol $symbol&quot;)</code></pre>
 <p><em>运行结果</em></p>
@@ -470,19 +484,19 @@ Received price $12.21 for symbol ERR</code></pre>
 Received price $310.84 for symbol GOOG
 Invalid input GOOG:BUY
 Invalid input ERR:12.21</code></pre>
-<h2><a href="#代码清单9-21" name="代码清单9-21" class="anchor"><span class="anchor-link"></span></a>代码清单9-21</h2>
+<h2><a href="#代码清单9-23" name="代码清单9-23" class="anchor"><span class="anchor-link"></span></a>代码清单9-23</h2>
 <pre class="prettyprint"><code class="language-scala">val pattern = &quot;(S|s)cala&quot;.r
 val str = &quot;Scala is scalable and cool&quot;
 println(pattern findFirstIn str)</code></pre>
-<h2><a href="#代码清单9-22" name="代码清单9-22" class="anchor"><span class="anchor-link"></span></a>代码清单9-22</h2>
+<h2><a href="#代码清单9-24" name="代码清单9-24" class="anchor"><span class="anchor-link"></span></a>代码清单9-24</h2>
 <pre class="prettyprint"><code class="language-scala">println((pattern findAllIn str).mkString(&quot;, &quot;))</code></pre>
-<h2><a href="#代码清单9-23" name="代码清单9-23" class="anchor"><span class="anchor-link"></span></a>代码清单9-23</h2>
+<h2><a href="#代码清单9-25" name="代码清单9-25" class="anchor"><span class="anchor-link"></span></a>代码清单9-25</h2>
 <pre class="prettyprint"><code class="language-scala">println(&quot;cool&quot;.r replaceFirstIn (str, &quot;awesome&quot;))</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Some(Scala)
 Scala, scala
 Scala is scalable and awesome</code></pre>
-<h2><a href="#代码清单9-24" name="代码清单9-24" class="anchor"><span class="anchor-link"></span></a>代码清单9-24</h2>
+<h2><a href="#代码清单9-26" name="代码清单9-26" class="anchor"><span class="anchor-link"></span></a>代码清单9-26</h2>
 <pre class="prettyprint"><code class="language-scala">def process(input: String): Unit = {
   val GoogStock = &quot;&quot;&quot;^GOOG:(\d*\.\d+)&quot;&quot;&quot;.r
   input match {
@@ -497,7 +511,7 @@ process(&quot;IBM:84.01&quot;)</code></pre>
 <pre class="prettyprint"><code class="language-output">Price of GOOG is $310.84
 not processing GOOG:310
 not processing IBM:84.01</code></pre>
-<h2><a href="#代码清单9-25" name="代码清单9-25" class="anchor"><span class="anchor-link"></span></a>代码清单9-25</h2>
+<h2><a href="#代码清单9-27" name="代码清单9-27" class="anchor"><span class="anchor-link"></span></a>代码清单9-27</h2>
 <pre class="prettyprint"><code class="language-scala">def process(input: String): Unit = {
   val MatchStock = &quot;&quot;&quot;^(.+):(\d*\.\d+)&quot;&quot;&quot;.r
   input match {
