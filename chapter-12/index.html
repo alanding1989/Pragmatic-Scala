@@ -140,6 +140,7 @@ Type to start searching
     <li><a href="../chapter-12/index.html#代码清单12-13" class="header">代码清单12-13</a></li>
     <li><a href="../chapter-12/index.html#代码清单12-14" class="header">代码清单12-14</a></li>
     <li><a href="../chapter-12/index.html#代码清单12-15" class="header">代码清单12-15</a></li>
+    <li><a href="../chapter-12/index.html#代码清单12-16" class="header">代码清单12-16</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -175,6 +176,7 @@ Type to start searching
     <li><a href="../chapter-12/index.html#代码清单12-13" class="header">代码清单12-13</a></li>
     <li><a href="../chapter-12/index.html#代码清单12-14" class="header">代码清单12-14</a></li>
     <li><a href="../chapter-12/index.html#代码清单12-15" class="header">代码清单12-15</a></li>
+    <li><a href="../chapter-12/index.html#代码清单12-16" class="header">代码清单12-16</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -382,23 +384,6 @@ def getWeatherData(city: String) = {
   val end = System.nanoTime
   println(s&quot;Time taken: ${(end - start) / 1.0e9} sec&quot;)
 }</code></pre>
-<p><em>运行结果</em></p>
-<pre class="prettyprint"><code class="language-output">Bengaluru       84.2   few clouds
-Berlin          45.63  broken clouds
-Boston          52.23  scattered clouds
-Brussels        50.83  Sky is Clear
-Chicago         46.13  sky is clear
-Cracow          40.39  moderate rain
-Houston         54.01  light intensity drizzle
-London          55.33  Sky is Clear
-Minneapolis     42.82  sky is clear
-Oslo            47.3   Sky is Clear
-Reykjavik       31.17  proximity shower rain
-Rome            58.42  few clouds
-Stockholm       47.28  Sky is Clear
-Sydney          68.9   Sky is Clear
-Tromso          35.6   proximity shower rain
-Time taken: 67.208944087 sec</code></pre>
 <h2><a href="#代码清单12-15" name="代码清单12-15" class="anchor"><span class="anchor-link"></span></a>代码清单12-15</h2>
 <pre class="prettyprint"><code class="language-scala">timeSample { cities ⇒ cities map getWeatherData }</code></pre>
 <p><em>运行结果</em></p>
@@ -417,7 +402,26 @@ Rome            58.42  few clouds
 Stockholm       47.28  Sky is Clear
 Sydney          68.9   Sky is Clear
 Tromso          35.6   proximity shower rain
-Time taken: 0.171599394 sec</code></pre>
+Time taken: 67.208944087 sec</code></pre>
+<h2><a href="#代码清单12-16" name="代码清单12-16" class="anchor"><span class="anchor-link"></span></a>代码清单12-16</h2>
+<pre class="prettyprint"><code class="language-scala">timeSample { cities ⇒ (cities.par map getWeatherData).toList }</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Bengaluru       84.2   few clouds
+Berlin          45.63  broken clouds
+Boston          52.23  scattered clouds
+Brussels        50.83  Sky is Clear
+Chicago         46.13  sky is clear
+Cracow          40.39  moderate rain
+Houston         54.01  light intensity drizzle
+London          55.33  Sky is Clear
+Minneapolis     42.82  sky is clear
+Oslo            47.3   Sky is Clear
+Reykjavik       31.17  proximity shower rain
+Rome            58.42  few clouds
+Stockholm       47.28  Sky is Clear
+Sydney          68.9   Sky is Clear
+Tromso          35.6   proximity shower rain
+Time taken: 67.208944087 sec</code></pre>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala/tree/master/src/paradox/chapter-12/index.md" title="Edit this page" class="md-source-file md-edit">
