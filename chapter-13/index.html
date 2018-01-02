@@ -132,9 +132,10 @@ Type to start searching
     <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -162,9 +163,10 @@ Type to start searching
     <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -202,6 +204,8 @@ while (filesToVisit.nonEmpty) {
 val end = System.nanoTime
 println(s&quot;Number of files found: $count&quot;)
 println(s&quot;Time taken: ${(end - start) / 1.0e9} seconds&quot;)</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scala countFilesSequential.scala /Users/venkats/agility</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Number of files found: 479758
 Time taken: 66.524453436 seconds</code></pre>
@@ -213,6 +217,10 @@ class HollywoodActor() extends Actor {
     case message ⇒ println(s&quot;playing the role of $message&quot;)
   }
 }</code></pre>
+<p><em>执行命令——编译</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes HollywoodActor.scala CreateActors.scala</code></pre>
+<p><em>执行命令——执行</em></p>
+<pre class="prettyprint"><code class="language-sh">scala -classpath classes CreateActors</code></pre>
 <h2><a href="#代码清单13-3" name="代码清单13-3" class="anchor"><span class="anchor-link"></span></a>代码清单13-3</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 
@@ -232,6 +240,8 @@ object CreateActors extends App {
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">playing the role of Wonka</code></pre>
 <h2><a href="#代码清单13-4" name="代码清单13-4" class="anchor"><span class="anchor-link"></span></a>代码清单13-4</h2>
+<pre class="prettyprint"><code class="language-scala">case message ⇒ println(s&quot;$message - ${Thread.currentThread}&quot;)</code></pre>
+<h2><a href="#代码清单13-5" name="代码清单13-5" class="anchor"><span class="anchor-link"></span></a>代码清单13-5</h2>
 <pre class="prettyprint"><code class="language-scala">val depp = system.actorOf(Props[HollywoodActor])
 val hanks = system.actorOf(Props[HollywoodActor])
 
@@ -247,7 +257,7 @@ Gump - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Calling from Thread[main,5,main]
 Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Sparrow - Thread[sample-akka.actor.default-dispatcher-2,5,main]</code></pre>
-<h2><a href="#代码清单13-5" name="代码清单13-5" class="anchor"><span class="anchor-link"></span></a>代码清单13-5</h2>
+<h2><a href="#代码清单13-6" name="代码清单13-6" class="anchor"><span class="anchor-link"></span></a>代码清单13-6</h2>
 <pre class="prettyprint"><code class="language-scala">depp ! &quot;Wonka&quot;
 hanks ! &quot;Gump&quot;
 
@@ -261,7 +271,7 @@ Gump - Thread[sample-akka.actor.default-dispatcher-4,5,main]
 Sparrow - Thread[sample-akka.actor.default-dispatcher-4,5,main]
 Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Calling from Thread[main,5,main]</code></pre>
-<h2><a href="#代码清单13-6" name="代码清单13-6" class="anchor"><span class="anchor-link"></span></a>代码清单13-6</h2>
+<h2><a href="#代码清单13-7" name="代码清单13-7" class="anchor"><span class="anchor-link"></span></a>代码清单13-7</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import scala.collection._
 
@@ -329,7 +339,7 @@ Playing Sparrow
 Depp played Wonka 2 time(s)
 Depp played Sparrow 1 time(s)
 Hanks played Gump 1 time(s)</code></pre>
-<h2><a href="#代码清单13-8" name="代码清单13-8" class="anchor"><span class="anchor-link"></span></a>代码清单13-8</h2>
+<h2><a href="#代码清单13-9" name="代码清单13-9" class="anchor"><span class="anchor-link"></span></a>代码清单13-9</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import java.io._
 
@@ -349,7 +359,7 @@ class FileExplorer extends Actor {
       sender ! filesCount
   }
 }</code></pre>
-<h2><a href="#代码清单13-9" name="代码清单13-9" class="anchor"><span class="anchor-link"></span></a>代码清单13-9</h2>
+<h2><a href="#代码清单13-10" name="代码清单13-10" class="anchor"><span class="anchor-link"></span></a>代码清单13-10</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import akka.routing._
 
@@ -382,7 +392,7 @@ class FilesCounter extends Actor {
       }
   }
 }</code></pre>
-<h2><a href="#代码清单13-10" name="代码清单13-10" class="anchor"><span class="anchor-link"></span></a>代码清单13-10</h2>
+<h2><a href="#代码清单13-11" name="代码清单13-11" class="anchor"><span class="anchor-link"></span></a>代码清单13-11</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 
 object CountFiles extends App {
