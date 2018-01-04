@@ -132,7 +132,7 @@ Type to start searching
     <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
@@ -163,7 +163,7 @@ Type to start searching
     <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
+    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
     <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
@@ -291,7 +291,7 @@ class HollywoodActor() extends Actor {
       sender ! messagesCount.getOrElse(role, 0)
   }
 }</code></pre>
-<h2><a href="#代码清单13-7" name="代码清单13-7" class="anchor"><span class="anchor-link"></span></a>代码清单13-7</h2>
+<h2><a href="#代码清单13-8" name="代码清单13-8" class="anchor"><span class="anchor-link"></span></a>代码清单13-8</h2>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import akka.pattern.ask
 import akka.util.Timeout
@@ -402,6 +402,9 @@ object CountFiles extends App {
 
   filesCounter ! args(0)
 }</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes FilesCounter.scala FileExplorer.scala CountFiles.scala
+scala -classpath classes CountFiles /Users/venkats/agility</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Files count: 479758
 Time taken: 5.609851764 seconds</code></pre>
