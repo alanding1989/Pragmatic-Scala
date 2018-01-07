@@ -132,8 +132,8 @@ Type to start searching
     <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-9" class="header">代码清单16-9</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -161,8 +161,8 @@ Type to start searching
     <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
     <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
+    <li><a href="../chapter-16/index.html#代码清单16-9" class="header">代码清单16-9</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -189,6 +189,10 @@ class UsingJUnit {
     assertEquals(2, list.size)
   }
 }</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes -classpath $JUNIT_JAR:$HAMCREST_JAR UsingJUnit.scala
+java -classpath $SCALALIBRARY:$JUNIT_JAR:$HAMCREST_JAR:classes \
+  org.junit.runner.JUnitCore UsingJUnit</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">JUnit version 4.12
 .
@@ -215,6 +219,9 @@ class UsingScalaTest extends FlatSpec with Matchers {
     list.size should be(2)
   }
 }</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes -classpath $SCALA_TEST_JAR UsingScalaTest.scala
+scala -classpath $SCALA_TEST_JAR:classes org.scalatest.run UsingScalaTest</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 2
 UsingScalaTest:
@@ -264,6 +271,10 @@ class WordScorerTest extends FlatSpec with Matchers {
     }
   }
 }</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes -classpath $SCALA_TEST_JAR \
+  WordScorer.scala WordScorerTest.scala
+scala -classpath $SCALA_TEST_JAR:classes org.scalatest.run WordScorerTest</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 4
 WordScorerTest:
@@ -330,6 +341,11 @@ class WordScorerTest extends FlatSpec with Matchers {
     }
   }
 }</code></pre>
+<p><em>执行命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d classes -classpath $SCALA_TEST_JAR:$MOCKITO_JAR \
+  WordScorer.scala SpellChecker.scala WordScorerTest.scala
+scala -classpath $SCALA_TEST_JAR::$MOCKITO_JAR:classes \
+  org.scalatest.run WordScorerTest</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Run starting. Expected test count is: 4
 WordScorerTest:
@@ -346,7 +362,7 @@ Total number of tests run: 4
 Suites: completed 1, aborted 0
 Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 0
 All tests passed.</code></pre>
-<h2><a href="#代码清单16-7" name="代码清单16-7" class="anchor"><span class="anchor-link"></span></a>代码清单16-7</h2>
+<h2><a href="#代码清单16-8" name="代码清单16-8" class="anchor"><span class="anchor-link"></span></a>代码清单16-8</h2>
 <pre class="prettyprint"><code class="language-scala">&quot;score&quot; should &quot;return 0 for word with incorrect spelling&quot; in {
   val spellChecker = mock(classOf[SpellChecker])
   when(spellChecker.isCorrect(anyString)).thenReturn(false)
@@ -355,7 +371,7 @@ All tests passed.</code></pre>
   wordScorer.score(&quot;aoe&quot;) should be(0)
   verify(spellChecker, times(1)).isCorrect(anyString())
 }</code></pre>
-<h2><a href="#代码清单16-8" name="代码清单16-8" class="anchor"><span class="anchor-link"></span></a>代码清单16-8</h2>
+<h2><a href="#代码清单16-9" name="代码清单16-9" class="anchor"><span class="anchor-link"></span></a>代码清单16-9</h2>
 <pre class="prettyprint"><code class="language-scala">def score(word: String): Int = {
   if (spellChecker.isCorrect(word))
     (0 /: word) { (total, letter) ⇒
