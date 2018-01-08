@@ -235,10 +235,16 @@ Type to start searching
 <h2><a href="#代码清单5-3" name="代码清单5-3" class="anchor"><span class="anchor-link"></span></a>代码清单5-3</h2>
 <pre class="prettyprint"><code class="language-scala">println(greet)
 println(greet.getClass)</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Ahoy!
+class java.lang.String</code></pre>
 <h2><a href="#代码清单5-4" name="代码清单5-4" class="anchor"><span class="anchor-link"></span></a>代码清单5-4</h2>
 <pre class="prettyprint"><code class="language-scala">class TypeInference {
   val greet = &quot;Ahoy!&quot;
 }</code></pre>
+<p><em>使用命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac -d bin TypeInference.scala
+javap -classpath bin -private TypeInference</code></pre>
 <p><em>反编译结果</em></p>
 <pre class="prettyprint"><code class="language-output">Compiled from &quot;TypeInference.scala&quot;
 public class TypeInference {
@@ -261,6 +267,8 @@ var list2 = new util.ArrayList[Int]</code></pre>
 
 var list1 = new util.ArrayList[Int]
 var list2 = new util.ArrayList
+list2.add(???)
+
 list2 = list1 // Compilation Error</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Generics2.scala:5: error: type mismatch;
@@ -286,12 +294,11 @@ ref2 = ref1 //OK
 
 list2 = list1 // Compilation Error</code></pre>
 <p><em>运行结果</em></p>
-<pre class="prettyprint"><code class="language-output">Generics2.scala:5: error: type mismatch;
+<pre class="prettyprint"><code class="language-output">Generics3.scala:11: error: type mismatch;
  found   : java.util.ArrayList[Int]
- required: java.util.ArrayList[Nothing]
-Note: Int &gt;: Nothing, but Java-defined class ArrayList is invariant in 
-type E.
-You may wish to investigate a wildcard type such as `_ &gt;: Nothing`. (SLS 
+ required: java.util.ArrayList[Any]
+Note: Int &lt;: Any, but Java-defined class ArrayList is invariant in type E.
+You may wish to investigate a wildcard type such as `_ &lt;: Any`. (SLS 
 3.2.10)
 list2 = list1 // Compilation Error
         ^
@@ -403,6 +410,8 @@ public class Trouble {
 <pre class="prettyprint"><code class="language-java">  //Java code
 ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
 ArrayList&lt;Object&gt; list2 = list; // Compilation error</code></pre>
+<p><em>绕开限制</em></p>
+<pre class="prettyprint"><code class="language-java">ArrayList list3 = list;</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">OKJava.java:8: error: incompatible types: ArrayList&lt;Integer&gt; cannot be
 converted to ArrayList&lt;Object&gt;
@@ -633,6 +642,9 @@ println(mask&quot;&quot;&quot;Account: $account
     }
   }
 }</code></pre>
+<p><em>使用命令</em></p>
+<pre class="prettyprint"><code class="language-sh">scalac MyInterpolator.scala mask.scala
+scala UseInterpolator</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Account: ...1263
 Social Security Number: ...6789
