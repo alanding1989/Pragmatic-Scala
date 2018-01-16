@@ -286,7 +286,7 @@ println(s&quot;Max of elements in array is $max&quot;)</code></pre>
 val max =
   (Integer.MIN_VALUE /: array) { (large, elem) ⇒ Math.max(large, elem) }</code></pre>
 <h2><a href="#代码清单6-12" name="代码清单6-12" class="anchor"><span class="anchor-link"></span></a>代码清单6-12</h2>
-<pre class="prettyprint"><code class="language-scala">val sum =  inject(array, 0) {(carryOver, elem) =&gt; carryOver + elem}</code></pre>
+<pre class="prettyprint"><code class="language-scala">val sum = inject(array, 0) { (carryOver, elem) ⇒ carryOver + elem }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Inject3.scala:9: error: not enough arguments for method inject: (arr:
 Array[Int], initial: Int, operation: (Int, Int) =&gt; Int)Int.
