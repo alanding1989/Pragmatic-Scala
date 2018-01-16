@@ -105,7 +105,7 @@ Type to start searching
     <li><a href="../chapter-01/index.html" class="page">第1章——探索Scala</a></li>
     <li><a href="../chapter-02/index.html" class="active page">第2章——体验Scala</a></li>
     <li><a href="../chapter-03/index.html" class="page">第3章——从Java到Scala</a></li>
-    <li><a href="../chapter-04/index.html" class="page">第4章——善用对象</a></li>
+    <li><a href="../chapter-04/index.html" class="page">第4章——处理对象</a></li>
     <li><a href="../chapter-05/index.html" class="page">第5章——善用类型</a></li>
     <li><a href="../chapter-06/index.html" class="page">第6章——函数值和闭包</a></li>
     <li><a href="../chapter-07/index.html" class="page">第7章——特质</a></li>
@@ -133,6 +133,9 @@ Type to start searching
     <li><a href="../chapter-02/index.html#代码清单2-6" class="header">代码清单2-6</a></li>
     <li><a href="../chapter-02/index.html#代码清单2-7" class="header">代码清单2-7</a></li>
     <li><a href="../chapter-02/index.html#代码清单2-8" class="header">代码清单2-8</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-9" class="header">代码清单2-9</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-10" class="header">代码清单2-10</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-11" class="header">代码清单2-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -161,6 +164,9 @@ Type to start searching
     <li><a href="../chapter-02/index.html#代码清单2-6" class="header">代码清单2-6</a></li>
     <li><a href="../chapter-02/index.html#代码清单2-7" class="header">代码清单2-7</a></li>
     <li><a href="../chapter-02/index.html#代码清单2-8" class="header">代码清单2-8</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-9" class="header">代码清单2-9</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-10" class="header">代码清单2-10</a></li>
+    <li><a href="../chapter-02/index.html#代码清单2-11" class="header">代码清单2-11</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -210,6 +216,20 @@ scala&gt; :quit</code></pre>
 Hello World, Welcome to Scala</code></pre>
 <h2><a href="#代码清单2-8" name="代码清单2-8" class="anchor"><span class="anchor-link"></span></a>代码清单2-8</h2>
 <pre class="prettyprint"><code class="language-scala">println(&quot;Hello World, Welcome to Scala&quot;)</code></pre>
+<h2><a href="#代码清单2-9" name="代码清单2-9" class="anchor"><span class="anchor-link"></span></a>代码清单2-9</h2>
+<pre class="prettyprint"><code class="language-sh">println(&quot;Hello &quot; + args(0))</code></pre>
+<p><em>运行结果</em></p>
+<pre class="prettyprint"><code class="language-output">Hello Buddy</code></pre>
+<h2><a href="#代码清单2-10" name="代码清单2-10" class="anchor"><span class="anchor-link"></span></a>代码清单2-10</h2>
+<pre class="prettyprint"><code class="language-bat">echo off
+
+cls
+call scala %1
+pause</code></pre>
+<h2><a href="#代码清单2-11" name="代码清单2-11" class="anchor"><span class="anchor-link"></span></a>代码清单2-11</h2>
+<pre class="prettyprint"><code class="language-scala">object Sample extends App {
+  println(&quot;Hello Scala&quot;)
+}</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">&gt; scalac Sample.scala
 &gt; scala Sample
