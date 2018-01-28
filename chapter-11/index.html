@@ -258,14 +258,11 @@ java/lang/RuntimeException
       11: invokespecial #20                 // Method 
 java/lang/RuntimeException.&quot;&lt;init&gt;&quot;:(Ljava/lang/String;)V
       14: athrow
-      15: iconst_1
-      16: aload_0
-      17: iload_1
-      18: iconst_1
-      19: isub
-      20: invokespecial #22                 // Method mad:(I)I
-      23: imul
-      24: ireturn</code></pre>
+      15: iload_1
+      16: iconst_1
+      17: isub
+      18: istore_1
+      19: goto          0</code></pre>
 <h2><a href="#代码清单11-8" name="代码清单11-8" class="anchor"><span class="anchor-link"></span></a>代码清单11-8</h2>
 <pre class="prettyprint"><code class="language-scala">@scala.annotation.tailrec
 def factorial(number: Int): BigInt = {
