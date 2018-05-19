@@ -137,7 +137,7 @@ Type to start searching
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 1.0
+<i class="md-icon">label_outline</i> 1.0.0
 </div>
 </nav>
 
@@ -172,7 +172,7 @@ Type to start searching
 <h1><a href="#第1章-探索scala" name="第1章-探索scala" class="anchor"><span class="anchor-link"></span></a>第1章——探索Scala</h1>
 <h2><a href="#代码清单1-1" name="代码清单1-1" class="anchor"><span class="anchor-link"></span></a>代码清单1-1</h2>
 <pre class="prettyprint"><code class="language-scala">val symbols = List(&quot;AMD&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;IBM&quot;, &quot;ORCL&quot;, &quot;MSFT&quot;)
-val year = 2014
+val year = 2017
 
 val (topStock, topPrice) =
   symbols.map { ticker ⇒ (ticker, getYearEndClosingPrice(ticker, year)) }
@@ -180,19 +180,34 @@ val (topStock, topPrice) =
 
 printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;)</code></pre>
 <h2><a href="#代码清单1-2" name="代码清单1-2" class="anchor"><span class="anchor-link"></span></a>代码清单1-2</h2>
-<pre class="prettyprint"><code class="language-scala">def getYearEndClosingPrice(symbol: String, year: Int) = {
-  val url = s&quot;http://ichart.finance.yahoo.com/table.csv?s=&quot; +
-    s&quot;$symbol&amp;a=11&amp;b=01&amp;c=$year&amp;d=11&amp;e=31&amp;f=$year&amp;g=m&quot;
+<pre class="prettyprint"><code class="language-scala">case class Record(year: Int, month: Int, date: Int, closePrice: BigDecimal)
+
+def getYearEndClosingPrice(symbol: String, year: Int): BigDecimal = {
+  val url = s&quot;https://raw.githubusercontent.com/ReactivePlatform/&quot; +
+    s&quot;Pragmatic-Scala-StaticResources/master/src/main/resources/&quot; +
+    s&quot;stocks/daily/daily_$symbol.csv&quot;
 
   val data = io.Source.fromURL(url).mkString
-  val price = data.split(&quot;\n&quot;)(1).split(&quot;,&quot;)(4).toDouble
-  price
-}</code></pre>
+  val maxClosePrize = data.split(&quot;\n&quot;)
+    .filter(record ⇒ record.startsWith(s&quot;$year-12&quot;))
+    .map(record ⇒ {
+      val Array(timestamp, open, high, low, close, volume) = record.split(&quot;,&quot;)
+      val Array(year, month, date) = timestamp.split(&quot;-&quot;)
+      Record(year.toInt, month.toInt, date.toInt, BigDecimal(close.trim))
+    })
+    .sortBy(_.date)(Ordering[Int].reverse)
+    .take(1)
+    .map(_.closePrice)
+    .head
+  maxClosePrize
+}
+</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Top stock of 2014 is AMZN closing at price $310.35</code></pre>
 <h2><a href="#代码清单1-3" name="代码清单1-3" class="anchor"><span class="anchor-link"></span></a>代码清单1-3</h2>
-<pre class="prettyprint"><code class="language-scala">symbols.par.map { ticker ⇒ (ticker, getYearEndClosingPrice(ticker, year)) }
-  .maxBy { stockPrice ⇒ stockPrice._2 }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val (topStock, topPrice) =
+  symbols.par.map { ticker ⇒ (ticker, getYearEndClosingPrice(ticker, year)) }
+    .maxBy { stockPrice ⇒ stockPrice._2 }</code></pre>
 <p><em>编译sample.scala的结果</em></p>
 <pre class="prettyprint"><code class="language-output">sample.scala:2:
 error: type mismatch;
@@ -234,7 +249,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0
+1.0.0
 </span>
 </div>
 </article>

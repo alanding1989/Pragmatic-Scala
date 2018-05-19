@@ -146,7 +146,7 @@ Type to start searching
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 1.0
+<i class="md-icon">label_outline</i> 1.0.0
 </div>
 </nav>
 
@@ -261,7 +261,7 @@ class scala.xml.NodeSeq$$anon$1
 200</code></pre>
 <h2><a href="#代码清单15-8" name="代码清单15-8" class="anchor"><span class="anchor-link"></span></a>代码清单15-8</h2>
 <pre class="prettyprint"><code class="language-scala">unitsNodes.head match {
-  case &lt;units&gt;{ numberOfUnits @ _* }&lt;/units&gt; ⇒ println(s&quot;Units: $numberOfUnits&quot;)
+  case &lt;units&gt;{ numberOfUnits }&lt;/units&gt; ⇒ println(s&quot;Units: $numberOfUnits&quot;)
 }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Units: 200</code></pre>
@@ -342,19 +342,34 @@ println(s&quot;Saved file has $elementsCount symbol elements&quot;)</code></pre>
 2015-03-18,552.50,559.78,547.00,559.50,2124400,559.50
 ...</code></pre>
 <h2><a href="#代码清单15-14" name="代码清单15-14" class="anchor"><span class="anchor-link"></span></a>代码清单15-14</h2>
-<pre class="prettyprint"><code class="language-scala">import java.util.Calendar
+<pre class="prettyprint"><code class="language-scala"><br/>object StockPriceFinder {
+  import scala.io.Source
 
-object StockPriceFinder {
-  def getLatestClosingPrice(symbol: String): Double = {
-    val url = &quot;http://ichart.finance.yahoo.com/table.csv?s=&quot; +
-      symbol + &quot;&amp;a=00&amp;b=01&amp;c=&quot; + Calendar.getInstance().get(Calendar.YEAR)
-    val data = scala.io.Source.fromURL(url).mkString
-    val mostRecentData = data.split(&quot;\n&quot;)(1)
-    val closingPrice = mostRecentData.split(&quot;,&quot;)(4).toDouble
-    closingPrice
+  case class Record(year: Int, month: Int, date: Int, closePrice: BigDecimal)
+
+  def getLatestClosingPrice(symbol: String): BigDecimal = {
+    val url = s&quot;https://raw.githubusercontent.com/ReactivePlatform/&quot; +
+      s&quot;Pragmatic-Scala-StaticResources/master/src/main/resources/&quot; +
+      s&quot;stocks/daily/daily_$symbol.csv&quot;
+
+    val data = Source.fromURL(url).mkString
+    val latestClosePrize = data.split(&quot;\n&quot;)
+      .slice(1, 2)
+      .map(record ⇒ {
+        val Array(timestamp, open, high, low, close, volume) = record.split(&quot;,&quot;)
+        val Array(year, month, date) = timestamp.split(&quot;-&quot;)
+        Record(year.toInt, month.toInt, date.toInt, BigDecimal(close.trim))
+      })
+      .map(_.closePrice)
+      .head
+    latestClosePrize
   }
+
   def getTickersAndUnits: Map[String, Int] = {
-    val stocksAndUnitsXML = scala.xml.XML.load(&quot;stocks.xml&quot;)
+    val classLoader = this.getClass.getClassLoader
+    val stocksXMLInputStream = classLoader.getResourceAsStream(&quot;stocks.xml&quot;)
+    //或者来自于文件
+    val stocksAndUnitsXML = scala.xml.XML.load(stocksXMLInputStream)
     (Map[String, Int]() /: (stocksAndUnitsXML \ &quot;symbol&quot;)) {
       (map, symbolNode) ⇒
         val ticker = (symbolNode \ &quot;@ticker&quot;).toString
@@ -362,9 +377,11 @@ object StockPriceFinder {
         map + (ticker -&gt; units)
     }
   }
-}</code></pre>
+}
+</code></pre>
 <h2><a href="#代码清单15-15" name="代码清单15-15" class="anchor"><span class="anchor-link"></span></a>代码清单15-15</h2>
 <pre class="prettyprint"><code class="language-scala">object FindTotalWorthSequential extends App {
+
   val symbolsAndUnits = StockPriceFinder.getTickersAndUnits
 
   println(&quot;Ticker  Units  Closing Price($) Total Value($)&quot;)
@@ -378,13 +395,13 @@ object StockPriceFinder {
     (symbol, units, latestClosingPrice, value)
   }
 
-  val netWorth = (0.0 /: valuesAndWorth) { (worth, valueAndWorth) ⇒
+  val netWorth = (BigDecimal(0.0D) /: valuesAndWorth) { (worth, valueAndWorth) ⇒
     val (_, _, _, value) = valueAndWorth
     worth + value
   }
   val endTime = System.nanoTime()
 
-  valuesAndWorth.toList.sortBy { _._1 }.foreach { valueAndWorth ⇒
+  valuesAndWorth.toList.sortBy(_._1).foreach { valueAndWorth ⇒
     val (symbol, units, latestClosingPrice, value) = valueAndWorth
     println(f&quot;$symbol%7s  $units%5d  $latestClosingPrice%15.2f  $value%.2f&quot;)
   }
@@ -440,7 +457,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0
+1.0.0
 </span>
 </div>
 </article>
