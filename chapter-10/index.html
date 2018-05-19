@@ -109,7 +109,7 @@ Type to start searching
     <li><a href="../part4.html" class="page">第四部分 Scala 实战</a></li>
     <li><a href="../refs/references.html" class="page">参考书目</a></li>
     <li><a href="../extras.html" class="page">额外指引</a></li>
-    <li><a href="../erratas.html" class="page">勘误</a></li>
+    <li><a href="../errata.html" class="page">勘误</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
@@ -225,16 +225,17 @@ Amount: $0.009 Something went wrong
 Amount: $-2.0 Amount must be greater than zero
 Amount: $1000001.0 Something went wrong</code></pre>
 <h2><a href="#代码清单10-7" name="代码清单10-7" class="anchor"><span class="anchor-link"></span></a>代码清单10-7</h2>
-<pre class="prettyprint"><code class="language-java">//Java code—will not compile due to incorrect catch order
+<pre class="prettyprint"><code class="language-java">// Java code—will not compile due to incorrect catch order
 public class JavaCatchOrder {
   public void catchOrderExample() {
     try {
       String str = &quot;hello&quot;;
       System.out.println(str.charAt(31));
+    } catch (Exception ex) {
+      System.out.println(&quot;Exception caught&quot;);
+    } catch (StringIndexOutOfBoundsException ex) { //ERROR
+      System.out.println(&quot;Invalid Index&quot;);
     }
-    catch(Exception ex) { System.out.println(&quot;Exception caught&quot;); }
-    catch(StringIndexOutOfBoundsException ex) { //ERROR
-      System.out.println(&quot;Invalid Index&quot;); }
   }
 }</code></pre>
 <p><em>运行结果</em></p>

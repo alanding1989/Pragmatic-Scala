@@ -109,7 +109,7 @@ Type to start searching
     <li><a href="../part4.html" class="page">第四部分 Scala 实战</a></li>
     <li><a href="../refs/references.html" class="page">参考书目</a></li>
     <li><a href="../extras.html" class="page">额外指引</a></li>
-    <li><a href="../erratas.html" class="page">勘误</a></li>
+    <li><a href="../errata.html" class="page">勘误</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
@@ -117,13 +117,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-01/index.html#第1章-探索scala" class="header">第1章——探索Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-3" class="header">代码清单1-3</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-4" class="header">代码清单1-4</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-5" class="header">代码清单1-5</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-7" class="header">代码清单1-7</a></li>
+    <li><a href="../chapter-01/index.html#1-2-以少胜多" class="header">1.2 以少胜多</a></li>
+    <li><a href="../chapter-01/index.html#1-3-函数式编程" class="header">1.3 函数式编程</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -144,13 +139,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-01/index.html#第1章-探索scala" class="header">第1章——探索Scala</a>
   <ul>
-    <li><a href="../chapter-01/index.html#代码清单1-1" class="header">代码清单1-1</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-2" class="header">代码清单1-2</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-3" class="header">代码清单1-3</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-4" class="header">代码清单1-4</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-5" class="header">代码清单1-5</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-6" class="header">代码清单1-6</a></li>
-    <li><a href="../chapter-01/index.html#代码清单1-7" class="header">代码清单1-7</a></li>
+    <li><a href="../chapter-01/index.html#1-2-以少胜多" class="header">1.2 以少胜多</a></li>
+    <li><a href="../chapter-01/index.html#1-3-函数式编程" class="header">1.3 函数式编程</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -162,7 +152,11 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第1章-探索scala" name="第1章-探索scala" class="anchor"><span class="anchor-link"></span></a>第1章——探索Scala</h1>
-<h2><a href="#代码清单1-1" name="代码清单1-1" class="anchor"><span class="anchor-link"></span></a>代码清单1-1</h2>
+<p>Scala 是一门强大的编程语言：不需要牺牲强大的静态类型检查支持，就可以写出富有表 现力而又简洁的代码。</p>
+<h2><a href="#1-2-以少胜多" name="1-2-以少胜多" class="anchor"><span class="anchor-link"></span></a>1.2 以少胜多</h2>
+<blockquote>
+  <p>Introduction/TopStock.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">val symbols = List(&quot;AMD&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;IBM&quot;, &quot;ORCL&quot;, &quot;MSFT&quot;)
 val year = 2017
 
@@ -171,7 +165,9 @@ val (topStock, topPrice) =
     .maxBy { stockPrice ⇒ stockPrice._2 }
 
 printf(s&quot;Top stock of $year is $topStock closing at price $$$topPrice&quot;)</code></pre>
-<h2><a href="#代码清单1-2" name="代码清单1-2" class="anchor"><span class="anchor-link"></span></a>代码清单1-2</h2>
+<blockquote>
+  <p>Introduction/TopStock.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">case class Record(year: Int, month: Int, date: Int, closePrice: BigDecimal)
 
 def getYearEndClosingPrice(symbol: String, year: Int): BigDecimal = {
@@ -195,8 +191,10 @@ def getYearEndClosingPrice(symbol: String, year: Int): BigDecimal = {
 }
 </code></pre>
 <p><em>运行结果</em></p>
-<pre class="prettyprint"><code class="language-output">Top stock of 2014 is AMZN closing at price $310.35</code></pre>
-<h2><a href="#代码清单1-3" name="代码清单1-3" class="anchor"><span class="anchor-link"></span></a>代码清单1-3</h2>
+<pre class="prettyprint"><code class="language-output">Top stock of 2017 is AMZN closing at price $1169.4700</code></pre>
+<blockquote>
+  <p>Introduction/FastTopStock.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">val (topStock, topPrice) =
   symbols.par.map { ticker ⇒ (ticker, getYearEndClosingPrice(ticker, year)) }
     .maxBy { stockPrice ⇒ stockPrice._2 }</code></pre>
@@ -208,7 +206,10 @@ error: type mismatch;
 i = &quot;haha&quot; //Error
     ^
 one error found</code></pre>
-<h2><a href="#代码清单1-4" name="代码清单1-4" class="anchor"><span class="anchor-link"></span></a>代码清单1-4</h2>
+<h2><a href="#1-3-函数式编程" name="1-3-函数式编程" class="anchor"><span class="anchor-link"></span></a>1.3 函数式编程</h2>
+<blockquote>
+  <p>Introduction/FindMax.java</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-java"> public static int findMax(List&lt;Integer&gt; temperatures) {
      //Java code
   int highTemperature = Integer.MIN_VALUE;
@@ -217,7 +218,9 @@ one error found</code></pre>
   }
   return highTemperature;
 }</code></pre>
-<h2><a href="#代码清单1-5" name="代码清单1-5" class="anchor"><span class="anchor-link"></span></a>代码清单1-5</h2>
+<blockquote>
+  <p>Introduction/FindMaxImperative.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def findMax(temperatures: List[Int]) = {
   var highTemperature = Integer.MIN_VALUE
   for (temperature ← temperatures) {
@@ -225,11 +228,15 @@ one error found</code></pre>
   }
   highTemperature
 }</code></pre>
-<h2><a href="#代码清单1-6" name="代码清单1-6" class="anchor"><span class="anchor-link"></span></a>代码清单1-6</h2>
+<blockquote>
+  <p>Introduction/FindMaxFunctional.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def findMax(temperatures: List[Int]) = {
   temperatures.foldLeft(Integer.MIN_VALUE) { Math.max }
 }</code></pre>
-<h2><a href="#代码清单1-7" name="代码清单1-7" class="anchor"><span class="anchor-link"></span></a>代码清单1-7</h2>
+<blockquote>
+  <p>Introduction/ScalaDoubleValues.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">val values = List(1, 2, 3, 4, 5)
 
 val doubleValues = values.map(_ * 2)</code></pre>
