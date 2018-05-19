@@ -488,8 +488,16 @@ a = b = 3
       ^
 one error found</code></pre>
 <blockquote>
-  <p>FromJavaToScala/Equality.scala @@snip<a href="../../main/scala/chapter3/Equality.scala">代码清单3-29</a>{ #snip }</p>
+  <p>FromJavaToScala/Equality.scala</p>
 </blockquote>
+<pre class="prettyprint"><code class="language-scala">val str1 = &quot;hello&quot;
+val str2 = &quot;hello&quot;
+val str3 = new String(&quot;hello&quot;)
+
+println(str1 == str2) // Equivalent to Java&#39;s str1.equals(str2)
+println(str1 eq str2) // Equivalent to Java&#39;s str1 == str2
+println(str1 == str3)
+println(str1 eq str3)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">true
 true
