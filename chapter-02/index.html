@@ -117,16 +117,10 @@ Type to start searching
 <ul>
   <li><a href="../chapter-02/index.html#第2章-体验scala" class="header">第2章——体验Scala</a>
   <ul>
-    <li><a href="../chapter-02/index.html#代码清单2-1" class="header">代码清单2-1</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-2" class="header">代码清单2-2</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-3" class="header">代码清单2-3</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-4" class="header">代码清单2-4</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-5" class="header">代码清单2-5</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-6" class="header">代码清单2-6</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-7" class="header">代码清单2-7</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-8" class="header">代码清单2-8</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-9" class="header">代码清单2-9</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-10" class="header">代码清单2-10</a></li>
+    <li><a href="../chapter-02/index.html#2-1-使用-repl" class="header">2.1 使用 REPL</a></li>
+    <li><a href="../chapter-02/index.html#2-2-命令行上的-scala" class="header">2.2 命令行上的 Scala</a></li>
+    <li><a href="../chapter-02/index.html#2-3-以独立脚本方式运行-scala-代码" class="header">2.3 以独立脚本方式运行 Scala 代码</a></li>
+    <li><a href="../chapter-02/index.html#2-4-编译-scala" class="header">2.4 编译 Scala</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -147,16 +141,10 @@ Type to start searching
 <ul>
   <li><a href="../chapter-02/index.html#第2章-体验scala" class="header">第2章——体验Scala</a>
   <ul>
-    <li><a href="../chapter-02/index.html#代码清单2-1" class="header">代码清单2-1</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-2" class="header">代码清单2-2</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-3" class="header">代码清单2-3</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-4" class="header">代码清单2-4</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-5" class="header">代码清单2-5</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-6" class="header">代码清单2-6</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-7" class="header">代码清单2-7</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-8" class="header">代码清单2-8</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-9" class="header">代码清单2-9</a></li>
-    <li><a href="../chapter-02/index.html#代码清单2-10" class="header">代码清单2-10</a></li>
+    <li><a href="../chapter-02/index.html#2-1-使用-repl" class="header">2.1 使用 REPL</a></li>
+    <li><a href="../chapter-02/index.html#2-2-命令行上的-scala" class="header">2.2 命令行上的 Scala</a></li>
+    <li><a href="../chapter-02/index.html#2-3-以独立脚本方式运行-scala-代码" class="header">2.3 以独立脚本方式运行 Scala 代码</a></li>
+    <li><a href="../chapter-02/index.html#2-4-编译-scala" class="header">2.4 编译 Scala</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -168,26 +156,22 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第2章-体验scala" name="第2章-体验scala" class="anchor"><span class="anchor-link"></span></a>第2章——体验Scala</h1>
-<h2><a href="#代码清单2-1" name="代码清单2-1" class="anchor"><span class="anchor-link"></span></a>代码清单2-1</h2>
-<pre class="prettyprint"><code class="language-output">Welcome to Scala 2.12.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_151).
+<p>令人惊喜的是，无论是创建一个简短的脚本还是一个完整的企业级应用，都可以轻松地 用 Scala 代码实现并运行。你可以使用任何 IDE，也可以只使用轻量级的编辑器。</p>
+<h2><a href="#2-1-使用-repl" name="2-1-使用-repl" class="anchor"><span class="anchor-link"></span></a>2.1 使用 REPL</h2>
+<pre class="prettyprint"><code class="language-output">Welcome to Scala 2.12.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_172).
 Type in expressions for evaluation. Or try :help.
 
 scala&gt;</code></pre>
-<h2><a href="#代码清单2-2" name="代码清单2-2" class="anchor"><span class="anchor-link"></span></a>代码清单2-2</h2>
 <pre class="prettyprint"><code class="language-output">scala&gt; val number = 6
 number: Int = 6</code></pre>
-<h2><a href="#代码清单2-3" name="代码清单2-3" class="anchor"><span class="anchor-link"></span></a>代码清单2-3</h2>
 <pre class="prettyprint"><code class="language-output">scala&gt; number = 7
 &lt;console&gt;:11: error: reassignment to val
        number = 7
               ^</code></pre>
-<h2><a href="#代码清单2-4" name="代码清单2-4" class="anchor"><span class="anchor-link"></span></a>代码清单2-4</h2>
 <pre class="prettyprint"><code class="language-output">scala&gt; val number = 7
 number: Int = 7</code></pre>
-<h2><a href="#代码清单2-5" name="代码清单2-5" class="anchor"><span class="anchor-link"></span></a>代码清单2-5</h2>
 <pre class="prettyprint"><code class="language-output">scala&gt; val list = List(1, 2, 3)
 list: List[Int] = List(1, 2, 3)</code></pre>
-<h2><a href="#代码清单2-6" name="代码清单2-6" class="anchor"><span class="anchor-link"></span></a>代码清单2-6</h2>
 <pre class="prettyprint"><code class="language-output">scala&gt; def isPalindrome(str: String) =
      |   str == str.reverse
 isPalindrome: (str: String)Boolean
@@ -199,12 +183,12 @@ scala&gt; isPalindrome(&quot;dude&quot;)
 res1: Boolean = false
 
 scala&gt; :quit</code></pre>
-<h2><a href="#代码清单2-7" name="代码清单2-7" class="anchor"><span class="anchor-link"></span></a>代码清单2-7</h2>
+<h2><a href="#2-2-命令行上的-scala" name="2-2-命令行上的-scala" class="anchor"><span class="anchor-link"></span></a>2.2 命令行上的 Scala</h2>
 <pre class="prettyprint"><code class="language-scala">println(&quot;Hello World, Welcome to Scala&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">&gt;scala HelloWorld.scala
 Hello World, Welcome to Scala</code></pre>
-<h2><a href="#代码清单2-8" name="代码清单2-8" class="anchor"><span class="anchor-link"></span></a>代码清单2-8</h2>
+<h2><a href="#2-3-以独立脚本方式运行-scala-代码" name="2-3-以独立脚本方式运行-scala-代码" class="anchor"><span class="anchor-link"></span></a>2.3 以独立脚本方式运行 Scala 代码</h2>
 <pre class="prettyprint"><code class="language-sh">#!/usr/bin/env scala
 
 println(&quot;Hello &quot; + args(0))</code></pre>
@@ -212,13 +196,15 @@ println(&quot;Hello &quot; + args(0))</code></pre>
 <pre class="prettyprint"><code class="language-sh">hello.sh Buddy</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Hello Buddy</code></pre>
-<h2><a href="#代码清单2-9" name="代码清单2-9" class="anchor"><span class="anchor-link"></span></a>代码清单2-9</h2>
 <pre class="prettyprint"><code class="language-bat">echo off
 
 cls
 call scala %1
 pause</code></pre>
-<h2><a href="#代码清单2-10" name="代码清单2-10" class="anchor"><span class="anchor-link"></span></a>代码清单2-10</h2>
+<h2><a href="#2-4-编译-scala" name="2-4-编译-scala" class="anchor"><span class="anchor-link"></span></a>2.4 编译 Scala</h2>
+<blockquote>
+  <p>FirstStep/Sample.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">object Sample extends App {
   println(&quot;Hello Scala&quot;)
 }</code></pre>
