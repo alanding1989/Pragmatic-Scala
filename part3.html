@@ -18,7 +18,7 @@
 
 <meta name="description" content="PragmaticScala">
 <link rel="shortcut icon" href="assets/images/favicon.png">
-<title></title>
+<title>第三部分 Scala 中的并发编程 · </title>
 <link rel="stylesheet" href="assets/stylesheets/application.7a4cdee3.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -50,6 +50,11 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </div>
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+</span>
+<span class="md-header-nav__topic">
+第三部分 Scala 中的并发编程
+</span>
 </div>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -100,7 +105,7 @@ Type to start searching
     <li><a href="abstract.html" class="page">内容提要</a></li>
     <li><a href="part1.html" class="page">第一部分 小试牛刀</a></li>
     <li><a href="part2.html" class="page">第二部分 深入 Scala</a></li>
-    <li><a href="part3.html" class="page">第三部分 Scala 中的并发编程</a></li>
+    <li><a href="part3.html" class="active page">第三部分 Scala 中的并发编程</a></li>
     <li><a href="part4.html" class="page">第四部分 Scala 实战</a></li>
     <li><a href="refs/references.html" class="page">参考书目</a></li>
   </ul></li>
@@ -119,24 +124,25 @@ Type to start searching
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<div class="toc ">
+<h1><a href="#第三部分-scala-中的并发编程" name="第三部分-scala-中的并发编程" class="anchor"><span class="anchor-link"></span></a>第三部分 Scala 中的并发编程</h1>
+<p>并发编程是意外的复杂性之一。 ① Scala 提供了一些优雅的解决方案。读者将了解：</p>
 <ul>
-  <li><a href="contents.html" class="page">目录</a>
-  <ul>
-    <li><a href="abstract.html" class="page">内容提要</a></li>
-    <li><a href="part1.html" class="page">第一部分 小试牛刀</a></li>
-    <li><a href="part2.html" class="page">第二部分 深入 Scala</a></li>
-    <li><a href="part3.html" class="page">第三部分 Scala 中的并发编程</a></li>
-    <li><a href="part4.html" class="page">第四部分 Scala 实战</a></li>
-    <li><a href="refs/references.html" class="page">参考书目</a></li>
-  </ul></li>
+  <li>惰性求值有哪些优势； ②</li>
+  <li>严格集合和惰性集合之间有哪些差异 ；</li>
+  <li>如何使用并行集合；</li>
+  <li>如何避免共享的可变性；</li>
+  <li>如何使用 Actor 进行并发编程 ③ 。</li>
 </ul>
-</div>
-<p>《Scala 实用指南》</p>
-<p>一本写给Java开发者的Scala快速入门书。</p>
+<blockquote>
+  <ol>
+    <li>指并发编程本来不应该如此复杂。—译者注</li>
+    <li>可以和求值策略进行对照。—译者注</li>
+    <li>在本书中将使用 Akka 套件。—译者注</li>
+  </ol>
+</blockquote>
 </div>
 <div>
-<a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/master/src/paradox/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/master/src/paradox/part3.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -152,13 +158,26 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="contents.html" title="目录" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="chapter-11/index.html" title="第11章——递归编程" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+第11章——递归编程
+</span>
+</div>
+</a>
+<a href="chapter-12/index.html" title="第12章——惰性求值和并行集合" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-目录
+第12章——惰性求值和并行集合
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
