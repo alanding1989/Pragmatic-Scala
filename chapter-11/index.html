@@ -117,17 +117,9 @@ Type to start searching
 <ul>
   <li><a href="../chapter-11/index.html#第11章-递归编程" class="header">第11章——递归编程</a>
   <ul>
-    <li><a href="../chapter-11/index.html#代码清单11-1" class="header">代码清单11-1</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-2" class="header">代码清单11-2</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-3" class="header">代码清单11-3</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-4" class="header">代码清单11-4</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-5" class="header">代码清单11-5</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-6" class="header">代码清单11-6</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-7" class="header">代码清单11-7</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-8" class="header">代码清单11-8</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-9" class="header">代码清单11-9</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-10" class="header">代码清单11-10</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-11" class="header">代码清单11-11</a></li>
+    <li><a href="../chapter-11/index.html#11-1-一个简单的递归" class="header">11.1 一个简单的递归</a></li>
+    <li><a href="../chapter-11/index.html#11-2-尾调用优化-tco-" class="header">11.2 尾调用优化（TCO）</a></li>
+    <li><a href="../chapter-11/index.html#11-3-蹦床调用" class="header">11.3 蹦床调用</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -148,17 +140,9 @@ Type to start searching
 <ul>
   <li><a href="../chapter-11/index.html#第11章-递归编程" class="header">第11章——递归编程</a>
   <ul>
-    <li><a href="../chapter-11/index.html#代码清单11-1" class="header">代码清单11-1</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-2" class="header">代码清单11-2</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-3" class="header">代码清单11-3</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-4" class="header">代码清单11-4</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-5" class="header">代码清单11-5</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-6" class="header">代码清单11-6</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-7" class="header">代码清单11-7</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-8" class="header">代码清单11-8</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-9" class="header">代码清单11-9</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-10" class="header">代码清单11-10</a></li>
-    <li><a href="../chapter-11/index.html#代码清单11-11" class="header">代码清单11-11</a></li>
+    <li><a href="../chapter-11/index.html#11-1-一个简单的递归" class="header">11.1 一个简单的递归</a></li>
+    <li><a href="../chapter-11/index.html#11-2-尾调用优化-tco-" class="header">11.2 尾调用优化（TCO）</a></li>
+    <li><a href="../chapter-11/index.html#11-3-蹦床调用" class="header">11.3 蹦床调用</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -170,7 +154,11 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第11章-递归编程" name="第11章-递归编程" class="anchor"><span class="anchor-link"></span></a>第11章——递归编程</h1>
-<h2><a href="#代码清单11-1" name="代码清单11-1" class="anchor"><span class="anchor-link"></span></a>代码清单11-1</h2>
+<p>使用解决子问题的方案解决一个问题，也就是递归，这种想法十分诱人。许多算法和 问题本质上都是递归的。一旦我们找到窍门，使用递归来设计解决方案就变得极富表现力 且直观。</p>
+<h2><a href="#11-1-一个简单的递归" name="11-1-一个简单的递归" class="anchor"><span class="anchor-link"></span></a>11.1 一个简单的递归</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Factorial.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def factorial(number: Int): BigInt = {
   if (number == 0)
     1
@@ -179,13 +167,20 @@ Type to start searching
 }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">120</code></pre>
-<h2><a href="#代码清单11-2" name="代码清单11-2" class="anchor"><span class="anchor-link"></span></a>代码清单11-2</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Factorial.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">println(factorial(5))</code></pre>
-<h2><a href="#代码清单11-3" name="代码清单11-3" class="anchor"><span class="anchor-link"></span></a>代码清单11-3</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Factorial.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">println(factorial(10000))</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">java.lang.StackOverflowError</code></pre>
-<h2><a href="#代码清单11-4" name="代码清单11-4" class="anchor"><span class="anchor-link"></span></a>代码清单11-4</h2>
+<h2><a href="#11-2-尾调用优化-tco-" name="11-2-尾调用优化-tco-" class="anchor"><span class="anchor-link"></span></a>11.2 尾调用优化（TCO）</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Mad.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def mad(parameter: Int): Int = {
   if (parameter == 0)
     throw new RuntimeException(&quot;Error&quot;)
@@ -203,7 +198,9 @@ mad(5)</code></pre>
 	at Main$$anon$1.mad(mad.scala:5)
 	at Main$$anon$1.mad(mad.scala:5)
 	at Main$$anon$1.&lt;init&gt;(mad.scala:8)</code></pre>
-<h2><a href="#代码清单11-5" name="代码清单11-5" class="anchor"><span class="anchor-link"></span></a>代码清单11-5</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Mad2.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def mad(parameter: Int): Int = {
   if (parameter == 0)
     throw new RuntimeException(&quot;Error&quot;)
@@ -216,7 +213,6 @@ mad(5)</code></pre>
 <pre class="prettyprint"><code class="language-output">java.lang.RuntimeException: Error
 	at Main$$anon$1.mad(mad2.scala:3)
 	at Main$$anon$1.&lt;init&gt;(mad2.scala:8)</code></pre>
-<h2><a href="#代码清单11-6" name="代码清单11-6" class="anchor"><span class="anchor-link"></span></a>代码清单11-6</h2>
 <pre class="prettyprint"><code class="language-output">  private int mad(int);
     Code:
        0: iload_1
@@ -237,7 +233,6 @@ java/lang/RuntimeException.&quot;&lt;init&gt;&quot;:(Ljava/lang/String;)V
       20: invokespecial #22                 // Method mad:(I)I
       23: imul
       24: ireturn</code></pre>
-<h2><a href="#代码清单11-7" name="代码清单11-7" class="anchor"><span class="anchor-link"></span></a>代码清单11-7</h2>
 <pre class="prettyprint"><code class="language-output">  private int mad(int);
     Code:
        0: iload_1
@@ -255,7 +250,9 @@ java/lang/RuntimeException.&quot;&lt;init&gt;&quot;:(Ljava/lang/String;)V
       17: isub
       18: istore_1
       19: goto          0</code></pre>
-<h2><a href="#代码清单11-8" name="代码清单11-8" class="anchor"><span class="anchor-link"></span></a>代码清单11-8</h2>
+<blockquote>
+  <p>ProgrammingRecursions/FactorialNoTCO.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">@scala.annotation.tailrec
 def factorial(number: Int): BigInt = {
   if (number == 0)
@@ -271,7 +268,9 @@ a recursive call not in tail position
     number * factorial(number - 1)
            ^
 error found</code></pre>
-<h2><a href="#代码清单11-9" name="代码清单11-9" class="anchor"><span class="anchor-link"></span></a>代码清单11-9</h2>
+<blockquote>
+  <p>ProgrammingRecursions/FactorialTCO.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">@scala.annotation.tailrec
 def factorial(fact: BigInt, number: Int): BigInt = {
   if (number == 0)
@@ -284,7 +283,10 @@ println(factorial(1, 10000))</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">284625968091705451890641321211986889014805140170279923079417999427441134000
 ...</code></pre>
-<h2><a href="#代码清单11-10" name="代码清单11-10" class="anchor"><span class="anchor-link"></span></a>代码清单11-10</h2>
+<h2><a href="#11-3-蹦床调用" name="11-3-蹦床调用" class="anchor"><span class="anchor-link"></span></a>11.3 蹦床调用</h2>
+<blockquote>
+  <p>ProgrammingRecursions/Words.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import scala.io.Source._
 
 def explore(count: Int, words: List[String]): Int =
@@ -316,7 +318,9 @@ try {
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">3
 java.lang.StackOverflowError</code></pre>
-<h2><a href="#代码清单11-11" name="代码清单11-11" class="anchor"><span class="anchor-link"></span></a>代码清单11-11</h2>
+<blockquote>
+  <p>ProgrammingRecursions/WordsTrampoline.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import scala.io.Source._
 import scala.util.control.TailCalls._
 
