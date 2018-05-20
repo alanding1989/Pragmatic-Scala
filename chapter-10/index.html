@@ -117,14 +117,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-10/index.html#第10章-处理异常" class="header">第10章——处理异常</a>
   <ul>
-    <li><a href="../chapter-10/index.html#代码清单10-1" class="header">代码清单10-1</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-2" class="header">代码清单10-2</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-3" class="header">代码清单10-3</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-4" class="header">代码清单10-4</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-5" class="header">代码清单10-5</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-6" class="header">代码清单10-6</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-7" class="header">代码清单10-7</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-8" class="header">代码清单10-8</a></li>
+    <li><a href="../chapter-10/index.html#10-1-scala-中的异常" class="header">10.1 Scala 中的异常</a></li>
+    <li><a href="../chapter-10/index.html#10-2-注意-catch-的顺序" class="header">10.2 注意 catch 的顺序</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -145,14 +139,8 @@ Type to start searching
 <ul>
   <li><a href="../chapter-10/index.html#第10章-处理异常" class="header">第10章——处理异常</a>
   <ul>
-    <li><a href="../chapter-10/index.html#代码清单10-1" class="header">代码清单10-1</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-2" class="header">代码清单10-2</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-3" class="header">代码清单10-3</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-4" class="header">代码清单10-4</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-5" class="header">代码清单10-5</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-6" class="header">代码清单10-6</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-7" class="header">代码清单10-7</a></li>
-    <li><a href="../chapter-10/index.html#代码清单10-8" class="header">代码清单10-8</a></li>
+    <li><a href="../chapter-10/index.html#10-1-scala-中的异常" class="header">10.1 Scala 中的异常</a></li>
+    <li><a href="../chapter-10/index.html#10-2-注意-catch-的顺序" class="header">10.2 注意 catch 的顺序</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -164,9 +152,15 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第10章-处理异常" name="第10章-处理异常" class="anchor"><span class="anchor-link"></span></a>第10章——处理异常</h1>
-<h2><a href="#代码清单10-1" name="代码清单10-1" class="anchor"><span class="anchor-link"></span></a>代码清单10-1</h2>
+<p>Java 的受检异常（checked exception）会强制开发人员捕获错误，包括那些开发人员并不关 心的，因此 Java 程序员经常会写一个空的 catch 代码块来抑制相关的异常，而不是将其引渡至 合理的位置上进行处理。Scala 不这样做。它让开发人员只处理自己关心的异常，并忽略其他异 常。这些没有处理的异常将会自动地传播。在本章中，我们将学到如何在 Scala 中处理异常。</p>
+<h2><a href="#10-1-scala-中的异常" name="10-1-scala-中的异常" class="anchor"><span class="anchor-link"></span></a>10.1 Scala 中的异常</h2>
+<blockquote>
+  <p>ExceptionHandling/Throw.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">throw new IllegalArgumentException</code></pre>
-<h2><a href="#代码清单10-2" name="代码清单10-2" class="anchor"><span class="anchor-link"></span></a>代码清单10-2</h2>
+<blockquote>
+  <p>ExceptionHandling/JavaThreadSleep.java</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-java">  // Java code
 try {
   Thread.sleep(1000);
@@ -174,9 +168,13 @@ try {
 catch(InterruptedException ex) {
   // Losing sleep over what to do here?
 }</code></pre>
-<h2><a href="#代码清单10-3" name="代码清单10-3" class="anchor"><span class="anchor-link"></span></a>代码清单10-3</h2>
+<blockquote>
+  <p>ExceptionHandling/ThreadSleep.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">Thread.sleep(1000)</code></pre>
-<h2><a href="#代码清单10-4" name="代码清单10-4" class="anchor"><span class="anchor-link"></span></a>代码清单10-4</h2>
+<blockquote>
+  <p>ExceptionHandling/Tax.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">object Tax {
   def taxFor(amount: Double): Double = {
     if (amount &lt; 0)
@@ -190,7 +188,9 @@ catch(InterruptedException ex) {
     amount * 0.08
   }
 }</code></pre>
-<h2><a href="#代码清单10-5" name="代码清单10-5" class="anchor"><span class="anchor-link"></span></a>代码清单10-5</h2>
+<blockquote>
+  <p>ExceptionHandling/ExceptionHandling.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">for (amount ← List(100.0, 0.009, -2.0, 1000001.0)) {
   try {
     print(s&quot;Amount: $$$amount &quot;)
@@ -209,7 +209,9 @@ Amount: $-2.0 Amount must be greater than zero
 Amount: $1000001.0 java.lang.Exception: Amount too large...
 	at Tax$.taxFor(Tax.scala:9)
 ...</code></pre>
-<h2><a href="#代码清单10-6" name="代码清单10-6" class="anchor"><span class="anchor-link"></span></a>代码清单10-6</h2>
+<blockquote>
+  <p>ExceptionHandling/CatchAll.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">for (amount ← List(100.0, 0.009, -2.0, 1000001.0)) {
   try {
     print(s&quot;Amount: $$$amount &quot;)
@@ -224,7 +226,10 @@ Amount: $1000001.0 java.lang.Exception: Amount too large...
 Amount: $0.009 Something went wrong
 Amount: $-2.0 Amount must be greater than zero
 Amount: $1000001.0 Something went wrong</code></pre>
-<h2><a href="#代码清单10-7" name="代码清单10-7" class="anchor"><span class="anchor-link"></span></a>代码清单10-7</h2>
+<h2><a href="#10-2-注意-catch-的顺序" name="10-2-注意-catch-的顺序" class="anchor"><span class="anchor-link"></span></a>10.2 注意 catch 的顺序</h2>
+<blockquote>
+  <p>ExceptionHandling/JavaCatchOrder.java</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-java">// Java code—will not compile due to incorrect catch order
 public class JavaCatchOrder {
   public void catchOrderExample() {
@@ -244,7 +249,9 @@ has already been caught
     catch(StringIndexOutOfBoundsException ex) { //ERROR
     ^
 1 error</code></pre>
-<h2><a href="#代码清单10-8" name="代码清单10-8" class="anchor"><span class="anchor-link"></span></a>代码清单10-8</h2>
+<blockquote>
+  <p>ExceptionHandling/CatchOrder.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">val amount = -2
 try {
   print(s&quot;Amount: $$$amount &quot;)
