@@ -18,7 +18,7 @@
 
 <meta name="description" content="PragmaticScala">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>第13章——使用Actor模型处理并发 · </title>
+<title>第13章——使用Actor编程 · </title>
 <link rel="stylesheet" href="../assets/stylesheets/application.7a4cdee3.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <span class="md-header-nav__topic">
 </span>
 <span class="md-header-nav__topic">
-第13章——使用Actor模型处理并发
+第13章——使用Actor编程
 </span>
 </div>
 </div>
@@ -115,19 +115,13 @@ Type to start searching
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="../chapter-13/index.html#第13章-使用actor模型处理并发" class="header">第13章——使用Actor模型处理并发</a>
+  <li><a href="../chapter-13/index.html#第13章-使用actor编程" class="header">第13章——使用Actor编程</a>
   <ul>
-    <li><a href="../chapter-13/index.html#代码清单13-1" class="header">代码清单13-1</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-2" class="header">代码清单13-2</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-3" class="header">代码清单13-3</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-4" class="header">代码清单13-4</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
+    <li><a href="../chapter-13/index.html#13-1-一个顺序耗时问题" class="header">13.1 一个顺序耗时问题</a></li>
+    <li><a href="../chapter-13/index.html#13-3-创建-actor" class="header">13.3 创建 Actor</a></li>
+    <li><a href="../chapter-13/index.html#13-4-actor-和线程" class="header">13.4 Actor 和线程</a></li>
+    <li><a href="../chapter-13/index.html#13-5-隔离可变性" class="header">13.5 隔离可变性</a></li>
+    <li><a href="../chapter-13/index.html#13-6-使用-actor-模型进行并发" class="header">13.6 使用 Actor 模型进行并发</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -146,19 +140,13 @@ Type to start searching
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="../chapter-13/index.html#第13章-使用actor模型处理并发" class="header">第13章——使用Actor模型处理并发</a>
+  <li><a href="../chapter-13/index.html#第13章-使用actor编程" class="header">第13章——使用Actor编程</a>
   <ul>
-    <li><a href="../chapter-13/index.html#代码清单13-1" class="header">代码清单13-1</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-2" class="header">代码清单13-2</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-3" class="header">代码清单13-3</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-4" class="header">代码清单13-4</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-5" class="header">代码清单13-5</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-6" class="header">代码清单13-6</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-7" class="header">代码清单13-7</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-8" class="header">代码清单13-8</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-9" class="header">代码清单13-9</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-10" class="header">代码清单13-10</a></li>
-    <li><a href="../chapter-13/index.html#代码清单13-11" class="header">代码清单13-11</a></li>
+    <li><a href="../chapter-13/index.html#13-1-一个顺序耗时问题" class="header">13.1 一个顺序耗时问题</a></li>
+    <li><a href="../chapter-13/index.html#13-3-创建-actor" class="header">13.3 创建 Actor</a></li>
+    <li><a href="../chapter-13/index.html#13-4-actor-和线程" class="header">13.4 Actor 和线程</a></li>
+    <li><a href="../chapter-13/index.html#13-5-隔离可变性" class="header">13.5 隔离可变性</a></li>
+    <li><a href="../chapter-13/index.html#13-6-使用-actor-模型进行并发" class="header">13.6 使用 Actor 模型进行并发</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -169,8 +157,12 @@ Type to start searching
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#第13章-使用actor模型处理并发" name="第13章-使用actor模型处理并发" class="anchor"><span class="anchor-link"></span></a>第13章——使用Actor模型处理并发</h1>
-<h2><a href="#代码清单13-1" name="代码清单13-1" class="anchor"><span class="anchor-link"></span></a>代码清单13-1</h2>
+<h1><a href="#第13章-使用actor编程" name="第13章-使用actor编程" class="anchor"><span class="anchor-link"></span></a>第13章——使用Actor编程</h1>
+<p>在编写复杂、耗时的应用程序时，我们经常会使用多线程以及并发来降低响应时间或者 提高性能。可惜，传统的并发解决方案导致了一些问题，如线程安全、竞态条件、死锁、活 锁以及不容易理解的、容易出错的代码。共享的可变性是罪魁祸首。</p>
+<h2><a href="#13-1-一个顺序耗时问题" name="13-1-一个顺序耗时问题" class="anchor"><span class="anchor-link"></span></a>13.1 一个顺序耗时问题</h2>
+<blockquote>
+  <p>ProgrammingActors/CountFilesSequential.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import java.io.File
 
 def getChildren(file: File) = {
@@ -201,7 +193,10 @@ println(s&quot;Time taken: ${(end - start) / 1.0e9} seconds&quot;)</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Number of files found: 479758
 Time taken: 66.524453436 seconds</code></pre>
-<h2><a href="#代码清单13-2" name="代码清单13-2" class="anchor"><span class="anchor-link"></span></a>代码清单13-2</h2>
+<h2><a href="#13-3-创建-actor" name="13-3-创建-actor" class="anchor"><span class="anchor-link"></span></a>13.3 创建 Actor</h2>
+<blockquote>
+  <p>ProgrammingActors/HollywoodActor.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 
 class HollywoodActor() extends Actor {
@@ -213,7 +208,9 @@ class HollywoodActor() extends Actor {
 <pre class="prettyprint"><code class="language-sh">scalac -d classes HollywoodActor.scala CreateActors.scala</code></pre>
 <p><em>执行命令——执行</em></p>
 <pre class="prettyprint"><code class="language-sh">scala -classpath classes CreateActors</code></pre>
-<h2><a href="#代码清单13-3" name="代码清单13-3" class="anchor"><span class="anchor-link"></span></a>代码清单13-3</h2>
+<blockquote>
+  <p>ProgrammingActors/CreateActors.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 
 import scala.concurrent.Await
@@ -231,9 +228,13 @@ object CreateActors extends App {
 }</code></pre>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">playing the role of Wonka</code></pre>
-<h2><a href="#代码清单13-4" name="代码清单13-4" class="anchor"><span class="anchor-link"></span></a>代码清单13-4</h2>
+<blockquote>
+  <p>ProgrammingActors/HollywoodActor2.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">case message ⇒ println(s&quot;$message - ${Thread.currentThread}&quot;)</code></pre>
-<h2><a href="#代码清单13-5" name="代码清单13-5" class="anchor"><span class="anchor-link"></span></a>代码清单13-5</h2>
+<blockquote>
+  <p>ProgrammingActors/CreateActors2.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">val depp = system.actorOf(Props[HollywoodActor])
 val hanks = system.actorOf(Props[HollywoodActor])
 
@@ -249,7 +250,10 @@ Gump - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Calling from Thread[main,5,main]
 Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Sparrow - Thread[sample-akka.actor.default-dispatcher-2,5,main]</code></pre>
-<h2><a href="#代码清单13-6" name="代码清单13-6" class="anchor"><span class="anchor-link"></span></a>代码清单13-6</h2>
+<h2><a href="#13-4-actor-和线程" name="13-4-actor-和线程" class="anchor"><span class="anchor-link"></span></a>13.4 Actor 和线程</h2>
+<blockquote>
+  <p>ProgrammingActors/CreateActors3.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">depp ! &quot;Wonka&quot;
 hanks ! &quot;Gump&quot;
 
@@ -263,7 +267,10 @@ Gump - Thread[sample-akka.actor.default-dispatcher-4,5,main]
 Sparrow - Thread[sample-akka.actor.default-dispatcher-4,5,main]
 Phillips - Thread[sample-akka.actor.default-dispatcher-3,5,main]
 Calling from Thread[main,5,main]</code></pre>
-<h2><a href="#代码清单13-7" name="代码清单13-7" class="anchor"><span class="anchor-link"></span></a>代码清单13-7</h2>
+<h2><a href="#13-5-隔离可变性" name="13-5-隔离可变性" class="anchor"><span class="anchor-link"></span></a>13.5 隔离可变性</h2>
+<blockquote>
+  <p>ProgrammingActors/HollywoodActor4.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import scala.collection._
 
@@ -283,7 +290,9 @@ class HollywoodActor() extends Actor {
       sender ! messagesCount.getOrElse(role, 0)
   }
 }</code></pre>
-<h2><a href="#代码清单13-8" name="代码清单13-8" class="anchor"><span class="anchor-link"></span></a>代码清单13-8</h2>
+<blockquote>
+  <p>ProgrammingActors/UseActor.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import akka.pattern.ask
 import akka.util.Timeout
@@ -340,7 +349,10 @@ Playing Sparrow
 Depp played Wonka 2 time(s)
 Depp played Sparrow 1 time(s)
 Hanks played Gump 1 time(s)</code></pre>
-<h2><a href="#代码清单13-9" name="代码清单13-9" class="anchor"><span class="anchor-link"></span></a>代码清单13-9</h2>
+<h2><a href="#13-6-使用-actor-模型进行并发" name="13-6-使用-actor-模型进行并发" class="anchor"><span class="anchor-link"></span></a>13.6 使用 Actor 模型进行并发</h2>
+<blockquote>
+  <p>ProgrammingActors/FileExplorer.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import java.io._
 
@@ -360,7 +372,9 @@ class FileExplorer extends Actor {
       sender ! filesCount
   }
 }</code></pre>
-<h2><a href="#代码清单13-10" name="代码清单13-10" class="anchor"><span class="anchor-link"></span></a>代码清单13-10</h2>
+<blockquote>
+  <p>ProgrammingActors/FilesCounter.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 import akka.routing._
 
@@ -390,7 +404,9 @@ class FilesCounter extends Actor {
   }
 }
 </code></pre>
-<h2><a href="#代码清单13-11" name="代码清单13-11" class="anchor"><span class="anchor-link"></span></a>代码清单13-11</h2>
+<blockquote>
+  <p>ProgrammingActors/CountFiles.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import akka.actor._
 
 object CountFiles extends App {

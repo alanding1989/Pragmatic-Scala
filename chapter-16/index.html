@@ -117,15 +117,9 @@ Type to start searching
 <ul>
   <li><a href="../chapter-16/index.html#第16章-单元测试" class="header">第16章——单元测试</a>
   <ul>
-    <li><a href="../chapter-16/index.html#代码清单16-1" class="header">代码清单16-1</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-2" class="header">代码清单16-2</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-3" class="header">代码清单16-3</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-4" class="header">代码清单16-4</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-9" class="header">代码清单16-9</a></li>
+    <li><a href="../chapter-16/index.html#16-1-使用-junit" class="header">16.1 使用 JUnit</a></li>
+    <li><a href="../chapter-16/index.html#16-2-使用-scalatest" class="header">16.2 使用 ScalaTest</a></li>
+    <li><a href="../chapter-16/index.html#16-3-使用-mockito" class="header">16.3 使用 Mockito</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -146,15 +140,9 @@ Type to start searching
 <ul>
   <li><a href="../chapter-16/index.html#第16章-单元测试" class="header">第16章——单元测试</a>
   <ul>
-    <li><a href="../chapter-16/index.html#代码清单16-1" class="header">代码清单16-1</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-2" class="header">代码清单16-2</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-3" class="header">代码清单16-3</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-4" class="header">代码清单16-4</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-5" class="header">代码清单16-5</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-6" class="header">代码清单16-6</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-7" class="header">代码清单16-7</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-8" class="header">代码清单16-8</a></li>
-    <li><a href="../chapter-16/index.html#代码清单16-9" class="header">代码清单16-9</a></li>
+    <li><a href="../chapter-16/index.html#16-1-使用-junit" class="header">16.1 使用 JUnit</a></li>
+    <li><a href="../chapter-16/index.html#16-2-使用-scalatest" class="header">16.2 使用 ScalaTest</a></li>
+    <li><a href="../chapter-16/index.html#16-3-使用-mockito" class="header">16.3 使用 Mockito</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -166,7 +154,11 @@ Type to start searching
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#第16章-单元测试" name="第16章-单元测试" class="anchor"><span class="anchor-link"></span></a>第16章——单元测试</h1>
-<h2><a href="#代码清单16-1" name="代码清单16-1" class="anchor"><span class="anchor-link"></span></a>代码清单16-1</h2>
+<p>代码将总是按照被编写的行为运行—单元测试将确保它做的确实符合编写者的本意。 在开发应用程序的过程中，单元测试还有助于确保代码行为持续符合预期。</p>
+<h2><a href="#16-1-使用-junit" name="16-1-使用-junit" class="anchor"><span class="anchor-link"></span></a>16.1 使用 JUnit</h2>
+<blockquote>
+  <p>UnitTesting/UsingJUnit.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import java.util
 
 import org.junit.Assert._
@@ -191,7 +183,10 @@ java -classpath $SCALALIBRARY:$JUNIT_JAR:$HAMCREST_JAR:classes \
 Time: 0.003
 
 OK (1 test)</code></pre>
-<h2><a href="#代码清单16-2" name="代码清单16-2" class="anchor"><span class="anchor-link"></span></a>代码清单16-2</h2>
+<h2><a href="#16-2-使用-scalatest" name="16-2-使用-scalatest" class="anchor"><span class="anchor-link"></span></a>16.2 使用 ScalaTest</h2>
+<blockquote>
+  <p>UnitTesting/UsingScalaTest.scala</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import java.util
 import org.scalatest._
 
@@ -226,7 +221,10 @@ Total number of tests run: 2
 Suites: completed 1, aborted 0
 Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
 All tests passed.</code></pre>
-<h2><a href="#代码清单16-3" name="代码清单16-3" class="anchor"><span class="anchor-link"></span></a>代码清单16-3</h2>
+<h2><a href="#16-3-使用-mockito" name="16-3-使用-mockito" class="anchor"><span class="anchor-link"></span></a>16.3 使用 Mockito</h2>
+<blockquote>
+  <p>UnitTesting/WordScorerTest.scala (withoutmock)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import org.scalatest.{ FlatSpec, Matchers }
 
 class WordScorerTest extends FlatSpec with Matchers {
@@ -253,7 +251,9 @@ class WordScorerTest extends FlatSpec with Matchers {
     withWordScorer { _.score(&quot;that&quot;) should be(7) }
   }
 }</code></pre>
-<h2><a href="#代码清单16-4" name="代码清单16-4" class="anchor"><span class="anchor-link"></span></a>代码清单16-4</h2>
+<blockquote>
+  <p>UnitTesting/WordScorer.scala (withoutmock)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">class WordScorer() {
   private val VOWELS = List(&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;)
 
@@ -283,11 +283,15 @@ Total number of tests run: 4
 Suites: completed 1, aborted 0
 Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 0
 All tests passed.</code></pre>
-<h2><a href="#代码清单16-5" name="代码清单16-5" class="anchor"><span class="anchor-link"></span></a>代码清单16-5</h2>
+<blockquote>
+  <p>UnitTesting/SpellChecker.scala (withmock)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">trait SpellChecker {
   def isCorrect(word: String): Boolean
 }</code></pre>
-<h2><a href="#代码清单16-6" name="代码清单16-6" class="anchor"><span class="anchor-link"></span></a>代码清单16-6</h2>
+<blockquote>
+  <p>UnitTesting/WordScorerTest.scala (withmock)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">import org.scalatest.{ FlatSpec, Matchers }
 import org.mockito.Mockito._
 import org.mockito.ArgumentMatchers.anyString
@@ -322,7 +326,9 @@ class WordScorerTest extends FlatSpec with Matchers {
   }
 
 }</code></pre>
-<h2><a href="#代码清单16-7" name="代码清单16-7" class="anchor"><span class="anchor-link"></span></a>代码清单16-7</h2>
+<blockquote>
+  <p>UnitTesting/WordScorer.scala (withmock)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">class WordScorer(val spellChecker: SpellChecker) {
   private val VOWELS = List(&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;)
 
@@ -354,7 +360,9 @@ Total number of tests run: 4
 Suites: completed 1, aborted 0
 Tests: succeeded 4, failed 0, canceled 0, ignored 0, pending 0
 All tests passed.</code></pre>
-<h2><a href="#代码清单16-8" name="代码清单16-8" class="anchor"><span class="anchor-link"></span></a>代码清单16-8</h2>
+<blockquote>
+  <p>UnitTesting/WordScorerTest.scala (withmock2)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">&quot;score&quot; should &quot;return 0 for word with incorrect spelling&quot; in {
   val spellChecker = mock(classOf[SpellChecker])
   when(spellChecker.isCorrect(anyString)).thenReturn(false)
@@ -363,7 +371,9 @@ All tests passed.</code></pre>
   wordScorer.score(&quot;aoe&quot;) should be(0)
   verify(spellChecker, times(1)).isCorrect(anyString())
 }</code></pre>
-<h2><a href="#代码清单16-9" name="代码清单16-9" class="anchor"><span class="anchor-link"></span></a>代码清单16-9</h2>
+<blockquote>
+  <p>UnitTesting/WordScorer.scala (withmock2)</p>
+</blockquote>
 <pre class="prettyprint"><code class="language-scala">def score(word: String): Int = {
   if (spellChecker.isCorrect(word))
     (0 /: word) { (total, letter) ⇒
