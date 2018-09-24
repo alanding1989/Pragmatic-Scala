@@ -5,38 +5,40 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="PragmaticScala">
-<meta name="generator" content="Paradox, paradox-material-theme=0.4.0, mkdocs-material=2.2.2">
+<meta name="generator" content="Paradox, paradox-material-theme=0.5.1, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
 <meta name="lang:search.result.none" content="No matching documents">
 <meta name="lang:search.result.one" content="1 matching document">
 <meta name="lang:search.result.other" content="# matching documents">
-<meta name="lang:search.language" content="">
 <meta name="lang:search.tokenizer" content="[\s\-]+">
 
 
 <meta name="description" content="PragmaticScala">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
 <title>第6章——函数值和闭包 · </title>
-<link rel="stylesheet" href="../assets/stylesheets/application.7a4cdee3.css">
+<link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
-<script src="../lib/modernizr/modernizr.min.js"></script>
+<script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
 <style>
 body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
 code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../assets/fonts/material-icons.css">
 <link rel="stylesheet" href="../assets/stylesheets/paradox-material-theme.css">
 </head>
 <body
 >
-<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-<input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-<label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
 <header class="md-header" data-md-component="header">
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
@@ -46,7 +48,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </a>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
-<label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
 </div>
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
@@ -58,14 +60,14 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </div>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
-<label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
 <div class="md-search" data-md-component="search" role="dialog">
-<label class="md-search__overlay" for="search"></label>
-<div class="md-search__inner">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
 <form class="md-search__form" name="search">
-<input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-<label class="md-icon md-search__icon" for="search"></label>
-<button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -93,9 +95,10 @@ Type to start searching
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../index.html" title="" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
-</span>
+</a>
 <a href="../index.html" title="">
 </a>
 </label>
@@ -113,7 +116,7 @@ Type to start searching
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="toc">Table of contents</label>
+<label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
   <li><a href="../chapter-06/index.html#第6章-函数值和闭包" class="header">第6章——函数值和闭包</a>
   <ul>
@@ -131,11 +134,14 @@ Type to start searching
 </ul>
 </nav>
 
-<div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 1.0.0
-</div>
 </nav>
-
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 1.0.0
+</label>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -143,7 +149,7 @@ Type to start searching
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="toc">Table of contents</label>
+<label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
   <li><a href="../chapter-06/index.html#第6章-函数值和闭包" class="header">第6章——函数值和闭包</a>
   <ul>
@@ -179,7 +185,7 @@ Type to start searching
     result += i
   }
   result
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Sum.scala#L21-L27">Full source at GitHub</a>
 <h2><a href="#6-2-可扩展性与高阶函数" name="6-2-可扩展性与高阶函数" class="anchor"><span class="anchor-link"></span></a>6.2 可扩展性与高阶函数</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Loop.scala</p>
@@ -190,19 +196,19 @@ Type to start searching
     result += codeBlock(i)
   }
   result
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Loop.scala#L21-L27">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Loop.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ i))</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ i))</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Loop.scala#L31">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Loop.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ if (i % 2 == 0) i else 0))</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ if (i % 2 == 0) i else 0))</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Loop.scala#L35">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Loop.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ if (i % 2 != 0) i else 0))</code></pre>
+<pre class="prettyprint"><code class="language-scala">println(totalResultOverRange(11, i ⇒ if (i % 2 != 0) i else 0))</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Loop.scala#L39">Full source at GitHub</a>
 <h2><a href="#6-3-具有多个参数的函数值" name="6-3-具有多个参数的函数值" class="anchor"><span class="anchor-link"></span></a>6.3 具有多个参数的函数值</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/ZeroParam.scala</p>
@@ -211,7 +217,7 @@ Type to start searching
   println(s&quot;Generated value is ${generator()}&quot;)
 }
 
-printValue(() ⇒ 42)</code></pre>
+printValue(() ⇒ 42)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/ZeroParam.scala#L21-L25">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject.scala</p>
 </blockquote>
@@ -219,22 +225,22 @@ printValue(() ⇒ 42)</code></pre>
   var carryOver = initial
   arr.foreach(element ⇒ carryOver = operation(carryOver, element))
   carryOver
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject.scala#L21-L25">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val array = Array(2, 3, 5, 1, 6, 4)
 val sum = inject(array, 0, (carry, elem) ⇒ carry + elem)
-println(s&quot;Sum of elements in array is $sum&quot;)</code></pre>
+println(s&quot;Sum of elements in array is $sum&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject.scala#L29-L31">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val max =
   inject(array, Integer.MIN_VALUE, (carry, elem) ⇒ Math.max(carry, elem))
-println(s&quot;Max of elements in array is  $max&quot;)</code></pre>
+println(s&quot;Max of elements in array is  $max&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject.scala#L35-L37">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Sum of elements in array is 21
-Max of elements in array is  6</code></pre>
+Max of elements in array is  6</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/output/Inject.output#L2-L3">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject2.scala</p>
 </blockquote>
@@ -244,24 +250,24 @@ val max = array.foldLeft(Integer.MIN_VALUE) { (large, elem) ⇒
 }
 
 println(s&quot;Sum of elements in array is $sum&quot;)
-println(s&quot;Max of elements in array is $max&quot;)</code></pre>
+println(s&quot;Max of elements in array is $max&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject2.scala#L24-L30">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject2.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val sum = (0 /: array) { (sum, elem) ⇒ sum + elem }
 val max =
-  (Integer.MIN_VALUE /: array) { (large, elem) ⇒ Math.max(large, elem) }</code></pre>
+  (Integer.MIN_VALUE /: array) { (large, elem) ⇒ Math.max(large, elem) }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject2.scala#L35-L37">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject3.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val sum = inject(array, 0) { (carryOver, elem) ⇒ carryOver + elem }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val sum = inject(array, 0) { (carryOver, elem) ⇒ carryOver + elem }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/test/scala/chapter6/Inject3.scala#L29">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Inject3.scala:9: error: not enough arguments for method inject: (arr:
 Array[Int], initial: Int, operation: (Int, Int) =&gt; Int)Int.
 Unspecified value parameter operation.
 val sum = inject(array, 0) {(carryOver, elem) =&gt; carryOver + elem}
                 ^
-one error found</code></pre>
+one error found</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/output/RunInject3.output#L2-L7">Full source at GitHub</a>
 <h2><a href="#6-4-柯里化" name="6-4-柯里化" class="anchor"><span class="anchor-link"></span></a>6.4 柯里化</h2>
 <pre class="prettyprint"><code class="language-output"><br/>scala&gt; def foo(a: Int)(b: Int)(c:Int) = {}
 foo: (a: Int)(b: Int)(c: Int)Unit
@@ -269,7 +275,7 @@ foo: (a: Int)(b: Int)(c: Int)Unit
 scala&gt; foo _
 res0: Int =&gt; (Int =&gt; (Int =&gt; Unit)) = &lt;function1&gt;
 
-scala&gt; :quit</code></pre>
+scala&gt; :quit</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/shoutput/RunMultipleParamsREPL.output#L2-L9">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject4.scala</p>
 </blockquote>
@@ -277,45 +283,45 @@ scala&gt; :quit</code></pre>
   var carryOver = initial
   arr.foreach(element ⇒ carryOver = operation(carryOver, element))
   carryOver
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject4.scala#L21-L25">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Inject4.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val sum: Int = inject(array, 0) { (carryOver, elem) ⇒ carryOver + elem }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val sum: Int = inject(array, 0) { (carryOver, elem) ⇒ carryOver + elem }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Inject4.scala#L31">Full source at GitHub</a>
 <h2><a href="#6-5-参数的占位符" name="6-5-参数的占位符" class="anchor"><span class="anchor-link"></span></a>6.5 参数的占位符</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Underscore.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val arr = Array(1, 2, 3, 4, 5)
 
-val total = (0 /: arr) { (sum, elem) ⇒ sum + elem }</code></pre>
+val total = (0 /: arr) { (sum, elem) ⇒ sum + elem }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Underscore.scala#L21-L23">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Underscore.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val total = (0 /: arr) { _ + _ }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val total = (0 /: arr) { _ + _ }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Underscore.scala#L30">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Underscore.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val negativeNumberExists1 = arr.exists { elem ⇒ elem &lt; 0 }
-val negativeNumberExists2 = arr.exists { _ &lt; 0 }</code></pre>
+val negativeNumberExists2 = arr.exists { _ &lt; 0 }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Underscore.scala#L37-L38">Full source at GitHub</a>
 <h2><a href="#6-6-参数路由" name="6-6-参数路由" class="anchor"><span class="anchor-link"></span></a>6.6 参数路由</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/RouteParams.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">val largest =
-  (Integer.MIN_VALUE /: arr) { (carry, elem) ⇒ Math.max(carry, elem) }</code></pre>
+  (Integer.MIN_VALUE /: arr) { (carry, elem) ⇒ Math.max(carry, elem) }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/RouteParams.scala#L23-L24">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/RouteParams.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max(_, _) }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max(_, _) }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/RouteParams.scala#L31">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/RouteParams.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max _ }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max _ }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/RouteParams.scala#L39">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/RouteParams.scala</p>
 </blockquote>
-<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max }</code></pre>
+<pre class="prettyprint"><code class="language-scala">val largest = (Integer.MIN_VALUE /: arr) { Math.max }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/RouteParams.scala#L47">Full source at GitHub</a>
 <h2><a href="#6-7-复用函数值" name="6-7-复用函数值" class="anchor"><span class="anchor-link"></span></a>6.7 复用函数值</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Equipment.scala</p>
@@ -325,7 +331,7 @@ val negativeNumberExists2 = arr.exists { _ &lt; 0 }</code></pre>
     print(&quot;Running simulation...&quot;)
     routine(input)
   }
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Equipment.scala#L20-L25">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/EquipmentUseNotDry.scala</p>
 </blockquote>
@@ -337,10 +343,10 @@ val negativeNumberExists2 = arr.exists { _ &lt; 0 }</code></pre>
 
   equipment1.simulate(4)
   equipment2.simulate(6)
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/EquipmentUseNotDry.scala#L20-L28">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Running simulation...calc with 4
-Running simulation...calc with 6</code></pre>
+Running simulation...calc with 6</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/shoutput/RunEquipmentUseNotDry.output#L2-L3">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/EquipmentUseNotDry.scala</p>
 </blockquote>
@@ -352,10 +358,10 @@ Running simulation...calc with 6</code></pre>
 
   equipment1.simulate(4)
   equipment2.simulate(6)
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/EquipmentUseDry.scala#L20-L28">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Running simulation...calc with 4
-Running simulation...calc with 6</code></pre>
+Running simulation...calc with 6</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/shoutput/RunEquipmentUseDry.output#L2-L3">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/EquipmentUseNotDry2.scala</p>
 </blockquote>
@@ -367,10 +373,10 @@ Running simulation...calc with 6</code></pre>
 
   equipment1.simulate(4)
   equipment2.simulate(6)
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/EquipmentUseDry2.scala#L20-L28">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Running simulation...calc with 4
-Running simulation...calc with 6</code></pre>
+Running simulation...calc with 6</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/shoutput/RunEquipmentUseDry2.output#L2-L3">Full source at GitHub</a>
 <h2><a href="#6-8-部分应用函数" name="6-8-部分应用函数" class="anchor"><span class="anchor-link"></span></a>6.8 部分应用函数</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Log.scala</p>
@@ -385,7 +391,7 @@ def log(date: Date, message: String): Unit = {
 val date = new Date(1420095600000L)
 log(date, &quot;message1&quot;)
 log(date, &quot;message2&quot;)
-log(date, &quot;message3&quot;)</code></pre>
+log(date, &quot;message3&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Log.scala#L21-L31">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Log.scala</p>
 </blockquote>
@@ -393,7 +399,7 @@ log(date, &quot;message3&quot;)</code></pre>
 val logWithDateBound = log(date, _: String)
 logWithDateBound(&quot;message1&quot;)
 logWithDateBound(&quot;message2&quot;)
-logWithDateBound(&quot;message3&quot;)</code></pre>
+logWithDateBound(&quot;message3&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Log.scala#L36-L40">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">scala&gt; import java.util.Date
 import java.util.Date
@@ -405,19 +411,19 @@ log: (date: java.util.Date, message: String)Unit
 scala&gt; val logWithDateBound = log(new Date, _ : String)
 logWithDateBound: String =&gt; Unit = &lt;function1&gt;
 
-scala&gt; :quit</code></pre>
+scala&gt; :quit</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/shoutput/RunREPL.output#L2-L12">Full source at GitHub</a>
 <h2><a href="#6-9-闭包" name="6-9-闭包" class="anchor"><span class="anchor-link"></span></a>6.9 闭包</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Closure.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">def loopThrough(number: Int)(closure: Int ⇒ Unit): Unit = {
   for (i ← 1 to number) { closure(i) }
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Closure.scala#L21-L23">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Closure.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">var result = 0
-val addIt = { value: Int ⇒ result += value }</code></pre>
+val addIt = { value: Int ⇒ result += value }</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Closure.scala#L27-L28">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Closure.scala</p>
 </blockquote>
@@ -426,17 +432,17 @@ println(s&quot;Total of values from 1 to 10 is $result&quot;)
 
 result = 0
 loopThrough(5) { addIt }
-println(s&quot;Total of values from 1 to 5 is $result&quot;)</code></pre>
+println(s&quot;Total of values from 1 to 5 is $result&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Closure.scala#L32-L37">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Closure.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">var product = 1
 loopThrough(5) { product *= _ }
-println(s&quot;Product of values from 1 to 5 is $product&quot;)</code></pre>
+println(s&quot;Product of values from 1 to 5 is $product&quot;)</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Closure.scala#L41-L43">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Total of values from 1 to 10 is 55
 Total of values from 1 to 5 is 15
-Product of values from 1 to 5 is 120</code></pre>
+Product of values from 1 to 5 is 120</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/output/Closure.output#L2-L4">Full source at GitHub</a>
 <h2><a href="#6-10-execute-around-method-模式" name="6-10-execute-around-method-模式" class="anchor"><span class="anchor-link"></span></a>6.10 Execute Around Method 模式</h2>
 <blockquote>
   <p>FunctionValuesAndClosures/Resource.scala</p>
@@ -458,7 +464,7 @@ object Resource {
       resource.cleanUp()
     }
   }
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Resource.scala#L21-L38">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/Resource.scala</p>
 </blockquote>
@@ -467,14 +473,14 @@ object Resource {
   resource.op2()
   resource.op3()
   resource.op1()
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/Resource.scala#L42-L47">Full source at GitHub</a>
 <p><em>运行结果</em></p>
 <pre class="prettyprint"><code class="language-output">Starting transaction...
 Operation 1
 Operation 2
 Operation 3
 Operation 1
-Ending transaction...</code></pre>
+Ending transaction...</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/output/Resource.output#L2-L7">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/WriteToFile.scala</p>
 </blockquote>
@@ -483,15 +489,15 @@ Ending transaction...</code></pre>
 def writeToFile(fileName: String)(codeBlock: PrintWriter ⇒ Unit): Unit = {
   val writer = new PrintWriter(new File(fileName))
   try { codeBlock(writer) } finally { writer.close() }
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/WriteToFile.scala#L21-L26">Full source at GitHub</a>
 <blockquote>
   <p>FunctionValuesAndClosures/WriteToFile.scala</p>
 </blockquote>
 <pre class="prettyprint"><code class="language-scala">writeToFile(&quot;output/output.txt&quot;) { writer ⇒
   writer write &quot;hello from Scala&quot;
-}</code></pre>
+}</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/WriteToFile.scala#L30-L32">Full source at GitHub</a>
 <p><em>运行结果</em></p>
-<pre class="prettyprint"><code class="language-txt">hello from Scala</code></pre>
+<pre class="prettyprint"><code class="language-txt">hello from Scala</code></pre><a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/v1.0.0/src/main/scala/chapter6/output/output.txt#L2">Full source at GitHub</a>
 </div>
 <div>
 <a href="https://github.com/ReactivePlatform/Pragmatic-Scala.git/tree/master/src/paradox/chapter-06/index.md" title="Edit this page" class="md-source-file md-edit">
@@ -552,7 +558,7 @@ and
 </footer>
 
 </div>
-<script src="../assets/javascripts/application.5165553b.js"></script>
+<script src="../assets/javascripts/application.583bbe55.js"></script>
 <script src="../assets/javascripts/paradox-material-theme.js"></script>
 <script>app.initialize({version:"0.17",url:{base:"../."}})</script>
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
